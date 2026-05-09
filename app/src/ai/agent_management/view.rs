@@ -220,7 +220,7 @@ impl AgentManagementView {
         let all_filter_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("全部", NakedTheme)
                 .with_size(ButtonSize::Small)
-                .with_tooltip("View your agent tasks plus all shared team tasks")
+                .with_tooltip("查看您的 Agent 任务以及所有共享的团队任务")
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(AgentManagementViewAction::SetOwnerFilter(
                         OwnerFilter::All,

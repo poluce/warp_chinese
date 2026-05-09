@@ -8975,7 +8975,7 @@ impl Workspace {
                 );
             }
             // Items that don't get any sidecar.
-            "New tab config" => {
+            "新标签页配置" => {
                 self.tab_config_action_sidecar_item = None;
                 if self.show_new_session_sidecar {
                     self.show_new_session_sidecar = false;
@@ -15590,7 +15590,7 @@ impl Workspace {
                                             )
                                             .with_object_id(object_id_clone)
                                             .with_link(
-                                                ToastLink::new("View".to_string())
+                                                ToastLink::new("查看".to_string())
                                                     .with_onclick_action(
                                                         WorkspaceAction::ViewObjectInWarpDrive(
                                                             WarpDriveItemId::Object(
@@ -15612,7 +15612,7 @@ impl Workspace {
                                         || result.operation == ObjectOperation::Update
                                     {
                                         new_toast = new_toast.with_link(
-                                            ToastLink::new("View".to_string()).with_onclick_action(
+                                            ToastLink::new("查看".to_string()).with_onclick_action(
                                                 WorkspaceAction::ViewObjectInWarpDrive(
                                                     WarpDriveItemId::Object(
                                                         CloudObjectTypeAndId::Workflow(workflow.id),
@@ -18219,10 +18219,10 @@ impl Workspace {
         const BUTTON_WIDTH: f32 = 24. + SIDE_MENU_WIDTH;
         const BUTTON_LEFT_MARGIN: f32 = 4.;
 
-        let new_tab_tool_tip_label_text = "New Tab".to_string();
+        let new_tab_tool_tip_label_text = "新标签页".to_string();
         let new_tab_tool_tip_sublabel_text =
             keybinding_name_to_display_string(NEW_TAB_BINDING_NAME, ctx);
-        let tab_configs_tool_tip_label_text = "Tab configs".to_string();
+        let tab_configs_tool_tip_label_text = "标签页配置".to_string();
         let tab_configs_tool_tip_sublabel_text =
             keybinding_name_to_display_string(TOGGLE_TAB_CONFIGS_MENU_BINDING_NAME, ctx);
         let appearance = Appearance::as_ref(ctx);

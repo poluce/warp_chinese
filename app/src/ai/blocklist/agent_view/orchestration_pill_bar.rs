@@ -325,19 +325,19 @@ impl OrchestrationPillBar {
         // Stop / Kill items intentionally omitted (wiring still in place).
         let items = if is_open_elsewhere {
             vec![item(
-                "Focus pane",
+                "聚焦面板",
                 Icon::ArrowSplit,
                 OrchestrationPillBarAction::FocusOpenedConversation(conversation_id),
             )]
         } else {
             vec![
                 item(
-                    "Open in new pane",
+                    "在新面板中打开",
                     Icon::ArrowSplit,
                     OrchestrationPillBarAction::OpenInNewPane(conversation_id),
                 ),
                 item(
-                    "Open in new tab",
+                    "在新标签页中打开",
                     Icon::Plus,
                     OrchestrationPillBarAction::OpenInNewTab(conversation_id),
                 ),

@@ -889,7 +889,7 @@ impl CodeDiffView {
         let code_review_button = ctx.add_typed_action_view(|ctx| {
             ActionButton::new("", NakedTheme)
                 .with_icon(Icon::Diff)
-                .with_tooltip("Review changes")
+                .with_tooltip("审查更改")
                 .with_width(icon_size(ctx))
                 .with_height(icon_size(ctx))
                 .on_click(|ctx| {
@@ -901,7 +901,7 @@ impl CodeDiffView {
         let expansion_button_collapsed = ctx.add_typed_action_view(|ctx| {
             ActionButton::new("", NakedTheme)
                 .with_icon(Icon::ChevronRight)
-                .with_tooltip("Expand")
+                .with_tooltip("展开")
                 .with_width(icon_size(ctx))
                 .with_height(icon_size(ctx))
                 .on_click(|ctx| {
@@ -912,7 +912,7 @@ impl CodeDiffView {
         let expansion_button_expanded = ctx.add_typed_action_view(|ctx| {
             ActionButton::new("", NakedTheme)
                 .with_icon(Icon::ChevronDown)
-                .with_tooltip("Collapse")
+                .with_tooltip("折叠")
                 .with_width(icon_size(ctx))
                 .with_height(icon_size(ctx))
                 .on_click(|ctx| {

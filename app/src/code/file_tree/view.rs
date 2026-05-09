@@ -72,9 +72,9 @@ use warpui::ui_components::components::UiComponent;
 mod editing;
 mod render;
 
-const REMOTE_TEXT: &str = "The Project Explorer requires access to your local workspace, which isn’t supported in remote sessions.";
-const DISABLED_TEXT: &str = "The Project Explorer requires access to your local workspace. Open a new session or navigate to an active session to view.";
-const WSL_TEXT: &str = "The Project Explorer doesn't currently work in WSL.";
+const REMOTE_TEXT: &str = "项目浏览器需要访问本地工作区，远程会话不支持此功能。";
+const DISABLED_TEXT: &str = "项目浏览器需要访问本地工作区。打开新会话或导航到活动会话以查看。";
+const WSL_TEXT: &str = "项目浏览器目前在 WSL 中不可用。";
 
 /// Stable identifier for an item in the file tree.
 /// Includes both the root directory and the index within that root's flattened list.
@@ -2326,7 +2326,7 @@ impl FileTreeView {
                     let path_local = item.path().to_local_path_lossy();
                     if !is_file_content_binary(&path_local) {
                         items.extend([
-                            MenuItemFields::new("Open in new pane")
+                            MenuItemFields::new("在新面板中打开")
                                 .with_on_select_action(FileTreeAction::OpenInNewPane {
                                     id: id.clone(),
                                 })

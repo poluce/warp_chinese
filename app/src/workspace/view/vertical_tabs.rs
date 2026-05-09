@@ -3096,7 +3096,7 @@ fn terminal_primary_line_data(
     }
 
     TerminalPrimaryLineData::Text {
-        text: "New session".to_string(),
+        text: "新会话".to_string(),
         font: TerminalPrimaryLineFont::Ui,
     }
 }
@@ -3107,7 +3107,7 @@ fn terminal_kind_badge_label(is_oz_agent: bool, cli_agent: Option<CLIAgent>) -> 
     } else if is_oz_agent {
         "Oz".to_string()
     } else {
-        "Terminal".to_string()
+        "终端".to_string()
     }
 }
 

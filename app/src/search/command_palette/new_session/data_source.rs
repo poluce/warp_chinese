@@ -204,7 +204,7 @@ impl Entity for NewSessionDataSource {
 type SearcherAction = <NewSessionDataSource as SyncDataSource>::Action;
 
 const SEARCHER_BASE_STRINGS: [&str; 6] = [
-    "Create New Tab",
+    "创建新标签页",
     "Create New Window",
     "Split Pane Down",
     "Split Pane Right",

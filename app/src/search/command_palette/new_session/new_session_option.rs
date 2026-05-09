@@ -81,7 +81,7 @@ impl NewSessionOption {
 impl NewSessionOption {
     pub(super) fn new(id: NewSessionOptionId, config: NewSessionConfig) -> Self {
         let description = match &config {
-            NewSessionConfig::NewTab(shell) => format!("Create New Tab: {}", shell.short_name()),
+            NewSessionConfig::NewTab(shell) => format!("创建新标签页：{}", shell.short_name()),
             NewSessionConfig::NewWindow(shell) => {
                 format!("Create New Window: {}", shell.short_name())
             }

@@ -466,7 +466,7 @@ pub fn init(app: &mut AppContext) {
             CustomAction::ToggleProjectExplorer,
             WorkspaceAction::ToggleProjectExplorer,
             BindingDescription::new("Toggle project explorer")
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Project Explorer"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "项目浏览器"),
             id!("Workspace") & id!(flags::SHOW_PROJECT_EXPLORER),
         ),
     ]);
@@ -672,7 +672,7 @@ pub fn init(app: &mut AppContext) {
         .with_context_predicate(id!("Workspace") & id!(flags::ENABLE_WARP_DRIVE) & id!("IsOnline")),
         EditableBinding::new(
             NEW_TAB_BINDING_NAME,
-            BindingDescription::new("Create new tab"),
+            BindingDescription::new("创建新标签页"),
             WorkspaceAction::AddDefaultTab,
         )
         .with_context_predicate(id!("Workspace") & !id!("Workspace_PaneDragging"))
@@ -775,14 +775,14 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             TOGGLE_PROJECT_EXPLORER_BINDING_NAME,
             BindingDescription::new("Toggle project explorer")
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Project Explorer"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "项目浏览器"),
             WorkspaceAction::ToggleProjectExplorer,
         )
         .with_context_predicate(id!("Workspace") & id!(flags::SHOW_PROJECT_EXPLORER)),
         EditableBinding::new(
             OPEN_GLOBAL_SEARCH_BINDING_NAME,
             BindingDescription::new("Open global search")
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Global Search"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "全局搜索"),
             WorkspaceAction::OpenGlobalSearch,
         )
         .with_context_predicate(id!("Workspace") & id!(flags::SHOW_GLOBAL_SEARCH))
@@ -820,7 +820,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:toggle_command_palette",
             BindingDescription::new("Toggle command palette")
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Command Palette"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "命令面板"),
             WorkspaceAction::TogglePalette {
                 mode: PaletteMode::Command,
                 source: PaletteSource::Keybinding,
@@ -1070,7 +1070,7 @@ pub fn init(app: &mut AppContext) {
 
     app.register_editable_bindings([EditableBinding::new(
         "workspace:log_out",
-        "Log out",
+        "退出登录",
         WorkspaceAction::LogOut,
     )
     .with_group(bindings::BindingGroup::Settings.as_str())
@@ -1079,7 +1079,7 @@ pub fn init(app: &mut AppContext) {
     if !FeatureFlag::AvatarInTabBar.is_enabled() {
         app.register_editable_bindings([EditableBinding::new(
             "workspace:toggle_resource_center",
-            "Toggle resource center",
+            "切换资源中心",
             WorkspaceAction::ToggleResourceCenter,
         )
         .with_group(bindings::BindingGroup::Navigation.as_str())

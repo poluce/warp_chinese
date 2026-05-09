@@ -16,17 +16,16 @@ cargo build -p warp --profile rlto --bin warp-oss --features "release_bundle,gui
 
 # 4. 打包便携文件夹
 PORTABLE_DIR="$(pwd)/portable_warp"
-rm -rf "$PORTABLE_DIR"
 mkdir -p "$PORTABLE_DIR/x64"
 
-cp target/x86_64-pc-windows-msvc/rlto/warp-oss.exe "$PORTABLE_DIR/"
-cp target/rlto/conpty.dll "$PORTABLE_DIR/"
-cp target/rlto/dxcompiler.dll "$PORTABLE_DIR/"
-cp target/rlto/dxil.dll "$PORTABLE_DIR/"
-cp target/rlto/x64/OpenConsole.exe "$PORTABLE_DIR/x64/"
-cp app/assets/windows/x64/vcruntime140.dll "$PORTABLE_DIR/"
-cp app/assets/windows/x64/vcruntime140_1.dll "$PORTABLE_DIR/"
-cp app/assets/windows/x64/msvcp140.dll "$PORTABLE_DIR/"
+cp -f target/x86_64-pc-windows-msvc/rlto/warp-oss.exe "$PORTABLE_DIR/"
+cp -f target/rlto/conpty.dll "$PORTABLE_DIR/"
+cp -f target/rlto/dxcompiler.dll "$PORTABLE_DIR/"
+cp -f target/rlto/dxil.dll "$PORTABLE_DIR/"
+cp -f target/rlto/x64/OpenConsole.exe "$PORTABLE_DIR/x64/"
+cp -f app/assets/windows/x64/vcruntime140.dll "$PORTABLE_DIR/"
+cp -f app/assets/windows/x64/vcruntime140_1.dll "$PORTABLE_DIR/"
+cp -f app/assets/windows/x64/msvcp140.dll "$PORTABLE_DIR/"
 
 echo ""
 echo "============================================"

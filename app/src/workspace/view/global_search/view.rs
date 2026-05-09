@@ -665,7 +665,7 @@ impl GlobalSearchView {
         let case_sensitivity_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new_with_boxed_theme(String::new(), Arc::new(NakedTheme))
                 .with_icon(UiIcon::CaseSensitivity)
-                .with_tooltip("Toggle Case Sensitivity")
+                .with_tooltip("切换大小写敏感")
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(GlobalSearchAction::ToggleCaseSensitivity);
@@ -675,7 +675,7 @@ impl GlobalSearchView {
         let regex_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new_with_boxed_theme(String::new(), Arc::new(NakedTheme))
                 .with_icon(UiIcon::Regex)
-                .with_tooltip("Toggle Regex")
+                .with_tooltip("切换正则表达式")
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(GlobalSearchAction::ToggleRegexSearch);
@@ -2247,8 +2247,8 @@ impl GlobalSearchView {
     fn render_pre_search_state(&self, app: &AppContext) -> Box<dyn Element> {
         self.render_zero_state(
             Icon::Search,
-            "Global search",
-            "Search in files across your current directories.",
+            "全局搜索",
+            "在当前目录中搜索文件。",
             app,
         )
     }
@@ -2256,8 +2256,8 @@ impl GlobalSearchView {
     fn render_unavailable_state(&self, app: &AppContext) -> Box<dyn Element> {
         self.render_zero_state(
             Icon::AlertTriangle,
-            "Global search unavailable",
-            "Global search requires access to your local workspace. Open a new session or navigate to an active session to view.",
+            "全局搜索不可用",
+            "全局搜索需要访问您的本地工作区。打开新会话或导航到活动会话以查看。",
             app,
         )
     }
@@ -2265,8 +2265,8 @@ impl GlobalSearchView {
     fn render_remote_state(&self, app: &AppContext) -> Box<dyn Element> {
         self.render_zero_state(
             Icon::AlertTriangle,
-            "Global search unavailable",
-            "Global search requires access to your local workspace, which isn't supported in remote sessions",
+            "全局搜索不可用",
+            "全局搜索需要访问您的本地工作区，远程会话不支持此功能。",
             app,
         )
     }

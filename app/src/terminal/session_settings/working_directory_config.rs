@@ -43,9 +43,9 @@ impl WorkingDirectoryMode {
     /// values in the settings view.
     pub fn dropdown_item_label(&self) -> &'static str {
         match self {
-            WorkingDirectoryMode::HomeDir => "Home directory",
-            WorkingDirectoryMode::PreviousDir => "Previous session's directory",
-            WorkingDirectoryMode::CustomDir => "Custom directory",
+            WorkingDirectoryMode::HomeDir => "主目录",
+            WorkingDirectoryMode::PreviousDir => "上次会话的目录",
+            WorkingDirectoryMode::CustomDir => "自定义目录",
         }
     }
 }
