@@ -47,9 +47,9 @@ pub enum ActionPermission {
 impl ActionPermission {
     pub fn description(&self) -> &'static str {
         match self {
-            ActionPermission::AgentDecides | ActionPermission::Unknown => "The Agent chooses the safest path: acting on its own when confident, and asking for approval when uncertain.",
-            ActionPermission::AlwaysAllow => "Give the Agent full autonomy  — no manual approval ever required.",
-            ActionPermission::AlwaysAsk => "Require explicit approval before the Agent takes any action.",
+            ActionPermission::AgentDecides | ActionPermission::Unknown => "Agent 选择最安全的路径：在有信心时自行操作，在不确定时请求批准。",
+            ActionPermission::AlwaysAllow => "给予 Agent 完全自主权——无需任何手动批准。",
+            ActionPermission::AlwaysAsk => "要求 Agent 在执行任何操作之前获得明确批准。",
         }
     }
 
@@ -81,9 +81,9 @@ impl WriteToPtyPermission {
         match self {
             WriteToPtyPermission::AlwaysAllow => ActionPermission::AlwaysAllow.description(),
             WriteToPtyPermission::AskOnFirstWrite => {
-                "The agent will ask for permission the first time it needs to interact with a running command. After that, it will continue automatically for the rest of that command."
+                "Agent 将在第一次需要与运行中的命令交互时请求权限。之后，将在该命令的剩余时间内自动继续。"
             }
-            WriteToPtyPermission::AlwaysAsk => "The agent will always ask for permission to interact with a running command.",
+            WriteToPtyPermission::AlwaysAsk => "Agent 将始终请求与运行中的命令交互的权限。",
             WriteToPtyPermission::Unknown => ActionPermission::Unknown.description(),
         }
     }
@@ -118,15 +118,15 @@ impl ComputerUsePermission {
     pub fn description(&self) -> &'static str {
         match self {
             ComputerUsePermission::Never => {
-                "Computer use tools are disabled and will not be available to the Agent."
+                "计算机使用工具已禁用，Agent 将无法使用。"
             }
             ComputerUsePermission::AlwaysAsk => {
-                "Require explicit approval before the Agent uses computer use tools."
+                "要求 Agent 在使用计算机使用工具之前获得明确批准。"
             }
             ComputerUsePermission::AlwaysAllow => {
-                "Give the Agent full autonomy to use computer use tools without approval."
+                "给予 Agent 完全自主权，无需批准即可使用计算机使用工具。"
             }
-            ComputerUsePermission::Unknown => "Unknown setting.",
+            ComputerUsePermission::Unknown => "未知设置。",
         }
     }
 

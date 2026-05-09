@@ -68,7 +68,7 @@ fn nice_step(raw: f64) -> f64 {
 use crate::settings_view::{render_input_list, render_separator, InputListItem};
 
 pub const WORKSPACE_OVERRIDE_TOOLTIP_MESSAGE: &str =
-    "This option is enforced by your organization's settings and cannot be customized.";
+    "此选项由您组织的设置强制执行，无法自定义。";
 pub fn render_header_section(
     appearance: &Appearance,
     profile_name_editor: &ViewHandle<EditorView>,
@@ -92,7 +92,7 @@ pub fn render_header_section(
 
     if is_default_profile {
         column.add_child(render_info_section(
-            "Default profile name cannot be changed.",
+            "默认配置名称无法更改。",
             None,
             appearance,
         ));
@@ -104,7 +104,7 @@ pub fn render_header_section(
 }
 
 fn render_header_title(appearance: &Appearance) -> Box<dyn Element> {
-    Text::new_inline("Edit Profile", appearance.ui_font_family(), 16.)
+    Text::new_inline("编辑配置", appearance.ui_font_family(), 16.)
         .with_style(Properties::default().weight(Weight::Bold))
         .with_color(appearance.theme().active_ui_text_color().into())
         .finish()
@@ -112,7 +112,7 @@ fn render_header_title(appearance: &Appearance) -> Box<dyn Element> {
 
 fn render_header_name_label(appearance: &Appearance) -> Box<dyn Element> {
     Container::new(
-        Text::new("Name", appearance.ui_font_family(), 13.)
+        Text::new("名称", appearance.ui_font_family(), 13.)
             .with_color(appearance.theme().active_ui_text_color().into())
             .finish(),
     )

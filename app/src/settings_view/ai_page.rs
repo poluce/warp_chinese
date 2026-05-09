@@ -2144,7 +2144,7 @@ impl AISettingsPageView {
                     }
 
                     items.push(
-                        MenuItemFields::new("Other")
+                        MenuItemFields::new("其他")
                             .with_on_select_action(DropdownAction::SelectActionAndClose(
                                 AISettingsPageAction::SetCLIAgentForCommand {
                                     pattern: pattern_clone.clone(),
@@ -2157,15 +2157,15 @@ impl AISettingsPageView {
                     dropdown.set_rich_items(items, ctx);
 
                     dropdown.set_menu_header_text_override(|label| {
-                        if label == "Other" {
-                            "Select coding agent".to_string()
+                        if label == "其他" {
+                            "选择编码 Agent".to_string()
                         } else {
                             label.to_string()
                         }
                     });
 
                     let selected_name = if matches!(current_agent, CLIAgent::Unknown) {
-                        "Other"
+                        "其他"
                     } else {
                         current_agent.display_name()
                     };
@@ -3170,7 +3170,7 @@ fn render_toolbar_layout_editor(
     let label = Container::new(
         appearance
             .ui_builder()
-            .span("Toolbar layout".to_string())
+            .span("工具栏布局".to_string())
             .with_style(UiComponentStyles {
                 font_size: Some(CONTENT_FONT_SIZE),
                 ..Default::default()
@@ -3290,7 +3290,7 @@ impl SettingsWidget for GlobalAIWidget {
             row.add_child(
                 ConstrainedBox::new(
                     Container::new(
-                        Text::new("Your organization disallows AI when the active pane contains content from a remote session", appearance.ui_font_family(), 12.)
+                        Text::new("当活动窗格包含远程会话内容时，您的组织禁止使用 AI", appearance.ui_font_family(), 12.)
                             .with_color(appearance.theme().ui_warning_color())
                             .finish()
                     )
@@ -3311,7 +3311,7 @@ impl SettingsWidget for GlobalAIWidget {
                     .with_child(
                         Container::new(
                             Text::new_inline(
-                                "To use AI features, please create an account.",
+                                "要使用 AI 功能，请创建账户。",
                                 appearance.ui_font_family(),
                                 14.,
                             )
@@ -3408,9 +3408,9 @@ impl UsageWidget {
         }
 
         let request_count_label = if workspace_is_delinquent_due_to_payment_issue {
-            "Restricted due to billing issue".to_string()
+            "因账单问题受限".to_string()
         } else if is_unlimited {
-            "Unlimited".to_string()
+            "无限制".to_string()
         } else {
             format!("{used}/{limit}")
         };
@@ -3557,7 +3557,7 @@ impl SettingsWidget for UsageWidget {
                 .with_child(
                     build_sub_header(
                         appearance,
-                        "Usage",
+                        "使用量",
                         Some(styles::header_font_color(true, app)),
                     )
                     .finish(),
@@ -3565,7 +3565,7 @@ impl SettingsWidget for UsageWidget {
                 .with_child(
                     appearance
                         .ui_builder()
-                        .paragraph(format!("Resets {formatted_next_refresh_time}"))
+                        .paragraph(format!("重置时间 {formatted_next_refresh_time}"))
                         .with_style(UiComponentStyles {
                             font_color: Some(blended_colors::text_sub(
                                 appearance.theme(),
@@ -3582,12 +3582,12 @@ impl SettingsWidget for UsageWidget {
         .finish();
 
         let request_limit_description = format!(
-            "This is the {} limit of AI credits for your account.",
+            "这是您账户的 {} AI 积分限制。",
             ai_request_usage_model.refresh_duration_to_string()
         );
 
         let request_usage_row = self.render_ai_usage_limit_row(
-            "Credits",
+            "积分",
             request_limit_description,
             ai_request_usage_model.requests_used(),
             ai_request_usage_model.request_limit(),
@@ -3606,28 +3606,28 @@ impl SettingsWidget for UsageWidget {
                 let upgrade_url = UserWorkspaces::upgrade_link_for_team(team.uid);
                 if has_admin_permissions {
                     vec![
-                        FormattedTextFragment::hyperlink("Upgrade", upgrade_url),
-                        FormattedTextFragment::plain_text(" to get more AI usage."),
+                        FormattedTextFragment::hyperlink("升级", upgrade_url),
+                        FormattedTextFragment::plain_text(" 以获取更多 AI 使用量。"),
                     ]
                 } else {
                     // The /upgrade page says to contact their administrator.
                     vec![
-                        FormattedTextFragment::hyperlink("Compare plans", upgrade_url),
-                        FormattedTextFragment::plain_text(" for more AI usage."),
+                        FormattedTextFragment::hyperlink("比较计划", upgrade_url),
+                        FormattedTextFragment::plain_text(" 获取更多 AI 使用量。"),
                     ]
                 }
             } else {
                 vec![
-                    FormattedTextFragment::hyperlink("Contact support", "mailto:support@warp.dev"),
-                    FormattedTextFragment::plain_text(" for more AI usage."),
+                    FormattedTextFragment::hyperlink("联系支持", "mailto:support@warp.dev"),
+                    FormattedTextFragment::plain_text(" 获取更多 AI 使用量。"),
                 ]
             }
         } else {
             let user_id = auth_state.user_id().unwrap_or_default();
             let upgrade_url = UserWorkspaces::upgrade_link(user_id);
             vec![
-                FormattedTextFragment::hyperlink("Upgrade", upgrade_url),
-                FormattedTextFragment::plain_text(" to get more AI usage."),
+                FormattedTextFragment::hyperlink("升级", upgrade_url),
+                FormattedTextFragment::plain_text(" 以获取更多 AI 使用量。"),
             ]
         };
 
@@ -4704,7 +4704,7 @@ impl AgentsWidget {
                 "允许 Warp Agent 生成可用于上下文的代码库大纲。代码绝不会存储在我们的服务器上。",
             ),
             FormattedTextFragment::hyperlink(
-                "Learn more",
+                "了解更多",
                 "https://docs.warp.dev/agent-platform/capabilities/codebase-context",
             ),
         ];
@@ -4780,7 +4780,7 @@ impl AgentsWidget {
                     "添加服务器",
                     AISettingsPageAction::OpenMCPServerCollection,
                 ),
-                FormattedTextFragment::plain_text(" or "),
+                FormattedTextFragment::plain_text(" 或 "),
                 FormattedTextFragment::hyperlink(
                     "详细了解 MCP。",
                     "https://docs.warp.dev/agent-platform/capabilities/mcp",
@@ -4872,7 +4872,7 @@ impl AgentsWidget {
         {
             let denylist = self.render_mcp_list(
                 "MCP 黑名单",
-                "War Agent 在调用此列表中的任何 MCP 服务器之前始终会请求权限。",
+                "Warp Agent 在调用此列表中的任何 MCP 服务器之前始终会请求权限。",
                 &view.mcp_denylist_dropdown,
                 BlocklistAIPermissions::as_ref(app).get_mcp_denylist(app, None),
                 view.mcp_denylist_mouse_state_handles.clone(),
@@ -5248,7 +5248,7 @@ impl SettingsWidget for MCPServersWidget {
             MCP 服务器通过标准化接口向 Agent 公开数据源或工具，本质上充当插件。",
             ),
             FormattedTextFragment::hyperlink(
-                "Learn more",
+                "了解更多",
                 "https://docs.warp.dev/agent-platform/capabilities/mcp",
             ),
         ];
@@ -5379,7 +5379,7 @@ impl AIFactWidget {
                 "规则帮助 Warp Agent 遵循您的约定，无论是针对代码库还是特定工作流。",
             ),
             FormattedTextFragment::hyperlink(
-                "Learn more",
+                "了解更多",
                 "https://docs.warp.dev/agent-platform/capabilities/rules",
             ),
         ];
@@ -5547,7 +5547,7 @@ impl VoiceWidget {
                 "语音输入允许您通过直接对终端说话来控制 Warp（由 ",
             ),
             FormattedTextFragment::hyperlink("Wispr Flow", WISPR_FLOW_URL),
-            FormattedTextFragment::plain_text(")."),
+            FormattedTextFragment::plain_text("）。"),
         ];
 
         let voice_input_description = FormattedTextElement::new(
@@ -5822,11 +5822,11 @@ impl SettingsWidget for CLIAgentWidget {
                 "在运行编码 Agent（如 ",
             ),
             FormattedTextFragment::inline_code("claude"),
-            FormattedTextFragment::plain_text(", "),
+            FormattedTextFragment::plain_text("、"),
             FormattedTextFragment::inline_code("codex"),
-            FormattedTextFragment::plain_text(", or "),
+            FormattedTextFragment::plain_text(" 或 "),
             FormattedTextFragment::inline_code("gemini"),
-            FormattedTextFragment::plain_text("."),
+            FormattedTextFragment::plain_text("。"),
         ];
 
         let description = FormattedTextElement::new(

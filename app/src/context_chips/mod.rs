@@ -406,7 +406,7 @@ impl ContextChipKind {
             Self::SvnDirtyItems => ChipValue::Text("3".to_string()),
             Self::Ssh => ChipValue::Text("alice@127.0.0.1".to_string()),
             Self::Subshell => ChipValue::Text("bash".to_string()),
-            Self::AgentPlanAndTodoList => ChipValue::Text("Plan and Todo List".to_string()),
+            Self::AgentPlanAndTodoList => ChipValue::Text("计划和待办列表".to_string()),
         }
     }
 
