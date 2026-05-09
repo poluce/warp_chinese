@@ -29,7 +29,7 @@ const PRIMARY_BUTTON_HEIGHT: f32 = 40.;
 const SECTION_UNIFORM_PADDING: f32 = 16.;
 const MARGIN_BETWEEN_MODAL_SECTIONS: f32 = 16.;
 const MODAL_CONTENT_FONT_SIZE: f32 = 14.;
-const RESTORE_DEFAULT_LABEL: &str = "Restore default";
+const RESTORE_DEFAULT_LABEL: &str = "恢复默认";
 
 /// Mouse state handles for interactive controls in chip editor sections and modals.
 #[derive(Default)]
@@ -205,7 +205,7 @@ pub fn render_chip_editor_sections<A: Action + Clone + Copy + 'static>(
     );
 
     let left_section = Flex::column()
-        .with_child(render_section_label("Left side", appearance))
+        .with_child(render_section_label("左侧", appearance))
         .with_child(
             Container::new(chip_configurator.render_left_drop_zone(
                 config.activate_action,
@@ -218,7 +218,7 @@ pub fn render_chip_editor_sections<A: Action + Clone + Copy + 'static>(
         .finish();
 
     let right_section = Flex::column()
-        .with_child(render_section_label("Right side", appearance))
+        .with_child(render_section_label("右侧", appearance))
         .with_child(
             Container::new(chip_configurator.render_right_drop_zone(
                 config.activate_action,

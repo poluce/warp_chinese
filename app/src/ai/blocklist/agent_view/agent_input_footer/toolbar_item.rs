@@ -116,10 +116,10 @@ impl AgentToolbarItemKind {
 
     pub fn display_label(&self) -> &'static str {
         match self {
-            Self::ContextChip(_) => "Context Chip",
-            Self::ModelSelector => "Model Selector",
-            Self::NLDToggle => "Autodetection",
-            Self::VoiceInput => "Voice Input",
+            Self::ContextChip(_) => "上下文组件",
+            Self::ModelSelector => "模型选择器",
+            Self::NLDToggle => "自动检测",
+            Self::VoiceInput => "语音输入",
             Self::FileAttach => "添加文件",
             Self::ContextWindowUsage => "上下文使用情况",
             Self::FileExplorer => "文件资源管理器",
