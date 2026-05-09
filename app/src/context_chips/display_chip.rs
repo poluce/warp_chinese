@@ -1279,7 +1279,7 @@ impl DisplayChip {
                 if state.is_hovered() {
                     let tool_tip = appearance
                         .ui_builder()
-                        .tool_tip("Change working directory".to_string())
+                        .tool_tip("切换工作目录".to_string())
                         .build()
                         .finish();
 

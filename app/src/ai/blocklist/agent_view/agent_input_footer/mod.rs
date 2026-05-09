@@ -576,7 +576,7 @@ impl AgentInputFooter {
         );
 
         let start_remote_control_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("/remote-control", RemoteControlButtonTheme)
+            ActionButton::new("远程控制", RemoteControlButtonTheme)
                 .with_icon(Icon::Phone01)
                 .with_tooltip(START_REMOTE_CONTROL_TOOLTIP)
                 .with_size(cli_button_size)
@@ -1949,7 +1949,7 @@ impl AgentInputFooter {
             let usage = conversation.context_window_usage();
             let icon = icon_for_context_window_usage(usage);
             let remaining_pct = ((1.0 - usage) * 100.0).round() as i32;
-            let tooltip = format!("{remaining_pct}% context remaining");
+            let tooltip = format!("剩余 {remaining_pct}% 上下文");
 
             self.context_window_button.update(ctx, |button, ctx| {
                 button.set_icon(Some(icon), ctx);

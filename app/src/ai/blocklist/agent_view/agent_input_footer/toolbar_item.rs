@@ -124,7 +124,7 @@ impl AgentToolbarItemKind {
             Self::ContextWindowUsage => "上下文使用情况",
             Self::FileExplorer => "文件资源管理器",
             Self::RichInput => "富文本输入",
-            Self::ShareSession => "/remote-control",
+            Self::ShareSession => "远程控制",
             Self::Settings => "设置",
             Self::FastForwardToggle => "快速跳过",
             Self::HandoffToCloud => "移交给云端",

@@ -168,7 +168,7 @@ impl Display for IPaneType {
             IPaneType::EnvVarCollection => write!(f, "Environment Variable Collection"),
             IPaneType::EnvironmentManagement => write!(f, "Environment Management"),
             IPaneType::Workflow => write!(f, "Workflow"),
-            IPaneType::Settings => write!(f, "Settings"),
+            IPaneType::Settings => write!(f, "设置"),
             IPaneType::AIFact => write!(f, "AI Fact"),
             IPaneType::AIDocument => write!(f, "AI Document"),
             IPaneType::ExecutionProfileEditor => write!(f, "Execution Profile Editor"),

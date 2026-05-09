@@ -41,13 +41,13 @@ impl ApiKeyType {
     fn description(&self) -> &'static str {
         match self {
             ApiKeyType::Personal => {
-                "This API key is tied to your user and can make requests against your Warp account."
+                "此 API 密钥与您的用户绑定，可代表您的 Warp 账号发起请求。"
             }
             ApiKeyType::Team => {
-                "This API key is tied to your team and can make requests on behalf of your team."
+                "此 API 密钥与您的团队绑定，可代表您的团队发起请求。"
             }
             ApiKeyType::Agent => {
-                "This API key is tied to an agent and can make requests on behalf of the agent."
+                "此 API 密钥与 Agent 绑定，可代表该 Agent 发起请求。"
             }
         }
     }
@@ -83,10 +83,10 @@ pub(crate) enum ExpirationOption {
 impl ExpirationOption {
     fn display_text(&self) -> &'static str {
         match self {
-            ExpirationOption::OneDay => "1 day",
-            ExpirationOption::ThirtyDays => "30 days",
-            ExpirationOption::NinetyDays => "90 days",
-            ExpirationOption::Never => "Never",
+            ExpirationOption::OneDay => "1 天",
+            ExpirationOption::ThirtyDays => "30 天",
+            ExpirationOption::NinetyDays => "90 天",
+            ExpirationOption::Never => "永不过期",
         }
     }
 
@@ -890,4 +890,3 @@ fn api_key_type_control_styles(app: &AppContext) -> UiComponentStyles {
         padding: Some(Coords::uniform(2.0)),
         ..Default::default()
     }
-}

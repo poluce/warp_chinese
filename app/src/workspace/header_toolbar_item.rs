@@ -41,7 +41,7 @@ impl HeaderToolbarItemKind {
             Self::ToolsPanel => "Tools Panel",
             Self::AgentManagement => "Agent Management",
             Self::CodeReview => "Code Review",
-            Self::NotificationsMailbox => "Notifications",
+            Self::NotificationsMailbox => "通知",
         }
     }
 

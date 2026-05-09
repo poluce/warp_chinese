@@ -3589,6 +3589,23 @@ impl PlanWidget {
                     TextAndIcon::new(
                         TextAndIconAlignment::IconFirst,
                         "比较计划",
+                        Icon::CoinsStacked.to_warpui_icon(appearance.theme().accent()),
+                        MainAxisSize::Min,
+                        MainAxisAlignment::Center,
+                        vec2f(14., 14.),
+                    )
+                    .with_inner_padding(4.),
+                )
+                .build()
+                .on_click(move |ctx, _, _| {
+                    ctx.dispatch_typed_action(BillingAndUsagePageAction::Upgrade {
+                        team_uid: None,
+                        user_id: current_user_id,
+                    });
+                })
+                .finish(),
+        )
+        .with_margin_left(12.)
         .finish();
 
         (badge_element, compare_plans_button)

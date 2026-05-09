@@ -62,7 +62,7 @@ const FEATURE_ITEMS: &[FeatureItem] = &[
     },
     FeatureItem {
         icon: Icon::MessageChatSquare,
-        title: "Introducing 'auto (open-weights)'",
+        title: "推出 \"自动（开放权重）\"",
         description: "We've added a new auto model that picks the best open weight model for a task, like Kimi or MiniMax.",
         inline_link: None,
     },
