@@ -11,13 +11,13 @@ const MONTH_TO_MS: f64 = 30.44 * DAY_TO_MS;
 const YEAR_TO_MS: f64 = 365.25 * DAY_TO_MS;
 
 /// Subtract a given DateTime from now and format the duration is a concise, approximated,
-/// human-readable form. e.g. "just now"
+/// human-readable form. e.g. "刚刚"
 pub fn format_approx_duration_from_now(datetime: DateTime<Local>) -> String {
     human_readable_approx_duration(Local::now().sub(datetime), false)
 }
 
 /// Subtract a given DateTime from now and format the duration is a concise, approximated,
-/// human-readable form. e.g. "Just now"
+/// human-readable form. e.g. "刚刚"
 pub fn format_approx_duration_from_now_sentence_case(datetime: DateTime<Local>) -> String {
     human_readable_approx_duration(Local::now().sub(datetime), true)
 }
@@ -34,25 +34,25 @@ pub fn human_readable_precise_duration(duration: Duration) -> String {
     let ms = duration.num_milliseconds() as f64;
     let weeks = ms / WEEK_TO_MS;
     if weeks >= 1. {
-        return String::from(">1 week");
+        return String::from(">1 周");
     }
     let days = ms / DAY_TO_MS;
     if days >= 1. {
-        return format!("{} days", format_sigfigs(days, 3));
+        return format!("{} 天", format_sigfigs(days, 3));
     }
     let hours = ms / HOUR_TO_MS;
     if hours >= 1. {
-        return format!("{} hours", format_sigfigs(hours, 3));
+        return format!("{} 小时", format_sigfigs(hours, 3));
     }
     let minutes = ms / MIN_TO_MS;
     if minutes >= 1. {
-        return format!("{} min", format_sigfigs(minutes, 3));
+        return format!("{} 分钟", format_sigfigs(minutes, 3));
     }
     let seconds = ms / SEC_TO_MS;
     if seconds >= 1. {
-        return format!("{} sec", format_sigfigs(seconds, 3));
+        return format!("{} 秒", format_sigfigs(seconds, 3));
     }
-    format!("{} ms", duration.num_milliseconds())
+    format!("{} 毫秒", duration.num_milliseconds())
 }
 
 fn format_sigfigs(num: f64, sigfigs: usize) -> String {
@@ -76,33 +76,33 @@ pub fn human_readable_approx_duration(duration: Duration, sentence_case: bool) -
     let ms = duration.num_milliseconds() as f64;
     let years = ms / YEAR_TO_MS;
     if years >= 1. {
-        return truncated_quantity_with_unit(years, "year");
+        return truncated_quantity_with_unit(years, "年");
     }
     let months = ms / MONTH_TO_MS;
     if months >= 1. {
-        return truncated_quantity_with_unit(months, "month");
+        return truncated_quantity_with_unit(months, "个月");
     }
     let weeks = ms / WEEK_TO_MS;
     if weeks >= 1. {
-        return truncated_quantity_with_unit(weeks, "week");
+        return truncated_quantity_with_unit(weeks, "周");
     }
     let days = ms / DAY_TO_MS;
     if days >= 1. {
-        return truncated_quantity_with_unit(days, "day");
+        return truncated_quantity_with_unit(days, "天");
     }
     let hours = ms / HOUR_TO_MS;
     if hours >= 1. {
-        return truncated_quantity_with_unit(hours, "hour");
+        return truncated_quantity_with_unit(hours, "小时");
     }
     // Minutes and seconds are both abbreviated, so skip pluralization.
     let minutes = ms / MIN_TO_MS;
     if minutes >= 1. {
-        return format!("{} min ago", minutes as i32);
+        return format!("{} 分钟前", minutes as i32);
     }
     if sentence_case {
-        "Just now".to_owned()
+        "刚刚".to_owned()
     } else {
-        "just now".to_owned()
+        "刚刚".to_owned()
     }
 }
 
@@ -110,11 +110,7 @@ pub fn human_readable_approx_duration(duration: Duration, sentence_case: bool) -
 /// unit pluralized if the value is not 1.
 fn truncated_quantity_with_unit(num: f64, unit: &str) -> String {
     let truncated_int = num as i32;
-    if truncated_int == 1 {
-        format!("{truncated_int} {unit} ago")
-    } else {
-        format!("{truncated_int} {unit}s ago")
-    }
+    format!("{truncated_int} {unit}前")
 }
 
 /// Formats a monotonic `Instant` as a human-readable relative timestamp.
@@ -123,28 +119,16 @@ pub fn format_elapsed_since(created_at: instant::Instant) -> String {
     let secs = created_at.elapsed().as_secs();
 
     if secs < 60 {
-        "Just now".to_string()
+        "刚刚".to_string()
     } else if secs < 3600 {
         let mins = secs / 60;
-        if mins == 1 {
-            "1 minute ago".to_string()
-        } else {
-            format!("{mins} minutes ago")
-        }
+        format!("{mins} 分钟前")
     } else if secs < 86400 {
         let hours = secs / 3600;
-        if hours == 1 {
-            "1 hour ago".to_string()
-        } else {
-            format!("{hours} hours ago")
-        }
+        format!("{hours} 小时前")
     } else {
         let days = secs / 86400;
-        if days == 1 {
-            "1 day ago".to_string()
-        } else {
-            format!("{days} days ago")
-        }
+        format!("{days} 天前")
     }
 }
 

@@ -1406,7 +1406,7 @@ impl UsageWidget {
                 on_click_action: None,
                 secondary_text: None,
                 tooltip_override_text: Some(
-                    "Sets the monthly overage spending limit beyond the plan amount".to_string(),
+                    "设置超出计划额度的月度超额消费上限".to_string(),
                 ),
             },
         );
@@ -3144,22 +3144,22 @@ impl UsageWidget {
                                 upgrade_url,
                             )];
                             if team.billing_metadata.is_byo_api_key_enabled() {
-                                fragments.push(FormattedTextFragment::plain_text(" or "));
+                                fragments.push(FormattedTextFragment::plain_text(" 或 "));
                                 fragments.push(FormattedTextFragment::hyperlink_action(
-                                    "bring your own key",
+                                    "自带密钥",
                                     BillingAndUsagePageAction::NavigateToByokSettings,
                                 ));
                             }
                             fragments.push(FormattedTextFragment::plain_text(
-                                " for increased access to AI features.",
+                                " 以获得更多 AI 功能访问。",
                             ));
                             fragments
                         }
                     } else {
                         let upgrade_text = match team.billing_metadata.customer_type {
-                            CustomerType::Prosumer => "Upgrade to Turbo plan",
-                            CustomerType::Turbo => "Upgrade to Lightspeed plan",
-                            _ => "Upgrade",
+                            CustomerType::Prosumer => "升级到 Turbo 计划",
+                            CustomerType::Turbo => "升级到 Lightspeed 计划",
+                            _ => "升级",
                         };
                         vec![
                             FormattedTextFragment::hyperlink(upgrade_text, upgrade_url),
@@ -3172,10 +3172,10 @@ impl UsageWidget {
             } else if team.billing_metadata.is_on_build_plan() {
                 vec![
                     FormattedTextFragment::hyperlink(
-                        "Upgrade to Max",
+                        "升级到 Max",
                         UserWorkspaces::upgrade_link_for_team(team.uid),
                     ),
-                    FormattedTextFragment::plain_text(" for more AI credits."),
+                    FormattedTextFragment::plain_text(" 以获取更多 AI 积分。"),
                 ]
             } else if team.billing_metadata.is_on_build_max_plan() {
                 vec![
@@ -3190,15 +3190,15 @@ impl UsageWidget {
             } else if team.billing_metadata.is_on_build_business_plan() {
                 vec![
                     FormattedTextFragment::hyperlink(
-                        "Upgrade to Enterprise",
+                        "升级到 Enterprise",
                         "mailto:sales@warp.dev",
                     ),
-                    FormattedTextFragment::plain_text(" for custom limits and dedicated support."),
+                    FormattedTextFragment::plain_text(" 以获得自定义限制和专属支持。"),
                 ]
             } else if !team.billing_metadata.is_usage_based_pricing_toggleable() {
                 vec![
-                    FormattedTextFragment::hyperlink("Contact support", "mailto:support@warp.dev"),
-                    FormattedTextFragment::plain_text(" for more AI usage."),
+                    FormattedTextFragment::hyperlink("联系支持", "mailto:support@warp.dev"),
+                    FormattedTextFragment::plain_text(" 以获取更多 AI 用量。"),
                 ]
             } else {
                 vec![]
@@ -3207,18 +3207,18 @@ impl UsageWidget {
             let user_id = auth_state.user_id().unwrap_or_default();
             let upgrade_url = UserWorkspaces::upgrade_link(user_id);
             let mut fragments = vec![FormattedTextFragment::hyperlink(
-                "Upgrade to the Build plan",
+                "升级到 Build 计划",
                 upgrade_url,
             )];
             if UserWorkspaces::as_ref(app).is_byo_api_key_enabled() {
-                fragments.push(FormattedTextFragment::plain_text(" or "));
+                fragments.push(FormattedTextFragment::plain_text(" 或 "));
                 fragments.push(FormattedTextFragment::hyperlink_action(
-                    "bring your own key",
+                    "自带密钥",
                     BillingAndUsagePageAction::NavigateToByokSettings,
                 ));
             }
             fragments.push(FormattedTextFragment::plain_text(
-                " for more credits and access to more models.",
+                " 以获取更多积分并访问更多模型。",
             ));
             fragments
         };

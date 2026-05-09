@@ -20,20 +20,20 @@ use warp_core::command::ExitCode;
 /// Calculate how long ago a timestamp was
 fn time_ago_string(timestamp: Option<&DateTime<Local>>) -> String {
     let Some(timestamp) = timestamp else {
-        return "Just now".to_string();
+        return "刚刚".to_string();
     };
 
     let now = Local::now();
     let duration = now.signed_duration_since(*timestamp);
 
     if duration.num_seconds() < 60 {
-        "Just now".to_string()
+        "刚刚".to_string()
     } else if duration.num_minutes() < 60 {
-        format!("{} minutes ago", duration.num_minutes())
+        format!("{} 分钟前", duration.num_minutes())
     } else if duration.num_hours() < 24 {
-        format!("{} hours ago", duration.num_hours())
+        format!("{} 小时前", duration.num_hours())
     } else {
-        format!("{} days ago", duration.num_days())
+        format!("{} 天前", duration.num_days())
     }
 }
 
