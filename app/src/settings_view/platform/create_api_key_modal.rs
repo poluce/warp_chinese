@@ -362,7 +362,7 @@ impl CreateApiKeyModal {
                     self.request_state = RequestState::Idle;
                     ctx.emit(CreateApiKeyModalEvent::Error {
                         message:
-                            "Unable to create a team API key because there is no current team."
+                            "无法创建团队 API 密钥，因为当前没有团队。"
                                 .to_string(),
                     });
                     ctx.notify();
@@ -393,7 +393,7 @@ impl CreateApiKeyModal {
                     }
                     Ok(warp_graphql::mutations::generate_api_key::GenerateApiKeyResult::Unknown) | Err(_) => {
                         me.request_state = RequestState::Idle;
-                        ctx.emit(CreateApiKeyModalEvent::Error { message: "Failed to create API key. Please try again.".to_string() });
+                        ctx.emit(CreateApiKeyModalEvent::Error { message: "创建 API 密钥失败，请重试。".to_string() });
                         ctx.notify();
                     }
                 }
@@ -622,7 +622,7 @@ impl View for CreateApiKeyModal {
                         ButtonVariant::Secondary,
                         self.cancel_button_mouse_state.clone(),
                     )
-                    .with_text_label("Cancel".to_string())
+                    .with_text_label("取消".to_string())
                     .with_style(button_style)
                     .build()
                     .on_click(move |ctx, _, _| {
@@ -640,9 +640,9 @@ impl View for CreateApiKeyModal {
                         self.create_button_mouse_state.clone(),
                     )
                     .with_text_label(if is_pending {
-                        "Creating…".to_string()
+                        "创建中…".to_string()
                     } else {
-                        "Create key".to_string()
+                        "创建密钥".to_string()
                     })
                     .with_style(button_style)
                     .build()
@@ -670,7 +670,7 @@ impl View for CreateApiKeyModal {
 
                 if self.has_team || self.has_named_agents {
                     let type_label =
-                        Text::new("Type", appearance.ui_font_family(), LABEL_FONT_SIZE)
+                        Text::new("类型", appearance.ui_font_family(), LABEL_FONT_SIZE)
                             .with_color(theme.active_ui_text_color().into())
                             .finish();
                     col.add_child(Container::new(type_label).with_margin_bottom(4.).finish());
@@ -699,7 +699,7 @@ impl View for CreateApiKeyModal {
 
                     if !self.is_loading_agents && available_agents.is_empty() {
                         let empty_text = Text::new(
-                            "No agents available. Create one first.",
+                            "无可用 Agent，请先创建一个。",
                             appearance.ui_font_family(),
                             LABEL_FONT_SIZE,
                         )
@@ -712,7 +712,7 @@ impl View for CreateApiKeyModal {
                                 ButtonVariant::Secondary,
                                 self.create_agent_button_mouse_state.clone(),
                             )
-                            .with_text_label("Create agent".to_string())
+                            .with_text_label("创建 Agent".to_string())
                             .with_style(button_style)
                             .build()
                             .on_click(|ctx, _, _| {
@@ -765,7 +765,7 @@ impl View for CreateApiKeyModal {
                 );
 
                 let expiration_label =
-                    Text::new("Expiration", appearance.ui_font_family(), LABEL_FONT_SIZE)
+                    Text::new("过期时间", appearance.ui_font_family(), LABEL_FONT_SIZE)
                         .with_color(theme.active_ui_text_color().into())
                         .finish();
 
@@ -808,7 +808,7 @@ impl TypedActionView for CreateApiKeyModal {
                 let window_id = ctx.window_id();
                 crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = crate::view_components::DismissibleToast::success(
-                        "Secret key copied.".to_string(),
+                        "密钥已复制。".to_string(),
                     );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
@@ -890,3 +890,4 @@ fn api_key_type_control_styles(app: &AppContext) -> UiComponentStyles {
         padding: Some(Coords::uniform(2.0)),
         ..Default::default()
     }
+}

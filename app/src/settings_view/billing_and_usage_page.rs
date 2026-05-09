@@ -330,7 +330,7 @@ impl BillingAndUsagePageView {
         });
 
         let load_more_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Load more", SecondaryTheme).on_click(|ctx| {
+            ActionButton::new("加载更多", SecondaryTheme).on_click(|ctx| {
                 ctx.dispatch_typed_action(BillingAndUsagePageAction::RenderMoreUsageEntries);
             })
         });
@@ -1697,9 +1697,9 @@ impl UsageWidget {
                     .current_team()
                     .is_some_and(|team| team.billing_metadata.is_on_legacy_paid_plan());
                 let (link_text, suffix) = if is_legacy_paid {
-                    ("Switch to the Build plan", " to purchase add-on credits.")
+                    ("切换到 Build 计划", " 以购买附加积分。")
                 } else {
-                    ("Upgrade to the Build plan", " to purchase add-on credits.")
+                    ("升级到 Build 计划", " 以购买附加积分。")
                 };
 
                 let text_fragments = vec![
@@ -3131,16 +3131,16 @@ impl UsageWidget {
                         if team.billing_metadata.is_on_legacy_paid_plan() {
                             vec![
                                 FormattedTextFragment::hyperlink(
-                                    "Switch to the Build plan",
+                                    "切换到 Build 计划",
                                     upgrade_url,
                                 ),
                                 FormattedTextFragment::plain_text(
-                                    " for a more flexible pricing model.",
+                                    " 以获得更灵活的定价模式。",
                                 ),
                             ]
                         } else {
                             let mut fragments = vec![FormattedTextFragment::hyperlink(
-                                "Upgrade to the Build plan",
+                                "升级到 Build 计划",
                                 upgrade_url,
                             )];
                             if team.billing_metadata.is_byo_api_key_enabled() {
