@@ -261,7 +261,7 @@ pub fn render_models_section(
         .with_child(render_filterable_dropdown_row(
             appearance,
             "基础模型",
-            "This model serves as the primary engine behind the agent. It powers most interactions and invokes other models for tasks like planning or code generation when necessary. Warp may automatically switch to alternate models based on model availability or for auxiliary tasks such as conversation summarization.",
+            "此模型作为 Agent 的主要引擎，驱动大多数交互，并在必要时调用其他模型进行规划和代码生成等任务。Warp 可能会根据模型可用性或辅助任务（如对话摘要）自动切换到备用模型。",
             &view.base_model_dropdown,
         ));
 
@@ -272,7 +272,7 @@ pub fn render_models_section(
     column = column.with_child(render_filterable_dropdown_row(
         appearance,
         "完整终端使用模型",
-        "The model used when the agent operates inside interactive terminal applications like database shells, debuggers, REPLs, or dev servers—reading live output and writing commands to the PTY.",
+        "Agent 在交互式终端应用程序（如数据库 shell、调试器、REPL 或开发服务器）中操作时使用的模型——读取实时输出并向 PTY 写入命令。",
         &view.full_terminal_use_model_dropdown,
     ));
 
@@ -280,7 +280,7 @@ pub fn render_models_section(
         column.add_child(render_filterable_dropdown_row(
             appearance,
             "计算机使用模型",
-            "The model used when the agent takes control of your computer to interact with graphical applications through mouse movements, clicks, and keyboard input.",
+            "Agent 控制您的计算机以通过鼠标移动、点击和键盘输入与图形应用程序交互时使用的模型。",
             &view.computer_use_model_dropdown,
         ));
     }
@@ -319,7 +319,7 @@ fn render_context_window_row(
     let min_label_text = min.separate_with_commas();
     let max_label_text = max.separate_with_commas();
     let desc = Text::new(
-        "The base model's working memory — how many tokens of your conversation, code, and documents it can consider at once. Larger windows enable longer conversations and more coherent responses over bigger codebases, at the cost of higher latency and compute usage.".to_string(),
+        "基础模型的工作内存——它一次可以处理的对话、代码和文档的令牌数。较大的窗口可以实现更长的对话和更大代码库的更连贯响应，但代价是更高的延迟和计算使用量。".to_string(),
         appearance.ui_font_family(),
         11.,
     )
@@ -704,7 +704,7 @@ fn render_directory_allowlist_section(
 
     render_list_section(
         "目录允许列表",
-        "Give the agent file access to certain directories.",
+        "授予 Agent 对特定目录的文件访问权限。",
         &profile_data.directory_allowlist,
         &view.directory_allowlist_mouse_state_handles,
         Some(&view.directory_allowlist_editor),
@@ -729,7 +729,7 @@ fn render_command_allowlist_section(
 
     render_list_section(
         "命令允许列表",
-        "Regular expressions to match commands that can be automatically executed by Oz.",
+        "匹配可由 Oz 自动执行的命令的正则表达式。",
         &profile_data.command_allowlist,
         &view.command_allowlist_mouse_state_handles,
         Some(&view.command_allowlist_editor),
@@ -795,7 +795,7 @@ fn render_command_denylist_section(
 
     let mut column = Flex::column().with_child(create_section_header(
         "命令拒绝列表",
-        "Regular expressions to match commands that Oz should always ask permission to execute.",
+        "匹配 Oz 始终需要请求执行权限的命令的正则表达式。",
         appearance,
     ));
     column = column.with_child(list);
@@ -822,8 +822,8 @@ fn render_mcp_allowlist_section(
     let is_editable = ai_settings.is_mcp_permission_editable(app);
 
     render_list_section(
-        "MCP allowlist",
-        "MCP servers that are allowed to be called by Oz.",
+        "MCP 白名单",
+        "允许 Oz 调用的 MCP 服务器。",
         &profile_data.mcp_allowlist,
         &view.mcp_allowlist_mouse_state_handles,
         None,
@@ -883,7 +883,7 @@ pub fn render_plan_auto_sync_toggle(
     .finish();
 
     let label_elem = Text::new(
-        "Plan auto-sync".to_string(),
+        "计划自动同步".to_string(),
         appearance.ui_font_family(),
         13.,
     )
@@ -891,7 +891,7 @@ pub fn render_plan_auto_sync_toggle(
     .finish();
 
     let desc_elem = Text::new(
-        "The plans this agent creates will be automatically added and synced to Warp Drive."
+        "此 Agent 创建的计划将自动添加并同步到 Warp Drive。"
             .to_string(),
         appearance.ui_font_family(),
         11.,
@@ -957,7 +957,7 @@ pub fn render_web_search_toggle(
     .finish();
 
     let label_elem = Text::new(
-        "Call web tools".to_string(),
+        "调用网络工具".to_string(),
         appearance.ui_font_family(),
         13.,
     )
@@ -965,7 +965,7 @@ pub fn render_web_search_toggle(
     .finish();
 
     let desc_elem = Text::new(
-        "The agent may use web search when helpful for completing tasks.".to_string(),
+        "Agent 可以在有助于完成任务时使用网络搜索。".to_string(),
         appearance.ui_font_family(),
         11.,
     )

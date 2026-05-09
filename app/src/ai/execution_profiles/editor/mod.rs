@@ -68,7 +68,7 @@ fn render_upgrade_footer(
     .with_height(16.)
     .finish();
 
-    let label = "Frontier models are unavailable on free plans. Upgrade";
+    let label = "前沿模型在免费计划中不可用。升级";
     let upgrade_start = label.len() - "Upgrade".len();
     let info_text = Text::new(
         label,
@@ -469,13 +469,13 @@ impl ExecutionProfileEditorView {
 
         let mcp_allowlist_dropdown = ctx.add_typed_action_view(|ctx| {
             let mut dropdown = FilterableDropdown::new(ctx);
-            dropdown.set_menu_header_to_static("Select MCP servers");
+            dropdown.set_menu_header_to_static("选择 MCP 服务器");
             dropdown
         });
 
         let mcp_denylist_dropdown = ctx.add_typed_action_view(|ctx| {
             let mut dropdown = FilterableDropdown::new(ctx);
-            dropdown.set_menu_header_to_static("Select MCP servers");
+            dropdown.set_menu_header_to_static("选择 MCP 服务器");
             dropdown
         });
 
@@ -1261,7 +1261,7 @@ impl ExecutionProfileEditorView {
     ) {
         profile_name_editor.update(ctx, |editor, ctx| {
             let display_name = if profile_data.is_default_profile {
-                "Default".to_string()
+                "默认".to_string()
             } else {
                 profile_data.name.clone()
             };
