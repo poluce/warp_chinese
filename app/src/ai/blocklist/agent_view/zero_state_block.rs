@@ -406,13 +406,13 @@ impl View for AgentViewZeroStateBlock {
 
         let header_props = if self.origin.is_cloud_agent() {
             HeaderProps {
-                title: "New Oz cloud agent conversation".into(),
+                title: "新建 Oz 云端 Agent 对话".into(),
                 description: AgentViewDescription::CloudModeWithDocsLink,
                 icon: Icon::OzCloud,
             }
         } else {
             let mut local_description =
-                "Send a prompt below to start a new conversation".to_owned();
+                "在下方发送提示词以开始新对话".to_owned();
             let active_session = self.active_session(app);
             let location_label = active_session.as_deref().and_then(|session| {
                 format_session_location(session, self.current_working_directory.as_deref())
@@ -422,7 +422,7 @@ impl View for AgentViewZeroStateBlock {
             }
 
             HeaderProps {
-                title: "New Oz agent conversation".into(),
+                title: "新建 Oz Agent 对话".into(),
                 description: AgentViewDescription::PlainText(vec![local_description.into()]),
                 icon: Icon::Oz,
             }
@@ -735,7 +735,7 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                 Message::new(vec![MessageItem::clickable(
                     vec![
                         MessageItem::keystroke(ENTER_AGENT_VIEW_NEW_CONVERSATION_KEYSTROKE.clone()),
-                        MessageItem::text("start a new agent conversation"),
+                        MessageItem::text("开始新的 Agent 对话"),
                     ],
                     |ctx| {
                         ctx.dispatch_typed_action(TerminalAction::StartNewAgentConversation);
@@ -750,7 +750,7 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                         MessageItem::keystroke(
                             ENTER_CLOUD_AGENT_VIEW_NEW_CONVERSATION_KEYSTROKE.clone(),
                         ),
-                        MessageItem::text("start a new cloud agent conversation"),
+                        MessageItem::text("开始新的云端 Agent 对话"),
                     ],
                     |ctx| {
                         ctx.dispatch_typed_action(TerminalAction::EnterCloudAgentView);
@@ -766,7 +766,7 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                             key: "/model".to_owned(),
                             ..Default::default()
                         }),
-                        MessageItem::text("switch model"),
+                        MessageItem::text("切换模型"),
                     ],
                     |ctx| {
                         ctx.dispatch_typed_action(TerminalAction::OpenModelSelector);
@@ -786,7 +786,7 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                             key: "escape".to_owned(),
                             ..Default::default()
                         }),
-                        MessageItem::text("go back to terminal"),
+                        MessageItem::text("返回终端"),
                     ],
                     |ctx| {
                         ctx.dispatch_typed_action(TerminalAction::ExitAgentView);

@@ -1368,7 +1368,7 @@ fn render_settings_button(
 
             if hover_state.is_hovered() && !is_popup_open {
                 let tooltip = ui_builder
-                    .tool_tip("View options".to_string())
+                    .tool_tip("查看选项".to_string())
                     .build()
                     .finish();
                 let mut stack = Stack::new().with_child(button_container);
@@ -4539,24 +4539,24 @@ fn subtitle_options_for_primary(
             (VerticalTabsCompactSubtitle::Branch, "Branch"),
             (
                 VerticalTabsCompactSubtitle::WorkingDirectory,
-                "Working Directory",
+                "工作目录",
             ),
         ],
         VerticalTabsPrimaryInfo::WorkingDirectory => [
             (VerticalTabsCompactSubtitle::Branch, "Branch"),
             (
                 VerticalTabsCompactSubtitle::Command,
-                "Command / Conversation",
+                "命令 / 对话",
             ),
         ],
         VerticalTabsPrimaryInfo::Branch => [
             (
                 VerticalTabsCompactSubtitle::Command,
-                "Command / Conversation",
+                "命令 / 对话",
             ),
             (
                 VerticalTabsCompactSubtitle::WorkingDirectory,
-                "Working Directory",
+                "工作目录",
             ),
         ],
     }
@@ -4599,7 +4599,7 @@ pub(super) fn render_settings_popup(
     let sub_text = theme.sub_text_color(theme.background());
     let view_as_header = Container::new(
         Text::new_inline(
-            "View as".to_string(),
+            "查看方式".to_string(),
             appearance.ui_font_family(),
             SETTINGS_POPUP_MENU_ITEM_FONT_SIZE,
         )
@@ -4658,7 +4658,7 @@ pub(super) fn render_settings_popup(
 
     let tab_item_header = Container::new(
         Text::new_inline(
-            "Tab item".to_string(),
+            "标签页项".to_string(),
             appearance.ui_font_family(),
             SETTINGS_POPUP_MENU_ITEM_FONT_SIZE,
         )
@@ -4670,7 +4670,7 @@ pub(super) fn render_settings_popup(
     .finish();
 
     let focused_session_option = render_tab_item_mode_option(
-        "Focused session",
+        "聚焦的会话",
         matches!(
             current_tab_item_mode,
             VerticalTabsTabItemMode::FocusedSession
@@ -4683,7 +4683,7 @@ pub(super) fn render_settings_popup(
 
     let summary_option = if FeatureFlag::VerticalTabsSummaryMode.is_enabled() {
         Some(render_tab_item_mode_option(
-            "Summary",
+            "摘要",
             matches!(current_tab_item_mode, VerticalTabsTabItemMode::Summary),
             state.summary_option_mouse_state.clone(),
             VerticalTabsTabItemMode::Summary,
@@ -4696,7 +4696,7 @@ pub(super) fn render_settings_popup(
 
     let density_header = Container::new(
         Text::new_inline(
-            "Density".to_string(),
+            "密度".to_string(),
             appearance.ui_font_family(),
             SETTINGS_POPUP_MENU_ITEM_FONT_SIZE,
         )
@@ -4773,7 +4773,7 @@ pub(super) fn render_settings_popup(
 
     let pane_title_header = Container::new(
         Text::new_inline(
-            "Pane title as".to_string(),
+            "面板标题显示为".to_string(),
             appearance.ui_font_family(),
             SETTINGS_POPUP_MENU_ITEM_FONT_SIZE,
         )
@@ -4785,7 +4785,7 @@ pub(super) fn render_settings_popup(
     .finish();
 
     let command_option = render_primary_info_option(
-        "Command / Conversation",
+        "命令 / 对话",
         matches!(current_primary_info, VerticalTabsPrimaryInfo::Command),
         state.command_option_mouse_state.clone(),
         VerticalTabsPrimaryInfo::Command,
@@ -4794,7 +4794,7 @@ pub(super) fn render_settings_popup(
     );
 
     let directory_option = render_primary_info_option(
-        "Working Directory",
+        "工作目录",
         matches!(
             current_primary_info,
             VerticalTabsPrimaryInfo::WorkingDirectory
@@ -4806,7 +4806,7 @@ pub(super) fn render_settings_popup(
     );
 
     let branch_option = render_primary_info_option(
-        "Branch",
+        "分支",
         matches!(current_primary_info, VerticalTabsPrimaryInfo::Branch),
         state.branch_option_mouse_state.clone(),
         VerticalTabsPrimaryInfo::Branch,
@@ -4844,7 +4844,7 @@ pub(super) fn render_settings_popup(
 
             let subtitle_header = Container::new(
                 Text::new_inline(
-                    "Additional metadata".to_string(),
+                    "附加元数据".to_string(),
                     appearance.ui_font_family(),
                     SETTINGS_POPUP_MENU_ITEM_FONT_SIZE,
                 )
@@ -4878,7 +4878,7 @@ pub(super) fn render_settings_popup(
 
             let show_header = Container::new(
                 Text::new_inline(
-                    "Show".to_string(),
+                    "显示".to_string(),
                     appearance.ui_font_family(),
                     SETTINGS_POPUP_MENU_ITEM_FONT_SIZE,
                 )
@@ -4895,14 +4895,14 @@ pub(super) fn render_settings_popup(
             let pr_link_info_tooltip = if show_pr_link && pr_validation_suppressed {
                 Some(ShowToggleInfoTooltip {
                     mouse_state: state.show_pr_link_info_tooltip_mouse_state.clone(),
-                    tooltip_text: "Requires the GitHub CLI to be installed and authenticated",
+                    tooltip_text: "需要安装并认证 GitHub CLI",
                 })
             } else {
                 None
             };
 
             popup_col.add_child(render_show_toggle_option(
-                "PR link",
+                "PR 链接",
                 show_pr_link,
                 state.show_pr_link_mouse_state.clone(),
                 WorkspaceAction::ToggleVerticalTabsShowPrLink,
@@ -4911,7 +4911,7 @@ pub(super) fn render_settings_popup(
                 theme,
             ));
             popup_col.add_child(render_show_toggle_option(
-                "Diff stats",
+                "差异统计",
                 show_diff_stats,
                 state.show_diff_stats_mouse_state.clone(),
                 WorkspaceAction::ToggleVerticalTabsShowDiffStats,
@@ -4924,7 +4924,7 @@ pub(super) fn render_settings_popup(
     popup_col.add_child(make_divider(theme));
 
     popup_col.add_child(render_show_toggle_option(
-        "Show details on hover",
+        "悬停时显示详情",
         show_details_on_hover,
         state.show_details_on_hover_mouse_state.clone(),
         WorkspaceAction::ToggleVerticalTabsShowDetailsOnHover,
