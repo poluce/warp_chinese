@@ -178,7 +178,7 @@ impl InactivityModalBody {
                     font_weight: Some(Weight::Bold),
                     ..Default::default()
                 })
-                .with_centered_text_label(String::from("Stop sharing"))
+                .with_centered_text_label(String::from("停止分享"))
                 .build()
                 .with_cursor(Cursor::PointingHand)
                 .on_click(move |ctx, _, _| {
@@ -204,7 +204,7 @@ impl InactivityModalBody {
                 font_weight: Some(Weight::Bold),
                 ..Default::default()
             })
-            .with_centered_text_label(String::from("Continue sharing"))
+            .with_centered_text_label(String::from("继续分享"))
             .build()
             .with_cursor(Cursor::PointingHand)
             .on_click(move |ctx, _, _| {
@@ -231,7 +231,7 @@ impl View for InactivityModalBody {
 
         let header = Container::new(
             Text::new_inline(
-                "Are you still there?",
+                "您还在吗？",
                 appearance.ui_font_family(),
                 HEADER_FONT_SIZE,
             )

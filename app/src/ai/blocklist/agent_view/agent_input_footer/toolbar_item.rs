@@ -120,14 +120,14 @@ impl AgentToolbarItemKind {
             Self::ModelSelector => "Model Selector",
             Self::NLDToggle => "Autodetection",
             Self::VoiceInput => "Voice Input",
-            Self::FileAttach => "Attach File",
-            Self::ContextWindowUsage => "Context Usage",
-            Self::FileExplorer => "File Explorer",
-            Self::RichInput => "Rich Input",
+            Self::FileAttach => "添加文件",
+            Self::ContextWindowUsage => "上下文使用情况",
+            Self::FileExplorer => "文件资源管理器",
+            Self::RichInput => "富文本输入",
             Self::ShareSession => "/remote-control",
-            Self::Settings => "Settings",
-            Self::FastForwardToggle => "Fast Forward",
-            Self::HandoffToCloud => "Hand off to cloud",
+            Self::Settings => "设置",
+            Self::FastForwardToggle => "快速跳过",
+            Self::HandoffToCloud => "移交给云端",
         }
     }
 

@@ -35,7 +35,7 @@ impl HarnessSessionHeader {
     pub fn new(block_id: BlockId, cli_agent: Option<CLIAgent>) -> Self {
         let cli_name = cli_agent
             .map(|agent| agent.display_name().to_owned())
-            .unwrap_or_else(|| "Agent".to_owned());
+            .unwrap_or_else(|| "代理".to_owned());
 
         Self {
             block_id,

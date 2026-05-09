@@ -42,7 +42,7 @@ impl WebSearchView {
         let text = if let Some(q) = query {
             format!("Searching the web for \"{q}\"")
         } else {
-            "Searching the web".to_string()
+            "正在搜索网络".to_string()
         };
 
         super::search_results_common::render_loading_header(text, loading_icon, app)
@@ -55,7 +55,7 @@ impl WebSearchView {
         app: &AppContext,
     ) -> Box<dyn Element> {
         let title_text = if query.is_empty() {
-            "Searched the web".to_string()
+            "已搜索网络".to_string()
         } else {
             format!("Searched the web for \"{query}\"")
         };

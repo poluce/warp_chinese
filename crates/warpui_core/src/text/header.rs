@@ -41,12 +41,12 @@ impl BlockHeaderSize {
     /// A text label for this heading, in the format `Heading $N`.
     pub fn label(self) -> &'static str {
         match self {
-            BlockHeaderSize::Header1 => "Heading 1",
-            BlockHeaderSize::Header2 => "Heading 2",
-            BlockHeaderSize::Header3 => "Heading 3",
-            BlockHeaderSize::Header4 => "Heading 4",
-            BlockHeaderSize::Header5 => "Heading 5",
-            BlockHeaderSize::Header6 => "Heading 6",
+            BlockHeaderSize::Header1 => "标题 1",
+            BlockHeaderSize::Header2 => "标题 2",
+            BlockHeaderSize::Header3 => "标题 3",
+            BlockHeaderSize::Header4 => "标题 4",
+            BlockHeaderSize::Header5 => "标题 5",
+            BlockHeaderSize::Header6 => "标题 6",
         }
     }
 }

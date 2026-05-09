@@ -2615,19 +2615,19 @@ impl TypedPane<'_> {
     }
     fn kind_label(&self) -> &'static str {
         match self {
-            TypedPane::Terminal(_) => "Terminal",
-            TypedPane::Code(_) => "Code",
-            TypedPane::CodeDiff => "Code Diff",
-            TypedPane::File => "File",
-            TypedPane::Notebook { .. } => "Notebook",
-            TypedPane::Workflow { .. } => "Workflow",
-            TypedPane::Settings => "Settings",
-            TypedPane::EnvVarCollection => "Environment Variables",
-            TypedPane::EnvironmentManagement => "Environments",
-            TypedPane::AIFact => "Rules",
-            TypedPane::AIDocument => "Plan",
-            TypedPane::ExecutionProfileEditor => "Execution Profile",
-            TypedPane::Other => "Other",
+            TypedPane::Terminal(_) => "终端",
+            TypedPane::Code(_) => "代码",
+            TypedPane::CodeDiff => "代码差异",
+            TypedPane::File => "文件",
+            TypedPane::Notebook { .. } => "笔记本",
+            TypedPane::Workflow { .. } => "工作流",
+            TypedPane::Settings => "设置",
+            TypedPane::EnvVarCollection => "环境变量",
+            TypedPane::EnvironmentManagement => "环境管理",
+            TypedPane::AIFact => "规则",
+            TypedPane::AIDocument => "计划",
+            TypedPane::ExecutionProfileEditor => "执行配置",
+            TypedPane::Other => "其他",
         }
     }
 

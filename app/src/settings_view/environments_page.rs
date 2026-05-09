@@ -1974,7 +1974,7 @@ impl EnvironmentsPageWidget {
             if is_card_hovered {
                 edit_button = edit_button.with_tooltip(move || {
                     edit_ui_builder
-                        .tool_tip("Edit".to_string())
+                        .tool_tip("编辑".to_string())
                         .build()
                         .finish()
                 });

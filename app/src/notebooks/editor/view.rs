@@ -299,13 +299,13 @@ pub fn init(app: &mut AppContext) {
         FixedBinding::custom(
             CustomAction::Undo,
             EditorViewAction::Undo,
-            "Undo",
+            "撤销",
             id!("RichTextEditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::custom(
             CustomAction::Redo,
             EditorViewAction::Redo,
-            "Redo",
+            "重做",
             id!("RichTextEditorView") & !id!("IMEOpen"),
         ),
     ]);
@@ -314,14 +314,14 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:deselect_command",
-            "De-select shell commands",
+            "取消选择 Shell 命令",
             EditorViewAction::ExitCommandSelection,
         )
         .with_context_predicate(id!("RichTextEditorView") & id!("HasCommandSelection"))
         .with_key_binding("escape"),
         EditableBinding::new(
             "editor_view:select_command",
-            "Select shell command at cursor",
+            "选择光标处的 Shell 命令",
             EditorViewAction::SelectCommandAtCursor,
         )
         .with_context_predicate(
@@ -332,21 +332,21 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding("escape"),
         EditableBinding::new(
             "editor_view:select_previous_command",
-            "Select previous command",
+            "选择上一个命令",
             EditorViewAction::CommandUp,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_key_binding("cmdorctrl-up"),
         EditableBinding::new(
             "editor_view:select_next_command",
-            "Select next command",
+            "选择下一个命令",
             EditorViewAction::CommandDown,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_key_binding("cmdorctrl-down"),
         EditableBinding::new(
             "editor_view:run_commands",
-            "Run selected commands",
+            "运行选中的命令",
             EditorViewAction::RunSelectedCommands,
         )
         .with_context_predicate(id!("RichTextEditorView") & id!("CanExecuteShellCommands"))
@@ -379,28 +379,28 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:toggle_debug_mode",
-            "Toggle rich-text debug mode",
+            "切换富文本调试模式",
             EditorViewAction::ToggleDebugMode,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_enabled(debug_notebooks_enabled),
         EditableBinding::new(
             "editor_view:debug_copy_buffer",
-            "Copy rich-text buffer",
+            "复制富文本缓冲区",
             EditorViewAction::DebugCopyBuffer,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_enabled(debug_notebooks_enabled),
         EditableBinding::new(
             "editor_view:debug_copy_selection",
-            "Copy rich-text selection",
+            "复制富文本选择内容",
             EditorViewAction::DebugCopySelection,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_enabled(debug_notebooks_enabled),
         EditableBinding::new(
             "editor_view:log_state",
-            "Log editor state",
+            "记录编辑器状态",
             EditorViewAction::DebugLogState,
         )
         .with_context_predicate(id!("RichTextEditorView"))
@@ -411,7 +411,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:move_backward_one_word",
-            "Move Backward One Word",
+            "向后移动一个词",
             EditorViewAction::MoveBackwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
@@ -419,7 +419,7 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-left"),
         EditableBinding::new(
             "editor_view:move_forward_one_word",
-            "Move Forward One Word",
+            "向前移动一个词",
             EditorViewAction::MoveForwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
@@ -427,38 +427,38 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-right"),
         EditableBinding::new(
             "editor_view:move_forward_one_word",
-            "Move forward one word",
+            "向前移动一个词",
             EditorViewAction::MoveForwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("meta-f"),
         EditableBinding::new(
             "editor_view:move_backward_one_word",
-            "Move backward one word",
+            "向后移动一个词",
             EditorViewAction::MoveBackwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("meta-b"),
-        EditableBinding::new("editor_view:up", "Move cursor up", EditorViewAction::MoveUp)
+        EditableBinding::new("editor_view:up", "向上移动光标", EditorViewAction::MoveUp)
             .with_context_predicate(text_entry.clone())
             .with_key_binding("ctrl-p"),
         EditableBinding::new(
             "editor_view:down",
-            "Move cursor down",
+            "向下移动光标",
             EditorViewAction::MoveDown,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-n"),
         EditableBinding::new(
             "editor_view:left",
-            "Move cursor left",
+            "向左移动光标",
             EditorViewAction::MoveLeft,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-b"),
         EditableBinding::new(
             "editor_view:right",
-            "Move cursor right",
+            "向右移动光标",
             EditorViewAction::MoveRight,
         )
         .with_context_predicate(text_entry.clone())
@@ -467,7 +467,7 @@ pub fn init(app: &mut AppContext) {
             // This doesn't reuse the move_to_line_start naming from the terminal input editor to
             // distinguish between soft-wrapped line and hard-wrapped line (paragraph) movement.
             "editor_view:move_to_paragraph_start",
-            "Move to start of paragraph",
+            "移动到段落开头",
             EditorViewAction::MoveToParagraphStart,
         )
         .with_context_predicate(text_entry.clone())
@@ -475,7 +475,7 @@ pub fn init(app: &mut AppContext) {
         .with_mac_key_binding("ctrl-a"),
         EditableBinding::new(
             "editor_view:home",
-            "Home",
+            "行首",
             EditorViewAction::MoveToLineStart,
         )
         .with_context_predicate(text_entry.clone())
@@ -483,12 +483,12 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("home"),
         EditableBinding::new(
             "editor_view:move_to_paragraph_end",
-            "Move to end of paragraph",
+            "移动到段落末尾",
             EditorViewAction::MoveToParagraphEnd,
         )
         .with_context_predicate(text_entry.clone())
         .with_mac_key_binding("ctrl-e"),
-        EditableBinding::new("editor_view:end", "End", EditorViewAction::MoveToLineEnd)
+        EditableBinding::new("editor_view:end", "行尾", EditorViewAction::MoveToLineEnd)
             .with_context_predicate(text_entry.clone())
             .with_mac_key_binding("cmd-right")
             .with_linux_or_windows_key_binding("end"),
@@ -498,35 +498,35 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:select_left_by_word",
-            "Select one word to the left",
+            "向左选择一个词",
             EditorViewAction::SelectBackwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("shift-meta-B"),
         EditableBinding::new(
             "editor_view:select_right_by_word",
-            "Select one word to the right",
+            "向右选择一个词",
             EditorViewAction::SelectForwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("shift-meta-F"),
         EditableBinding::new(
             "editor_view:select_left",
-            "Select one character to the left",
+            "向左选择一个字符",
             EditorViewAction::SelectLeft,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("shift-ctrl-B"),
         EditableBinding::new(
             "editor_view:select_right",
-            "Select one character to the right",
+            "向右选择一个字符",
             EditorViewAction::SelectRight,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("shift-ctrl-F"),
         EditableBinding::new(
             "editor_view:select_up",
-            "Select up",
+            "向上选择",
             EditorViewAction::SelectUp,
         )
         .with_context_predicate(text_entry.clone())
@@ -535,28 +535,28 @@ pub fn init(app: &mut AppContext) {
         .with_mac_key_binding("shift-ctrl-P"),
         EditableBinding::new(
             "editor_view:select_down",
-            "Select down",
+            "向下选择",
             EditorViewAction::SelectDown,
         )
         .with_context_predicate(text_entry.clone())
         .with_mac_key_binding("shift-ctrl-N"),
         EditableBinding::new(
             "editor_view:select_all",
-            "Select all",
+            "全选",
             EditorViewAction::SelectAll,
         )
         .with_context_predicate(text_entry.clone())
         .with_custom_action(CustomAction::SelectAll),
         EditableBinding::new(
             "editor:select_to_paragraph_start",
-            "Select to start of paragraph",
+            "选择到段落开头",
             EditorViewAction::SelectToParagraphStart,
         )
         .with_context_predicate(text_entry.clone())
         .with_mac_key_binding("shift-ctrl-A"),
         EditableBinding::new(
             "editor:select_to_paragraph_end",
-            "Select to end of paragraph",
+            "选择到段落末尾",
             EditorViewAction::SelectToParagraphEnd,
         )
         .with_context_predicate(text_entry.clone())
@@ -564,7 +564,7 @@ pub fn init(app: &mut AppContext) {
         // `shift-end` is registered on all platforms for this action.
         EditableBinding::new(
             "editor_view:select_to_line_end",
-            "Select To Line End",
+            "选择到行尾",
             EditorViewAction::SelectToLineEnd,
         )
         .with_context_predicate(text_entry.clone())
@@ -572,7 +572,7 @@ pub fn init(app: &mut AppContext) {
         // `end` is registered on all platforms for this action.
         EditableBinding::new(
             "editor_view:select_to_line_start",
-            "Select To Line Start",
+            "选择到行首",
             EditorViewAction::SelectToLineStart,
         )
         .with_context_predicate(text_entry.clone())
@@ -601,19 +601,19 @@ pub fn init(app: &mut AppContext) {
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-h"),
-        EditableBinding::new("editor_view:delete", "Delete", EditorViewAction::Delete)
+        EditableBinding::new("editor_view:delete", "删除", EditorViewAction::Delete)
             .with_context_predicate(text_entry.clone())
             .with_key_binding("ctrl-d"),
         EditableBinding::new(
             "editor_view:cut_word_left",
-            "Cut word left",
+            "向左剪切词",
             EditorViewAction::CutWordLeft,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-w"),
         EditableBinding::new(
             "editor:delete_word_left",
-            "Delete word left",
+            "向左删除词",
             EditorViewAction::DeleteWordLeft,
         )
         .with_context_predicate(text_entry.clone())
@@ -621,14 +621,14 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-backspace"),
         EditableBinding::new(
             "editor_view:cut_word_right",
-            "Cut word right",
+            "向右剪切词",
             EditorViewAction::CutWordRight,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("alt-d"),
         EditableBinding::new(
             "editor:delete_word_right",
-            "Delete word right",
+            "向右删除词",
             EditorViewAction::DeleteWordRight,
         )
         .with_context_predicate(text_entry.clone())
@@ -636,13 +636,13 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-delete"),
         EditableBinding::new(
             "editor_view:cut_all_left",
-            "Cut all left",
+            "向左剪切全部",
             EditorViewAction::CutLineLeft,
         )
         .with_context_predicate(text_entry.clone()),
         EditableBinding::new(
             "editor_view:delete_all_left",
-            "Delete all left",
+            "向左删除全部",
             EditorViewAction::DeleteLineLeft,
         )
         .with_context_predicate(text_entry.clone())
@@ -653,14 +653,14 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-y"),
         EditableBinding::new(
             "editor_view:cut_all_right",
-            "Cut all right",
+            "向右剪切全部",
             EditorViewAction::CutLineRight,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-k"),
         EditableBinding::new(
             "editor_view:delete_all_right",
-            "Delete all right",
+            "向右删除全部",
             EditorViewAction::DeleteLineRight,
         )
         .with_context_predicate(text_entry.clone())
@@ -674,14 +674,14 @@ pub fn init(app: &mut AppContext) {
         // editable for users who are used to something else.
         EditableBinding::new(
             "editor:edit_link",
-            "Create or edit link",
+            "创建或编辑链接",
             EditorViewAction::CreateOrEditLink,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("cmdorctrl-k"),
         EditableBinding::new(
             "editor_view:inline_code",
-            "Toggle inline code styling",
+            "切换内联代码样式",
             EditorViewAction::InlineCode,
         )
         .with_context_predicate(text_entry.clone())
@@ -692,14 +692,14 @@ pub fn init(app: &mut AppContext) {
         .with_mac_key_binding("cmd-shift-C"),
         EditableBinding::new(
             "editor_view:strikethrough",
-            "Toggle strikethrough styling",
+            "切换删除线样式",
             EditorViewAction::StrikeThrough,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("cmdorctrl-shift-X"),
         EditableBinding::new(
             "editor_view:underline",
-            "Toggle underline styling",
+            "切换下划线样式",
             EditorViewAction::Underline,
         )
         .with_context_predicate(text_entry.clone())
@@ -710,7 +710,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor:find",
-            "Find in Notebook",
+            "在笔记本中查找",
             EditorViewAction::ShowFindBar,
         )
         .with_key_binding(cmd_or_ctrl_shift("f"))
@@ -718,25 +718,25 @@ pub fn init(app: &mut AppContext) {
         .with_context_predicate(id!("RichTextEditorView")),
         EditableBinding::new(
             "editor:next_find_match",
-            "Focus next match",
+            "聚焦下一个匹配项",
             FindBarAction::FocusNextMatch,
         )
         .with_context_predicate(id!("FindBar")),
         EditableBinding::new(
             "editor:previous_find_match",
-            "Focus previous match",
+            "聚焦上一个匹配项",
             FindBarAction::FocusPreviousMatch,
         )
         .with_context_predicate(id!("FindBar")),
         EditableBinding::new(
             "editor:toggle_regex_find",
-            "Toggle regular expression search",
+            "切换正则搜索",
             FindBarAction::ToggleRegex,
         )
         .with_context_predicate(id!("FindBar")),
         EditableBinding::new(
             "editor:toggle_case_sensitive_find",
-            "Toggle case-sensitive search",
+            "切换区分大小写搜索",
             FindBarAction::ToggleCaseSensitive,
         )
         .with_context_predicate(id!("FindBar")),
@@ -2307,7 +2307,7 @@ impl RichTextEditorView {
                     .ui_builder()
                     .copy_button(12., self.mouse_states.copy_link_mouse_handle.clone())
                     .with_tooltip(move || {
-                        ui_builder.tool_tip("Copy link".to_owned()).build().finish()
+                        ui_builder.tool_tip("复制链接".to_owned()).build().finish()
                     })
                     .build()
                     .on_click(|ctx, _, _| ctx.dispatch_typed_action(EditorViewAction::CopyLink))
@@ -2359,7 +2359,7 @@ impl RichTextEditorView {
                             ButtonVariant::Text,
                             self.mouse_states.edit_link_mouse_handle.clone(),
                         )
-                        .with_text_label("Edit".to_string())
+                        .with_text_label("编辑".to_string())
                         .build()
                         .on_click(|ctx, _, _| ctx.dispatch_typed_action(EditorViewAction::EditLink))
                         .finish(),
@@ -2427,9 +2427,9 @@ impl RichTextEditorView {
         let path = selected_file_path.path.clone();
         let line_and_column_num = selected_file_path.line_and_column_num;
         let primary_text = if path.is_dir() {
-            "Open folder"
+            "打开文件夹"
         } else {
-            "Open file"
+            "打开文件"
         }
         .to_string();
         let show_open_in_warp = should_show_open_in_warp_link(&path, ctx);
@@ -2452,7 +2452,7 @@ impl RichTextEditorView {
         if show_open_in_warp {
             let path_for_warp = path.clone();
             links.push(TooltipLink {
-                text: "Open in Warp".to_string(),
+                text: "在 Warp 中打开".to_string(),
                 on_click: Box::new(move |ctx: &mut EventContext| {
                     ctx.dispatch_typed_action(EditorViewAction::OpenFile {
                         path: path_for_warp.clone(),
@@ -2758,7 +2758,7 @@ impl TypedActionView for RichTextEditorView {
                 }
                 let window_id = ctx.window_id();
                 crate::workspace::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                    let toast = DismissibleToast::default(String::from("Link copied"));
+                    let toast = DismissibleToast::default(String::from("链接已复制"));
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
                 ctx.notify();
@@ -3087,13 +3087,13 @@ impl TypedActionView for RichTextEditorView {
             }
             EditorViewAction::DeleteWordLeft => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Delete word left",
+                    "向左删除词",
                     WarpA11yRole::UserAction,
                 ))
             }
             EditorViewAction::DeleteWordRight => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Delete word right",
+                    "向右删除词",
                     WarpA11yRole::UserAction,
                 ))
             }
@@ -3113,7 +3113,7 @@ impl TypedActionView for RichTextEditorView {
 
             EditorViewAction::ShowCharacterPalette => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Show character palette",
+                    "显示字符面板",
                     WarpA11yRole::UserAction,
                 ))
             }

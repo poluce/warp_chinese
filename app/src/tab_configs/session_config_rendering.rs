@@ -90,7 +90,7 @@ where
     let on_accent_bg = bg.is_some();
     let on_select = Arc::new(on_select);
 
-    let label = Text::new_inline("Session type".to_string(), appearance.ui_font_family(), 12.)
+    let label = Text::new_inline("会话类型".to_string(), appearance.ui_font_family(), 12.)
         .with_color(if on_accent_bg {
             callout_label_color(appearance)
         } else {
@@ -227,7 +227,7 @@ where
     let on_accent_bg = bg.is_some();
 
     let label = Text::new_inline(
-        "Select directory".to_string(),
+        "选择目录".to_string(),
         appearance.ui_font_family(),
         12.,
     )
@@ -359,7 +359,7 @@ where
             if state.is_hovered() {
                 let tooltip = Container::new(
                     Text::new_inline(
-                        "Select a git repository to enable worktree support".to_string(),
+                        "选择一个Git仓库以启用工作树支持".to_string(),
                         font_family,
                         12.,
                     )
@@ -403,7 +403,7 @@ where
         blended_colors::text_sub(theme, theme.background())
     };
     let label = Text::new(
-        "Automatically create a worktree when opening a new tab",
+        "打开新标签时自动创建工作树",
         appearance.ui_font_family(),
         12.,
     )
@@ -490,8 +490,7 @@ where
             if state.is_hovered() {
                 let tooltip = Container::new(
                     Text::new_inline(
-                        "You must select that you want to automatically create a \
-                         worktree in order to select this"
+                        "您必须先选择自动创建工作树才能选择此项"
                             .to_string(),
                         font_family,
                         12.,
@@ -537,7 +536,7 @@ where
     };
 
     let label = Text::new(
-        "Auto-generate worktree branch name",
+        "自动生成工作树分支名称",
         appearance.ui_font_family(),
         12.,
     )

@@ -197,7 +197,7 @@ fn collect_buttons(
     if !screenshot_uids.is_empty() {
         let theme = theme.clone();
         buttons.push(ctx.add_typed_action_view(move |_| {
-            make_screenshot_button("Screenshots".to_string(), screenshot_uids, theme)
+            make_screenshot_button("截图".to_string(), screenshot_uids, theme)
         }));
     }
 
@@ -212,7 +212,7 @@ fn make_plan_button(
     make_artifact_button(
         title,
         Icon::Compass,
-        "Open plan",
+        "打开计划",
         None,
         ArtifactButtonAction::OpenPlan { notebook_uid },
         theme,
@@ -223,7 +223,7 @@ fn make_branch_button(branch: String, theme: Arc<dyn ActionButtonTheme>) -> Acti
     make_artifact_button(
         branch.clone(),
         Icon::GitBranch,
-        "Copy branch name",
+        "复制分支名称",
         Some(AnsiColorIdentifier::Green),
         ArtifactButtonAction::CopyBranch { branch },
         theme,
@@ -245,7 +245,7 @@ fn make_pr_button(
     make_artifact_button(
         display_text,
         Icon::Github,
-        "Open pull request",
+        "打开拉取请求",
         None,
         ArtifactButtonAction::OpenPullRequest { url },
         theme,
@@ -260,7 +260,7 @@ fn make_screenshot_button(
     make_artifact_button(
         label,
         Icon::Image,
-        "View screenshots",
+        "查看截图",
         None,
         ArtifactButtonAction::ViewScreenshots { artifact_uids },
         theme,
@@ -275,7 +275,7 @@ fn make_file_button(
     make_artifact_button(
         label,
         Icon::File,
-        "Download file",
+        "下载文件",
         None,
         ArtifactButtonAction::DownloadFile { artifact_uid },
         theme,

@@ -242,10 +242,10 @@ impl AsyncDataSource for WarpAIDataSource {
 impl DataSourceRunError for GenerateCommandsFromNaturalLanguageError {
     fn user_facing_error(&self) -> String {
         match self {
-            Self::BadPrompt => "No results found. Please try again with a more specific query.",
-            Self::AiProviderError => "Something went wrong. Please try again.",
-            Self::RateLimited => "Looks like you're out of AI credits. Please try again later.",
-            Self::Other => "Something went wrong. Please try again.",
+            Self::BadPrompt => "未找到结果。请尝试使用更具体的查询。",
+            Self::AiProviderError => "出了点问题。请重试。",
+            Self::RateLimited => "您的 AI 额度已用完。请稍后重试。",
+            Self::Other => "出了点问题。请重试。",
         }
         .to_string()
     }

@@ -257,10 +257,10 @@ pub fn render_models_section(
 ) -> Box<dyn Element> {
     let mut column = Flex::column()
         .with_child(render_separator(appearance))
-        .with_child(render_section_label("MODELS", appearance))
+        .with_child(render_section_label("模型", appearance))
         .with_child(render_filterable_dropdown_row(
             appearance,
-            "Base model",
+            "基础模型",
             "This model serves as the primary engine behind the agent. It powers most interactions and invokes other models for tasks like planning or code generation when necessary. Warp may automatically switch to alternate models based on model availability or for auxiliary tasks such as conversation summarization.",
             &view.base_model_dropdown,
         ));
@@ -271,7 +271,7 @@ pub fn render_models_section(
 
     column = column.with_child(render_filterable_dropdown_row(
         appearance,
-        "Full terminal use model",
+        "完整终端使用模型",
         "The model used when the agent operates inside interactive terminal applications like database shells, debuggers, REPLs, or dev servers—reading live output and writing commands to the PTY.",
         &view.full_terminal_use_model_dropdown,
     ));
@@ -279,7 +279,7 @@ pub fn render_models_section(
     if FeatureFlag::LocalComputerUse.is_enabled() {
         column.add_child(render_filterable_dropdown_row(
             appearance,
-            "Computer use model",
+            "计算机使用模型",
             "The model used when the agent takes control of your computer to interact with graphical applications through mouse movements, clicks, and keyboard input.",
             &view.computer_use_model_dropdown,
         ));
@@ -310,7 +310,7 @@ fn render_context_window_row(
     let max = cw.max;
 
     let label = Text::new(
-        "Context window".to_string(),
+        "上下文窗口".to_string(),
         appearance.ui_font_family(),
         13.,
     )
@@ -442,11 +442,11 @@ pub fn render_permissions_section(
     let ai_settings = AISettings::as_ref(app);
     let mut column = Flex::column().with_children([
         render_separator(appearance),
-        render_section_label("PERMISSIONS", appearance),
+        render_section_label("权限", appearance),
         render_permission_row(
             appearance,
             Icon::Code2,
-            "Apply code diffs",
+            "应用代码差异",
             &view.apply_code_diffs_dropdown,
             profile_data.apply_code_diffs.description(),
             !ai_settings.is_code_diffs_permissions_editable(app),
@@ -457,7 +457,7 @@ pub fn render_permissions_section(
         render_permission_row(
             appearance,
             Icon::Notebook,
-            "Read files",
+            "读取文件",
             &view.read_files_dropdown,
             profile_data.read_files.description(),
             !ai_settings.is_read_files_permissions_editable(app),
@@ -481,7 +481,7 @@ pub fn render_permissions_section(
     column.add_child(render_permission_row(
         appearance,
         Icon::Terminal,
-        "Execute commands",
+        "执行命令",
         &view.execute_commands_dropdown,
         profile_data.execute_commands.description(),
         !ai_settings.is_execute_commands_permissions_editable(app),
@@ -518,7 +518,7 @@ pub fn render_permissions_section(
     column.add_child(render_permission_row(
         appearance,
         Icon::Workflow,
-        "Interact with running commands",
+        "与运行中的命令交互",
         &view.write_to_pty_dropdown,
         profile_data.write_to_pty.description(),
         !ai_settings.is_write_to_pty_permissions_editable(app),
@@ -531,7 +531,7 @@ pub fn render_permissions_section(
         column.add_child(render_permission_row(
             appearance,
             Icon::Laptop,
-            "Computer use",
+            "计算机使用",
             &view.computer_use_dropdown,
             profile_data.computer_use.description(),
             !ai_settings.is_computer_use_permissions_editable(app),
@@ -544,7 +544,7 @@ pub fn render_permissions_section(
     column.add_child(render_permission_row(
         appearance,
         Icon::MessageText,
-        "Ask questions",
+        "询问问题",
         &view.ask_user_question_dropdown,
         profile_data.ask_user_question.description(),
         !ai_settings.is_ask_user_question_permissions_editable(app),
@@ -556,7 +556,7 @@ pub fn render_permissions_section(
     column.add_child(render_permission_row(
         appearance,
         Icon::Dataflow,
-        "Call MCP servers",
+        "调用 MCP 服务器",
         &view.call_mcp_servers_dropdown,
         profile_data.mcp_permissions.description(),
         !ai_settings.is_mcp_permission_editable(app), // Use MCP override for this permission
@@ -703,7 +703,7 @@ fn render_directory_allowlist_section(
     let is_editable = ai_settings.is_directory_allowlist_editable(app);
 
     render_list_section(
-        "Directory allowlist",
+        "目录允许列表",
         "Give the agent file access to certain directories.",
         &profile_data.directory_allowlist,
         &view.directory_allowlist_mouse_state_handles,
@@ -728,7 +728,7 @@ fn render_command_allowlist_section(
     let is_editable = ai_settings.is_command_allowlist_editable(app);
 
     render_list_section(
-        "Command allowlist",
+        "命令允许列表",
         "Regular expressions to match commands that can be automatically executed by Oz.",
         &profile_data.command_allowlist,
         &view.command_allowlist_mouse_state_handles,
@@ -794,7 +794,7 @@ fn render_command_denylist_section(
     );
 
     let mut column = Flex::column().with_child(create_section_header(
-        "Command denylist",
+        "命令拒绝列表",
         "Regular expressions to match commands that Oz should always ask permission to execute.",
         appearance,
     ));

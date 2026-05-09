@@ -77,7 +77,7 @@ const EMAIL_EDITOR_WIDTH: f32 = 100.;
 
 const SHARING_DIALOG_WIDTH: f32 = 425.;
 
-const NO_ACCESS_LABEL: &str = "No access";
+const NO_ACCESS_LABEL: &str = "无访问权限";
 
 #[derive(Default)]
 struct UiStateHandles {
@@ -248,7 +248,7 @@ impl SharingDialog {
             email_editor: ctx.add_typed_action_view(|ctx| {
                 let mut view = WordBlockEditorView::new(
                     ctx,
-                    "Emails",
+                    "电子邮件",
                     13.,
                     vec![' ', ','],
                     EMAIL_CHIP_WIDTH,
@@ -985,7 +985,7 @@ impl SharingDialog {
                 if !is_team_guest || !is_session {
                     items.push(MenuItem::Separator);
                     items.push(
-                        MenuItemFields::new("Remove")
+                        MenuItemFields::new("移除")
                             .with_on_select_action(SharingDialogAction::RemoveGuest)
                             .with_disabled(inherited_access)
                             .into_item(),
@@ -1422,7 +1422,7 @@ impl SharingDialog {
                 ButtonVariant::Accent,
                 self.ui_state_handles.invite_button.clone(),
             )
-            .with_centered_text_label("Invite".into())
+            .with_centered_text_label("邀请".into())
             .with_style(UiComponentStyles {
                 // Adjust the height to match the email editor's padding.
                 height: Some(style::ACL_ITEM_HEIGHT + 6.),
@@ -1760,7 +1760,7 @@ impl SharingDialog {
     fn render_access_header(&self, appearance: &Appearance) -> Box<dyn Element> {
         appearance
             .ui_builder()
-            .span("Who has access")
+            .span("谁有访问权限")
             .with_style(UiComponentStyles {
                 font_color: Some(style::label_text(appearance)),
                 font_size: Some(style::PRIMARY_TEXT_SIZE),
@@ -1855,8 +1855,8 @@ impl SharingDialog {
         let owner = self.owner(app)?;
 
         let tooltip_text = match owner {
-            Subject::Team(_) => "Team objects automatically grant full permissions to team members",
-            _ => "Owners always have full permissions on their objects",
+            Subject::Team(_) => "团队对象自动授予团队成员完全权限",
+            _ => "所有者始终拥有其对象的完全权限",
         };
         let owner_access_label = render_with_detail_tooltip(
             tooltip_text,
@@ -1998,13 +1998,13 @@ impl SharingDialog {
         let is_ai_conversation = matches!(self.target, Some(ShareableObject::AIConversation(_)));
 
         let mut items = vec![
-            MenuItemFields::new("Only people invited")
+            MenuItemFields::new("仅限被邀请人员")
                 .with_on_select_action(SharingDialogAction::SetLinkPermissions(None))
                 .with_icon(Icon::Lock)
                 .with_disabled(inherited_access)
                 .into_item(),
             MenuItem::Separator,
-            MenuItemFields::new("Anyone with the link")
+            MenuItemFields::new("拥有链接的任何人")
                 .with_no_interaction_on_hover()
                 .with_icon(Icon::Globe)
                 .into_item(),
@@ -2179,13 +2179,13 @@ impl SharingDialog {
         let inherited_access = self.team_sharing_state.inheritance.is_some();
         let current_access_level = self.team_sharing_state.access_level;
         let items = [
-            MenuItemFields::new("Only invited teammates")
+            MenuItemFields::new("仅限被邀请的团队成员")
                 .with_on_select_action(SharingDialogAction::SetTeamPermissions(None))
                 .with_icon(Icon::Lock)
                 .with_disabled(inherited_access)
                 .into_item(),
             MenuItem::Separator,
-            MenuItemFields::new("Teammates with the link")
+            MenuItemFields::new("拥有链接的团队成员")
                 .with_no_interaction_on_hover()
                 .with_icon(Icon::Users)
                 .into_item(),
@@ -2352,7 +2352,7 @@ impl SharingDialog {
             .with_padding_right(10.)
             .finish();
 
-        let name_text = subject.name(app).unwrap_or(Cow::Borrowed("Unknown"));
+        let name_text = subject.name(app).unwrap_or(Cow::Borrowed("未知"));
         let name_label = appearance
             .ui_builder()
             .span(name_text)
@@ -2424,7 +2424,7 @@ impl SharingDialog {
             .with_text_and_icon_label(
                 TextAndIcon::new(
                     TextAndIconAlignment::IconFirst,
-                    "Copy link",
+                    "复制链接",
                     Icon::Link.to_warpui_icon(copy_button_foreground),
                     MainAxisSize::Min,
                     MainAxisAlignment::SpaceBetween,

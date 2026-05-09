@@ -1170,7 +1170,7 @@ impl View for BlocklistAIStatusBar {
                     WarpingIndicatorProps {
                         icon: None,
                         warping_indicator_text: MaybeShimmeringText::Shimmering {
-                            text: "Setting up environment".into(),
+                            text: "正在设置环境".into(),
                             shimmering_text_handle: self.shimmering_text_handle.clone(),
                         },
                         non_shimmering_text: None,
@@ -1202,8 +1202,8 @@ impl View for BlocklistAIStatusBar {
                         non_shimmering_text: None,
                         non_shimmering_suffix: None,
                         buttons: Some(render_switch_control_to_user_button(
-                            "Exit",
-                            "Exit agent input",
+                            "退出",
+                            "退出智能体输入",
                             ButtonProps {
                                 button_handle: &self.state_handles.take_over_button,
                                 keystroke: self.set_terminal_input_keystroke.as_ref(),

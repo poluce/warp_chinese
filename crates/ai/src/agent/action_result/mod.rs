@@ -719,47 +719,47 @@ impl AIAgentActionResultType {
     pub fn description(&self) -> &str {
         match self {
             AIAgentActionResultType::RequestCommandOutput(_) => {
-                "The output of your last command executed by Agent Mode"
+                "智能体模式执行的上一条命令的输出"
             }
             AIAgentActionResultType::WriteToLongRunningShellCommand(_) => {
-                "A snapshot of the command currently being executed by Agent Mode"
+                "智能体模式当前正在执行的命令的快照"
             }
             AIAgentActionResultType::RequestFileEdits(_) => {
-                "The diff from editing the last file in Agent Mode"
+                "智能体模式下编辑最后一个文件的差异"
             }
-            AIAgentActionResultType::ReadFiles(_) => "The requested file content",
-            AIAgentActionResultType::UploadArtifact(_) => "The uploaded artifact metadata",
-            AIAgentActionResultType::SearchCodebase(_) => "The codebase search results",
-            AIAgentActionResultType::Grep(_) => "The results of the grep operation",
-            AIAgentActionResultType::FileGlob(_) => "The results of the file glob operation",
-            AIAgentActionResultType::FileGlobV2(_) => "The results of the file glob operation",
-            AIAgentActionResultType::CallMCPTool(_) => "The MCP tool call",
-            AIAgentActionResultType::ReadSkill(_) => "The results of reading a skill from file",
-            AIAgentActionResultType::ReadMCPResource(_) => "The MCP resource",
+            AIAgentActionResultType::ReadFiles(_) => "请求的文件内容",
+            AIAgentActionResultType::UploadArtifact(_) => "上传的构建产物元数据",
+            AIAgentActionResultType::SearchCodebase(_) => "代码库搜索结果",
+            AIAgentActionResultType::Grep(_) => "grep 操作的结果",
+            AIAgentActionResultType::FileGlob(_) => "文件通配操作的结果",
+            AIAgentActionResultType::FileGlobV2(_) => "文件通配操作的结果",
+            AIAgentActionResultType::CallMCPTool(_) => "MCP 工具调用",
+            AIAgentActionResultType::ReadSkill(_) => "从文件读取技能的结果",
+            AIAgentActionResultType::ReadMCPResource(_) => "MCP 资源",
             AIAgentActionResultType::SuggestNewConversation(_) => {
-                "Your decision on whether to start a new conversation"
+                "您关于是否开始新对话的决定"
             }
-            AIAgentActionResultType::SuggestPrompt(_) => "The suggested prompt",
-            AIAgentActionResultType::OpenCodeReview => "Open code review",
-            AIAgentActionResultType::InsertReviewComments(_) => "Insert code review comments",
-            AIAgentActionResultType::InitProject => "Initialize project",
-            AIAgentActionResultType::ReadDocuments(_) => "The requested document content",
-            AIAgentActionResultType::EditDocuments(_) => "The edited document content",
-            AIAgentActionResultType::CreateDocuments(_) => "The newly created documents",
-            AIAgentActionResultType::ReadShellCommandOutput(_) => "The shell command output",
-            AIAgentActionResultType::UseComputer(_) => "The computer use result",
-            AIAgentActionResultType::RequestComputerUse(_) => "The computer use request result",
-            AIAgentActionResultType::FetchConversation(_) => "The fetched conversation tasks",
-            AIAgentActionResultType::StartAgent(_) => "The result of starting a child agent",
-            AIAgentActionResultType::SendMessageToAgent(_) => "The result of sending a message",
+            AIAgentActionResultType::SuggestPrompt(_) => "建议的提示",
+            AIAgentActionResultType::OpenCodeReview => "打开代码审查",
+            AIAgentActionResultType::InsertReviewComments(_) => "插入代码审查评论",
+            AIAgentActionResultType::InitProject => "初始化项目",
+            AIAgentActionResultType::ReadDocuments(_) => "请求的文档内容",
+            AIAgentActionResultType::EditDocuments(_) => "编辑后的文档内容",
+            AIAgentActionResultType::CreateDocuments(_) => "新创建的文档",
+            AIAgentActionResultType::ReadShellCommandOutput(_) => "Shell 命令输出",
+            AIAgentActionResultType::UseComputer(_) => "计算机使用结果",
+            AIAgentActionResultType::RequestComputerUse(_) => "计算机使用请求结果",
+            AIAgentActionResultType::FetchConversation(_) => "获取的对话任务",
+            AIAgentActionResultType::StartAgent(_) => "启动子智能体的结果",
+            AIAgentActionResultType::SendMessageToAgent(_) => "发送消息的结果",
             AIAgentActionResultType::TransferShellCommandControlToUser(_) => {
-                "The result of transferring shell command control to user"
+                "将 Shell 命令控制权转移给用户的结果"
             }
             AIAgentActionResultType::AskUserQuestion(_) => {
-                "The user's answers to clarifying questions"
+                "用户对澄清问题的回答"
             }
             AIAgentActionResultType::RunAgents(_) => {
-                "The result of an orchestrate batch of child agents"
+                "编排批量子智能体的结果"
             }
         }
     }
@@ -1405,7 +1405,7 @@ impl AskUserQuestionAnswerItem {
                 }
                 parts.join(", ")
             }
-            Self::Skipped { .. } => "Skipped".to_string(),
+            Self::Skipped { .. } => "已跳过".to_string(),
         }
     }
 }

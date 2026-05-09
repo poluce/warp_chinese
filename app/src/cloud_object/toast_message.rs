@@ -77,21 +77,21 @@ impl CloudObjectToastMessage {
                 ObjectOperation::Update,
                 OperationSuccessType::Rejection,
             ) => {
-                Some("This workflow could not be saved because changes were made while you were editing.".to_string())
+                Some("此工作流无法保存，因为您编辑时发生了更改。".to_string())
             }
             (
                 ObjectType::GenericStringObject(GenericStringObjectFormat::Json(JsonObjectType::EnvVarCollection)),
                 ObjectOperation::Update,
                 OperationSuccessType::Rejection,
             ) => {
-                Some("Environment variables could not be saved because changes were made while you were editing.".to_string())
+                Some("环境变量无法保存，因为您编辑时发生了更改。".to_string())
             }
             (
                 ObjectType::GenericStringObject(GenericStringObjectFormat::Json(JsonObjectType::AIFact)),
                 ObjectOperation::Update,
                 OperationSuccessType::Rejection,
             ) => {
-                Some("Rule could not be saved because changes were made while you were editing.".to_string())
+                Some("规则无法保存，因为您编辑时发生了更改。".to_string())
             }
             (_, ObjectOperation::TakeEditAccess, OperationSuccessType::Failure) => {
                 Some(format!("Failed to start editing {object_name_lowercase}"))
@@ -129,10 +129,10 @@ impl CloudObjectToastMessage {
                 "Trash emptied: {count_objects_message} deleted forever"
             )),
             (ObjectOperation::EmptyTrash, OperationSuccessType::Failure) => {
-                Some("Failed to empty trash".to_string())
+                Some("清空回收站失败".to_string())
             }
             (ObjectOperation::EmptyTrash, OperationSuccessType::Rejection) => {
-                Some("No objects in trash to empty".to_string())
+                Some("回收站中没有要清空的对象".to_string())
             }
             _ => None,
         }

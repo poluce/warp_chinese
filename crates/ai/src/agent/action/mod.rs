@@ -381,47 +381,47 @@ impl AIAgentActionType {
     pub fn user_friendly_name(&self) -> String {
         match self {
             Self::RequestCommandOutput { command, .. } => {
-                format!("Run command: {command}")
+                format!("运行命令：{command}")
             }
             Self::WriteToLongRunningShellCommand { .. } => {
-                "Write to long running shell command".to_string()
+                "写入长时间运行的 Shell 命令".to_string()
             }
-            Self::ReadFiles(_) => "Read files".to_string(),
-            Self::UploadArtifact(_) => "Upload artifact".to_string(),
-            Self::SearchCodebase(_) => "Search codebase".to_string(),
+            Self::ReadFiles(_) => "读取文件".to_string(),
+            Self::UploadArtifact(_) => "上传构建产物".to_string(),
+            Self::SearchCodebase(_) => "搜索代码库".to_string(),
             Self::RequestFileEdits { file_edits, .. } => {
                 let file_names = file_edits.iter().filter_map(|edit| edit.file()).join(", ");
-                format!("Edit {file_names}")
+                format!("编辑 {file_names}")
             }
             Self::Grep { .. } => "Grep".to_string(),
-            Self::FileGlob { .. } | Self::FileGlobV2 { .. } => "File glob".to_string(),
-            Self::ReadMCPResource { .. } => "Read mcp resource".to_string(),
-            Self::CallMCPTool { .. } => "Call mcp tool".to_string(),
-            Self::SuggestNewConversation { .. } => "Suggest new conversation".to_string(),
-            Self::SuggestPrompt { .. } => "Suggest prompt".to_string(),
-            Self::InitProject => "Init project".to_string(),
-            Self::OpenCodeReview => "Open code review".to_string(),
-            Self::ReadDocuments(_) => "Read documents".to_string(),
-            Self::EditDocuments(_) => "Edit documents".to_string(),
-            Self::CreateDocuments(_) => "Create documents".to_string(),
-            Self::ReadShellCommandOutput { .. } => "Read shell command output".to_string(),
-            Self::UseComputer(_) => "Use computer".to_string(),
+            Self::FileGlob { .. } | Self::FileGlobV2 { .. } => "文件通配".to_string(),
+            Self::ReadMCPResource { .. } => "读取 MCP 资源".to_string(),
+            Self::CallMCPTool { .. } => "调用 MCP 工具".to_string(),
+            Self::SuggestNewConversation { .. } => "建议新对话".to_string(),
+            Self::SuggestPrompt { .. } => "建议提示".to_string(),
+            Self::InitProject => "初始化项目".to_string(),
+            Self::OpenCodeReview => "打开代码审查".to_string(),
+            Self::ReadDocuments(_) => "读取文档".to_string(),
+            Self::EditDocuments(_) => "编辑文档".to_string(),
+            Self::CreateDocuments(_) => "创建文档".to_string(),
+            Self::ReadShellCommandOutput { .. } => "读取 Shell 命令输出".to_string(),
+            Self::UseComputer(_) => "使用计算机".to_string(),
             Self::InsertCodeReviewComments { comments, .. } => {
-                format!("Insert {} code review comments", comments.len())
+                format!("插入 {} 条代码审查评论", comments.len())
             }
-            Self::RequestComputerUse(_) => "Request computer use".to_string(),
-            Self::ReadSkill(_) => "Read skill".to_string(),
-            Self::FetchConversation { .. } => "Fetch conversation".to_string(),
-            Self::StartAgent { name, .. } => format!("Start agent: {name}"),
-            Self::SendMessageToAgent { subject, .. } => format!("Send message: {subject}"),
+            Self::RequestComputerUse(_) => "请求计算机使用".to_string(),
+            Self::ReadSkill(_) => "读取技能".to_string(),
+            Self::FetchConversation { .. } => "获取对话".to_string(),
+            Self::StartAgent { name, .. } => format!("启动智能体：{name}"),
+            Self::SendMessageToAgent { subject, .. } => format!("发送消息：{subject}"),
             Self::TransferShellCommandControlToUser { .. } => {
-                "Transfer shell command control to user".to_string()
+                "将 Shell 命令控制权转移给用户".to_string()
             }
             Self::AskUserQuestion { questions } => {
-                format!("Ask user {} question(s)", questions.len())
+                format!("向用户提问 {} 个问题", questions.len())
             }
             Self::RunAgents(req) => {
-                format!("Orchestrate {} agent(s)", req.agent_run_configs.len())
+                format!("编排 {} 个智能体", req.agent_run_configs.len())
             }
         }
     }

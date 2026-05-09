@@ -849,12 +849,12 @@ impl TerminalView {
         }
 
         let Some(ambient_agent_view_model) = self.ambient_agent_view_model.as_ref() else {
-            self.show_error_toast("Couldn't continue this cloud task.".to_string(), ctx);
+            self.show_error_toast("无法继续此云端任务。".to_string(), ctx);
             return;
         };
 
         if ambient_agent_view_model.as_ref(ctx).task_id() != Some(task_id) {
-            self.show_error_toast("Couldn't continue this cloud task.".to_string(), ctx);
+            self.show_error_toast("无法继续此云端任务。".to_string(), ctx);
             return;
         }
         self.remove_conversation_ended_tombstone(ctx);
@@ -895,7 +895,7 @@ impl TerminalView {
             ctx,
         );
         self.show_persistent_toast(
-            "Sharing ended due to inactivity".to_owned(),
+            "因无活动，分享已结束".to_owned(),
             ToastFlavor::Error,
             ctx,
         );
@@ -946,7 +946,7 @@ impl TerminalView {
                 ctx,
             );
             self.show_persistent_toast(
-                "Shared editing permissions were revoked due to inactivity".to_owned(),
+                "因无活动，共享编辑权限已撤销".to_owned(),
                 ToastFlavor::Error,
                 ctx,
             );
@@ -1563,7 +1563,7 @@ impl TerminalView {
             && matches!(reason, RoleUpdatedReason::InactivityLimitReached)
         {
             self.show_persistent_toast(
-                "Editing permissions were revoked because the sharer is idle".to_owned(),
+                "因分享者无活动，编辑权限已撤销".to_owned(),
                 ToastFlavor::Error,
                 ctx,
             );
@@ -1759,7 +1759,7 @@ impl TerminalView {
 
         if !model.shared_session_status().is_sharer_or_viewer() {
             items.push(
-                MenuItemFields::new("Share session...")
+                MenuItemFields::new("分享会话...")
                     .with_on_select_action(TerminalAction::ContextMenu(
                         ContextMenuAction::OpenShareSessionModal,
                     ))
@@ -1768,7 +1768,7 @@ impl TerminalView {
             );
         } else if model.shared_session_status().is_active_sharer() {
             items.push(
-                MenuItemFields::new("Stop sharing")
+                MenuItemFields::new("停止分享")
                     .with_on_select_action(TerminalAction::ContextMenu(
                         ContextMenuAction::StopSharing,
                     ))
@@ -1778,7 +1778,7 @@ impl TerminalView {
 
         if model.shared_session_status().is_sharer_or_viewer() {
             items.push(
-                MenuItemFields::new("Copy session sharing link")
+                MenuItemFields::new("复制会话分享链接")
                     .with_on_select_action(TerminalAction::CopySharedSessionLink {
                         source: SharedSessionActionSource::RightClickMenu,
                     })
@@ -1892,7 +1892,7 @@ impl TerminalView {
         appearance
             .ui_builder()
             .button(ButtonVariant::Basic, button_handle)
-            .with_text_label("Request edit access".into())
+            .with_text_label("请求编辑访问权限".into())
             .build()
             .on_click(move |ctx, _, _| {
                 ctx.dispatch_typed_action(TerminalAction::RequestSharedSessionRole(Role::Executor));

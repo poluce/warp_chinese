@@ -307,7 +307,7 @@ fn write_download_output_to<W: std::io::Write>(
             writeln!(&mut *output)?;
         }
         OutputFormat::Pretty => {
-            writeln!(&mut *output, "Artifact downloaded")?;
+            writeln!(&mut *output, "产物已下载")?;
             writeln!(&mut *output, "Artifact UID: {}", output_record.artifact_uid)?;
             writeln!(
                 &mut *output,
@@ -359,7 +359,7 @@ fn write_upload_output_to<W: std::io::Write>(
             writeln!(&mut *output)?;
         }
         OutputFormat::Pretty => {
-            writeln!(&mut *output, "Artifact uploaded")?;
+            writeln!(&mut *output, "产物已上传")?;
             writeln!(&mut *output, "Artifact UID: {}", output_record.artifact_uid)?;
             writeln!(&mut *output, "Filepath: {}", output_record.filepath)?;
             writeln!(

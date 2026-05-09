@@ -134,7 +134,7 @@ struct TooltipMouseStateHandles {
 pub mod manager;
 pub use manager::*;
 
-pub const HEADER_TEXT: &str = "Profile Editor";
+pub const HEADER_TEXT: &str = "配置文件编辑器";
 
 #[derive(Debug, Clone)]
 pub enum ExecutionProfileEditorViewEvent {
@@ -276,19 +276,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Agent decides",
+                        "智能体决定",
                         ExecutionProfileEditorViewAction::SetApplyCodeDiffs {
                             permission: ActionPermission::AgentDecides,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        "始终允许",
                         ExecutionProfileEditorViewAction::SetApplyCodeDiffs {
                             permission: ActionPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        "始终询问",
                         ExecutionProfileEditorViewAction::SetApplyCodeDiffs {
                             permission: ActionPermission::AlwaysAsk,
                         },
@@ -304,19 +304,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Agent decides",
+                        "智能体决定",
                         ExecutionProfileEditorViewAction::SetReadFiles {
                             permission: ActionPermission::AgentDecides,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        "始终允许",
                         ExecutionProfileEditorViewAction::SetReadFiles {
                             permission: ActionPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        "始终询问",
                         ExecutionProfileEditorViewAction::SetReadFiles {
                             permission: ActionPermission::AlwaysAsk,
                         },
@@ -332,19 +332,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Agent decides",
+                        "智能体决定",
                         ExecutionProfileEditorViewAction::SetExecuteCommands {
                             permission: ActionPermission::AgentDecides,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        "始终允许",
                         ExecutionProfileEditorViewAction::SetExecuteCommands {
                             permission: ActionPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        "始终询问",
                         ExecutionProfileEditorViewAction::SetExecuteCommands {
                             permission: ActionPermission::AlwaysAsk,
                         },
@@ -360,19 +360,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Always allow",
+                        "始终允许",
                         ExecutionProfileEditorViewAction::SetWriteToPty {
                             permission: WriteToPtyPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        "始终询问",
                         ExecutionProfileEditorViewAction::SetWriteToPty {
                             permission: WriteToPtyPermission::AlwaysAsk,
                         },
                     ),
                     DropdownItem::new(
-                        "Ask on first write",
+                        "首次写入时询问",
                         ExecutionProfileEditorViewAction::SetWriteToPty {
                             permission: WriteToPtyPermission::AskOnFirstWrite,
                         },
@@ -388,19 +388,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Agent decides",
+                        "智能体决定",
                         ExecutionProfileEditorViewAction::SetCallMcpServers {
                             permission: ActionPermission::AgentDecides,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        "始终允许",
                         ExecutionProfileEditorViewAction::SetCallMcpServers {
                             permission: ActionPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        "始终询问",
                         ExecutionProfileEditorViewAction::SetCallMcpServers {
                             permission: ActionPermission::AlwaysAsk,
                         },
@@ -416,19 +416,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Never",
+                        "从不",
                         ExecutionProfileEditorViewAction::SetComputerUse {
                             permission: super::ComputerUsePermission::Never,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        "始终询问",
                         ExecutionProfileEditorViewAction::SetComputerUse {
                             permission: super::ComputerUsePermission::AlwaysAsk,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        "始终允许",
                         ExecutionProfileEditorViewAction::SetComputerUse {
                             permission: super::ComputerUsePermission::AlwaysAllow,
                         },
@@ -444,19 +444,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Never ask",
+                        "从不询问",
                         ExecutionProfileEditorViewAction::SetAskUserQuestion {
                             permission: super::AskUserQuestionPermission::Never,
                         },
                     ),
                     DropdownItem::new(
-                        "Ask unless auto-approve",
+                        "除非自动批准则询问",
                         ExecutionProfileEditorViewAction::SetAskUserQuestion {
                             permission: super::AskUserQuestionPermission::AskExceptInAutoApprove,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        "始终询问",
                         ExecutionProfileEditorViewAction::SetAskUserQuestion {
                             permission: super::AskUserQuestionPermission::AlwaysAsk,
                         },
@@ -598,7 +598,7 @@ impl ExecutionProfileEditorView {
         Self::update_profile_name_editor(&profile_name_editor, &profile_data, ctx);
 
         let delete_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Delete profile", DangerSecondaryTheme)
+            ActionButton::new("删除配置文件", DangerSecondaryTheme)
                 .with_icon(Icon::Trash)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(ExecutionProfileEditorViewAction::DeleteProfile);

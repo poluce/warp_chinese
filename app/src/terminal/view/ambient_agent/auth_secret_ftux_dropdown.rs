@@ -95,7 +95,7 @@ impl AuthSecretFtuxDropdown {
                 },
                 ctx,
             );
-            editor.set_placeholder_text("Search secrets or create a new one", ctx);
+            editor.set_placeholder_text("搜索密钥或创建新密钥", ctx);
             editor
         });
 
@@ -318,7 +318,7 @@ impl AuthSecretFtuxDropdown {
                 }
                 if !matched {
                     items.push(MenuItem::Item(
-                        MenuItemFields::new("No secrets found")
+                        MenuItemFields::new("未找到密钥")
                             .with_font_size_override(FONT_SIZE)
                             .with_padding_override(
                                 MENU_ITEM_VERTICAL_PADDING,
@@ -331,7 +331,7 @@ impl AuthSecretFtuxDropdown {
             }
             AuthSecretFetchState::NotFetched | AuthSecretFetchState::Loading => {
                 items.push(MenuItem::Item(
-                    MenuItemFields::new("Loading…")
+                    MenuItemFields::new("加载中……")
                         .with_font_size_override(FONT_SIZE)
                         .with_padding_override(MENU_ITEM_VERTICAL_PADDING, MENU_HORIZONTAL_PADDING)
                         .with_disabled(true)
@@ -340,7 +340,7 @@ impl AuthSecretFtuxDropdown {
             }
             AuthSecretFetchState::Failed(_) => {
                 items.push(MenuItem::Item(
-                    MenuItemFields::new("Unable to load secrets")
+                    MenuItemFields::new("无法加载密钥")
                         .with_font_size_override(FONT_SIZE)
                         .with_padding_override(MENU_ITEM_VERTICAL_PADDING, MENU_HORIZONTAL_PADDING)
                         .with_disabled(true)
@@ -366,8 +366,8 @@ impl AuthSecretFtuxDropdown {
 
         items.push(MenuItem::Item(
             MenuItemFields::new_with_label(
-                "Skip setting an API key",
-                "Choose this if authentication is set up in the environment",
+                "跳过设置 API 密钥",
+                "如果已在环境中配置身份验证，请选择此项",
             )
             .with_font_size_override(FONT_SIZE)
             .with_padding_override(MENU_ITEM_VERTICAL_PADDING, MENU_HORIZONTAL_PADDING)
@@ -459,7 +459,7 @@ impl AuthSecretFtuxDropdown {
         let theme = appearance.theme();
         let color = internal_colors::text_sub(theme, theme.surface_1());
         Text::new_inline(
-            "No secrets found. Save to use this value directly or click the key to add a secret."
+            "未找到密钥。可直接保存使用此值，或点击密钥添加密钥。"
                 .to_string(),
             appearance.ui_font_family(),
             HELPER_FONT_SIZE,

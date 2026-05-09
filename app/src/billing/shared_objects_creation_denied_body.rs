@@ -18,15 +18,15 @@ const BUTTON_PADDING: f32 = 12.;
 const BUTTON_FONT_SIZE: f32 = 14.;
 const BUTTON_BORDER_RADIUS: f32 = 4.;
 
-const DEFAULT_DELINQUENT_ADMIN_MODAL_SUBHEADER: &str = "Shared drive objects have been restricted due to a subscription payment issue.\n\nPlease update your payment information to restore access.";
-const DEFAULT_DELINQUENT_ADMIN_ENTERPRISE_MODAL_SUBHEADER: &str = "Shared drive objects have been restricted due to a subscription payment issue.\n\nPlease contact support@warp.dev to restore access.";
-const DEFAULT_DELINQUENT_MODAL_SUBHEADER: &str = "Shared drive objects have been restricted due to a subscription payment issue.\n\nPlease contact a team admin to restore access.";
-const DEFAULT_ADMIN_PROSUMER_MODAL_SUBHEADER: &str = "Warp's Pro plan comes with a limited number of shared drive objects.\n\nFor access to unlimited shared drive objects, upgrade to the Turbo plan.";
-const DEFAULT_PROSUMER_MODAL_SUBHEADER: &str = "Warp's Pro plan comes with a limited number of shared drive objects.\n\nFor access to unlimited shared drive objects, contact a team admin to upgrade to the Turbo plan.";
-const DEFAULT_ADMIN_MODAL_SUBHEADER: &str = "Warp's free plan comes with a limited number of shared drive objects.\n\nFor access to unlimited shared drive objects, upgrade to a paid plan.";
-const DEFAULT_MODAL_SUBHEADER: &str = "Warp's free plan comes with a limited number of shared drive objects.\n\nFor access to unlimited shared drive objects, contact a team admin to upgrade to a paid plan.";
-const VIEW_PLANS_TEXT: &str = "Compare plans";
-const MANAGE_BILLING_BUTTON_TEXT: &str = "Manage billing";
+const DEFAULT_DELINQUENT_ADMIN_MODAL_SUBHEADER: &str = "由于订阅支付问题，共享 Drive 对象已被限制。\n\n请更新您的支付信息以恢复访问。";
+const DEFAULT_DELINQUENT_ADMIN_ENTERPRISE_MODAL_SUBHEADER: &str = "由于订阅支付问题，共享 Drive 对象已被限制。\n\n请联系 support@warp.dev 以恢复访问。";
+const DEFAULT_DELINQUENT_MODAL_SUBHEADER: &str = "由于订阅支付问题，共享 Drive 对象已被限制。\n\n请联系团队管理员以恢复访问。";
+const DEFAULT_ADMIN_PROSUMER_MODAL_SUBHEADER: &str = "Warp 专业版套餐仅包含有限数量的共享 Drive 对象。\n\n要获得无限共享 Drive 对象的访问权限，请升级到 Turbo 套餐。";
+const DEFAULT_PROSUMER_MODAL_SUBHEADER: &str = "Warp 专业版套餐仅包含有限数量的共享 Drive 对象。\n\n要获得无限共享 Drive 对象的访问权限，请联系团队管理员升级至 Turbo 套餐。";
+const DEFAULT_ADMIN_MODAL_SUBHEADER: &str = "Warp 免费版套餐仅包含有限数量的共享 Drive 对象。\n\n要获得无限共享 Drive 对象的访问权限，请升级到付费套餐。";
+const DEFAULT_MODAL_SUBHEADER: &str = "Warp 免费版套餐仅包含有限数量的共享 Drive 对象。\n\n要获得无限共享 Drive 对象的访问权限，请联系团队管理员升级至付费套餐。";
+const VIEW_PLANS_TEXT: &str = "比较套餐";
+const MANAGE_BILLING_BUTTON_TEXT: &str = "管理账单";
 
 #[derive(Default)]
 struct MouseStateHandles {

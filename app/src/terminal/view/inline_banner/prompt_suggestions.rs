@@ -42,8 +42,8 @@ use crate::server::ids::ServerId;
 const INLINE_BANNER_SPACING: f32 = 8.;
 const INLINE_BANNER_BUTTON_PADDING: f32 = 8.;
 
-const DELINQUENT_DUE_TO_PAYMENT_ISSUE_TOOLTIP_MESSAGE: &str = "Restricted due to payment issue";
-const OUT_OF_REQUESTS_TOOLTIP_MESSAGE: &str = "Out of credits";
+const DELINQUENT_DUE_TO_PAYMENT_ISSUE_TOOLTIP_MESSAGE: &str = "因支付问题受限";
+const OUT_OF_REQUESTS_TOOLTIP_MESSAGE: &str = "信用额度不足";
 
 /// Types of zero-state prompt suggestions.
 #[derive(Debug, Copy, Clone, Serialize)]
@@ -71,18 +71,18 @@ impl ZeroStatePromptSuggestionType {
 
     pub fn query(&self) -> &'static str {
         match self {
-            Self::Explain => "Explain this to me.",
-            Self::Fix => "Help me fix this.",
+            Self::Explain => "向我解释这个。",
+            Self::Fix => "帮我修复这个。",
             Self::Install => {
-                "Help me install a binary/dependency. What information do I need to provide to you to do this?"
+                "帮我安装二进制/依赖项。我需要提供什么信息来帮助你完成？"
             }
             Self::Code => {
-                "Help me write some code. What information do I need to provide to you to do this?"
+                "帮我编写一些代码。我需要提供什么信息来帮助你完成？"
             }
             Self::Deploy => {
-                "Help me deploy my project. What information do I need to provide to you to do this?"
+                "帮我部署项目。我需要提供什么信息来帮助你完成？"
             }
-            Self::SomethingElse => "Something else?",
+            Self::SomethingElse => "其他问题？",
         }
     }
 

@@ -139,7 +139,7 @@ impl SettingsWidget for WarpDriveHeaderWidget {
 
         let message = Container::new(
             Text::new_inline(
-                "To use Warp Drive, please create an account.".to_string(),
+                "要使用 Warp Drive，请先创建账户。".to_string(),
                 appearance.ui_font_family(),
                 14.,
             )
@@ -171,7 +171,7 @@ impl SettingsWidget for WarpDriveHeaderWidget {
                     }),
                     ..Default::default()
                 })
-                .with_text_label("Sign up".to_owned())
+                .with_text_label("注册".to_owned())
                 .build()
                 .on_click(move |ctx, _, _| {
                     ctx.dispatch_typed_action(WarpDriveSettingsPageAction::SignUp);
@@ -248,7 +248,7 @@ impl SettingsWidget for WarpDriveToggleWidget {
                     }
                 })
                 .finish(),
-            Some("Warp Drive is a workspace in your terminal where you can save Workflows, Notebooks, Prompts, and Environment Variables for personal use or to share with a team.".into()),
+            Some("Warp Drive 是终端中的一个工作区，您可以在此保存工作流、笔记本、提示和环境变量，供个人使用或与团队共享。".into()),
         )
     }
 }

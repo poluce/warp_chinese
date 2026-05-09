@@ -165,7 +165,7 @@ pub enum FinishedAIAgentOutput {
 impl Display for FinishedAIAgentOutput {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            FinishedAIAgentOutput::Cancelled { .. } => write!(f, "Cancelled"),
+            FinishedAIAgentOutput::Cancelled { .. } => write!(f, "已取消"),
             FinishedAIAgentOutput::Error { error, .. } => write!(f, "Error: {error}"),
             FinishedAIAgentOutput::Success { output } => write!(f, "\n{output}"),
         }
@@ -674,11 +674,11 @@ impl From<&AIApiError> for RenderableAIError {
 impl Display for RenderableAIError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::QuotaLimit => write!(f, "Quota limit reached."),
+            Self::QuotaLimit => write!(f, "已达到配额限制。"),
             Self::ServerOverloaded => {
-                write!(f, "Warp is currently overloaded. Please try again later.")
+                write!(f, "Warp 当前负载过高，请稍后重试。")
             }
-            Self::InternalWarpError => write!(f, "Internal Warp error."),
+            Self::InternalWarpError => write!(f, "Warp 内部错误。"),
             Self::ContextWindowExceeded(message) => {
                 write!(f, "Context window exceeded: {message}")
             }
@@ -1754,7 +1754,7 @@ impl Display for AIAgentOutputMessage {
             AIAgentOutputMessageType::WebSearch(status) => match status {
                 WebSearchStatus::Searching { query } => match query {
                     Some(q) => write!(f, "Searching web for: {q}")?,
-                    None => write!(f, "Searching web")?,
+                    None => write!(f, "搜索网络中...")?,
                 },
                 WebSearchStatus::Success { query, pages } => {
                     write!(f, "Searched web for: {query} ({} results)", pages.len())?
@@ -1768,7 +1768,7 @@ impl Display for AIAgentOutputMessage {
                 WebFetchStatus::Success { pages } => {
                     write!(f, "Fetched {} web pages", pages.len())?
                 }
-                WebFetchStatus::Error => write!(f, "Web fetch failed")?,
+                WebFetchStatus::Error => write!(f, "网页获取失败")?,
             },
             AIAgentOutputMessageType::CommentsAddressed {
                 comments: comment_ids,

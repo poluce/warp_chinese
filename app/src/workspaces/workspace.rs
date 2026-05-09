@@ -259,16 +259,16 @@ pub enum CustomerType {
 impl CustomerType {
     pub fn to_display_string(self) -> String {
         match self {
-            CustomerType::Free => "Free".to_string(),
+            CustomerType::Free => "免费版".to_string(),
             CustomerType::Turbo => "Turbo".to_string(),
-            CustomerType::SelfServe => "Team".to_string(),
-            CustomerType::Prosumer => "Pro".to_string(),
-            CustomerType::Legacy => "Early adopter".to_string(),
-            CustomerType::Enterprise => "Enterprise".to_string(),
-            CustomerType::Business => "Business".to_string(),
+            CustomerType::SelfServe => "团队版".to_string(),
+            CustomerType::Prosumer => "专业版".to_string(),
+            CustomerType::Legacy => "早期用户".to_string(),
+            CustomerType::Enterprise => "企业版".to_string(),
+            CustomerType::Business => "商业版".to_string(),
             CustomerType::Lightspeed => "Lightspeed".to_string(),
-            CustomerType::Build => "Build".to_string(),
-            CustomerType::BuildMax => "Max".to_string(),
+            CustomerType::Build => "构建版".to_string(),
+            CustomerType::BuildMax => "最大版".to_string(),
             CustomerType::Unknown => "".to_string(),
         }
     }

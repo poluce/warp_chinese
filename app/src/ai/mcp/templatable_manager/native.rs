@@ -145,11 +145,11 @@ fn error_to_user_message(error: &rmcp::RmcpError) -> String {
                 "Connection closed unexpectedly. The server may have crashed.".to_string()
             }
             rmcp::ServiceError::UnexpectedResponse => {
-                "Server sent an unexpected response. The server may be incompatible.".to_string()
+                "服务器发送了意外响应。服务器可能不兼容。".to_string()
             }
             rmcp::ServiceError::Cancelled { reason } => format!(
                 "Operation was cancelled with reason: {}",
-                reason.clone().unwrap_or("Unknown reason".to_string())
+                reason.clone().unwrap_or("未知原因".to_string())
             ),
             rmcp::ServiceError::Timeout { timeout } => {
                 format!(

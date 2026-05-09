@@ -328,7 +328,7 @@ impl CodeReviewHeader {
             .with_text_and_icon_label(
                 TextAndIcon::new(
                     TextAndIconAlignment::IconFirst,
-                    "Discard all".to_string(),
+                    "全部丢弃".to_string(),
                     Icon::ReverseLeft.to_warpui_icon(warp_core::ui::theme::Fill::Solid(
                         sub_text_color.into_solid(),
                     )),

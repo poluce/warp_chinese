@@ -52,10 +52,10 @@ const MENU_WIDTH: f32 = 208.;
 const ITEM_ICON_SIZE: f32 = 16.;
 
 /// Tooltip string for the closed-state button.
-const BUTTON_TOOLTIP: &str = "Agent harness";
+const BUTTON_TOOLTIP: &str = "代理执行环境";
 
 /// Label rendered at the top of the dropdown.
-const MENU_HEADER_LABEL: &str = "Agent harness";
+const MENU_HEADER_LABEL: &str = "代理执行环境";
 
 /// Actions dispatched by the [`HarnessSelector`].
 #[derive(Clone, Debug, PartialEq)]
@@ -209,7 +209,7 @@ impl HarnessSelector {
             button.set_disabled(is_locked_to_oz, ctx);
             button.set_tooltip(
                 Some(if is_locked_to_oz {
-                    "This conversation is with the Warp Agent, so the cloud handoff will also use Warp"
+                    "此对话正在与 Warp Agent 进行，因此云移交也将使用 Warp"
                 } else {
                     BUTTON_TOOLTIP
                 }),
@@ -295,7 +295,7 @@ fn build_menu_items(
             fields = fields
                 .with_disabled(true)
                 .with_override_text_color(disabled_text_color)
-                .with_tooltip("Disabled by your administrator");
+                .with_tooltip("已被管理员禁用");
         }
         items.push(MenuItem::Item(fields));
     }

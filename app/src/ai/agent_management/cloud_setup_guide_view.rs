@@ -116,7 +116,7 @@ impl CloudSetupGuideView {
         );
 
         let visit_oz_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Visit Oz", SecondaryTheme)
+            ActionButton::new("访问 Oz", SecondaryTheme)
                 .on_click(|ctx| ctx.dispatch_typed_action(CloudSetupGuideAction::VisitOz))
         });
 
@@ -177,7 +177,7 @@ impl CloudSetupGuideView {
                 appearance
                     .ui_builder()
                     .link(
-                        "Oz documentation".to_string(),
+                        "Oz 文档".to_string(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(CloudSetupGuideAction::OpenDocs {
@@ -453,8 +453,8 @@ impl CloudSetupGuideView {
         .finish();
 
         let sub_description = Container::new(Self::render_description_with_link(
-            "Use Warp's environment setup command to have an agent help you through it. ",
-            "Visit docs",
+            "使用 Warp 的环境设置命令让智能体帮助您完成设置。 ",
+            "查看文档",
             self.env_docs_link_mouse_state.clone(),
             SetupGuideDocs::Environment,
             appearance,
@@ -473,7 +473,7 @@ impl CloudSetupGuideView {
 
         let or_text = Container::new(
             Text::new(
-                "Or, supply your own existing docker image.",
+                "或者，提供您自己的现有 Docker 镜像。",
                 appearance.ui_font_family(),
                 step_desc_font_size,
             )
@@ -515,7 +515,7 @@ impl CloudSetupGuideView {
             .with_child(Self::render_step_number(2, appearance))
             .with_child(
                 Text::new(
-                    "Create an integration",
+                    "创建集成",
                     appearance.ui_font_family(),
                     step_title_font_size,
                 )
@@ -526,8 +526,8 @@ impl CloudSetupGuideView {
             .finish();
 
         let sub_description = Container::new(Self::render_description_with_link(
-            "Integrate Slack or Linear to assign Warp's Agent tasks with @Warp. ",
-            "Visit docs",
+            "集成 Slack 或 Linear 以使用 @Warp 分配 Warp 的智能体任务。 ",
+            "查看文档",
             self.integration_docs_link_mouse_state.clone(),
             SetupGuideDocs::Integration,
             appearance,

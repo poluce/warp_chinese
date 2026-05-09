@@ -22,13 +22,13 @@ pub enum OzLaunchSlide {
 
 impl Slide for OzLaunchSlide {
     fn modal_title(&self) -> String {
-        "Introducing Oz".to_string()
+        "Oz 介绍".to_string()
     }
 
     fn modal_subtext_paragraphs(&self) -> Vec<FormattedTextLine> {
         vec![FormattedTextLine::Line(vec![
             FormattedTextFragment::plain_text(
-                "Infinitely scalable coding agent — run in local sessions or in the cloud.",
+                "无限可扩展的编码代理 — 在本地或云中运行。",
             ),
         ])]
     }
@@ -57,31 +57,31 @@ impl Slide for OzLaunchSlide {
 
     fn display_text(&self) -> Option<&'static str> {
         Some(match self {
-            OzLaunchSlide::CloudAgents => "Cloud agents",
-            OzLaunchSlide::AgentAutomations => "Agent automations",
-            OzLaunchSlide::AgentManagement => "Agent management",
-            OzLaunchSlide::LaunchCredits => "A little gift",
+            OzLaunchSlide::CloudAgents => "云端代理",
+            OzLaunchSlide::AgentAutomations => "代理自动化",
+            OzLaunchSlide::AgentManagement => "代理管理",
+            OzLaunchSlide::LaunchCredits => "一点小礼物",
         })
     }
 
     fn short_label(&self) -> &'static str {
         match self {
-            OzLaunchSlide::CloudAgents => "Cloud agents",
-            OzLaunchSlide::AgentAutomations => "Agent automations",
-            OzLaunchSlide::AgentManagement => "Agent management",
-            OzLaunchSlide::LaunchCredits => "Launch credits",
+            OzLaunchSlide::CloudAgents => "云端代理",
+            OzLaunchSlide::AgentAutomations => "代理自动化",
+            OzLaunchSlide::AgentManagement => "代理管理",
+            OzLaunchSlide::LaunchCredits => "启动积分",
         }
     }
 
     fn title(&self) -> &'static str {
         match self {
-            OzLaunchSlide::CloudAgents => "Break out of your laptop with cloud agents",
+            OzLaunchSlide::CloudAgents => "使用云端代理突破笔记本电脑的限制",
             OzLaunchSlide::AgentAutomations => {
-                "Orchestrate agents, turning Skills into automations"
+                "编排代理，将技能转化为自动化"
             }
-            OzLaunchSlide::AgentManagement => "Track local and cloud agents seamlessly",
+            OzLaunchSlide::AgentManagement => "无缝追踪本地和云端代理",
             OzLaunchSlide::LaunchCredits => {
-                "1,000 free cloud agent credits when you upgrade to Warp Build"
+                "升级到 Warp Build 即可获得 1,000 个免费云端代理积分"
             }
         }
     }
@@ -93,16 +93,16 @@ impl Slide for OzLaunchSlide {
     fn content(&self) -> &'static str {
         match self {
             OzLaunchSlide::CloudAgents => {
-                "Use cloud agents to run many agents in parallel, keep agents working when you close your laptop, or start agents programmatically. Plus, you can check on their work through the web."
+                "使用云端代理并行运行多个代理，在关闭笔记本电脑后让代理继续工作，或通过编程方式启动代理。此外，您还可以通过网络查看它们的工作进度。"
             }
             OzLaunchSlide::AgentAutomations => {
-                "Oz agents can be defined using the standard Skills format. You can use the built in scheduler to setup agents to run autonomously at set intervals, or use the Oz SDK or API to programmatically start and manage Oz agents."
+                "Oz 代理可以使用标准的技能格式进行定义。您可以使用内置调度器设置代理按固定间隔自主运行，或使用 Oz SDK 或 API 以编程方式启动和管理 Oz 代理。"
             }
             OzLaunchSlide::AgentManagement => {
-                "View all of your agents across local and cloud sessions in the Warp app or at [oz.warp.dev](https://oz.warp.dev). Join live agent sessions, continue tasks locally, and steer agents with one click."
+                "在 Warp 应用或 [oz.warp.dev](https://oz.warp.dev) 上查看您所有本地和云端的代理。加入实时代理会话，在本地继续任务，一键操控代理。"
             }
             OzLaunchSlide::LaunchCredits => {
-                "Upgrade to Build this month and receive 1,000 extra credits to try using Oz. Credits are only eligible for Oz runs in Warp-hosted cloud environments."
+                "本月升级到 Build 套餐即可获得 1,000 额外积分用于体验 Oz。积分仅适用于在 Warp 托管的云环境中运行 Oz。"
             }
         }
     }
@@ -140,9 +140,9 @@ impl Slide for OzLaunchSlide {
             | OzLaunchSlide::AgentAutomations
             | OzLaunchSlide::AgentManagement => {
                 let next = self.next().expect("Non-final slides should have a next");
-                CTAButton::next_slide(next, format!("Next: {}", next.short_label()))
+                CTAButton::next_slide(next, format!("下一步：{}", next.short_label()))
             }
-            OzLaunchSlide::LaunchCredits => CTAButton::custom("Try it out", |ctx| {
+            OzLaunchSlide::LaunchCredits => CTAButton::custom("立即体验", |ctx| {
                 send_telemetry_from_ctx!(
                     CloudAgentTelemetryEvent::EnteredCloudMode {
                         entry_point: CloudModeEntryPoint::OzLaunchModal,
@@ -162,7 +162,7 @@ impl Slide for OzLaunchSlide {
 
     fn secondary_cta_button(&self) -> Option<CTAButton<Self>> {
         match self {
-            OzLaunchSlide::LaunchCredits => Some(CTAButton::close("Skip for now")),
+            OzLaunchSlide::LaunchCredits => Some(CTAButton::close("暂时跳过")),
             OzLaunchSlide::CloudAgents
             | OzLaunchSlide::AgentAutomations
             | OzLaunchSlide::AgentManagement => None,
@@ -171,8 +171,8 @@ impl Slide for OzLaunchSlide {
 
     fn checkbox_config(&self) -> Option<CheckboxConfig> {
         Some(CheckboxConfig {
-            label: "Sync conversations to cloud",
-            description: "Agent conversations stored in the cloud can be shared with anyone with one click, and allow conversations to be continued across devices and on logout.",
+            label: "将对话同步到云端",
+            description: "存储在云端的代理对话可以一键与任何人共享，并支持跨设备和退出登录后继续对话。",
         })
     }
 

@@ -677,9 +677,9 @@ impl CodeFooterView {
                     .iter()
                     .any(|s| matches!(s, LspRepoStatus::DisabledAndNotInstalled { .. }));
                 if any_needs_install {
-                    Some("Install servers".to_string())
+                    Some("安装服务器".to_string())
                 } else {
-                    Some("Enable servers".to_string())
+                    Some("启用服务器".to_string())
                 }
             }
         }
@@ -1173,7 +1173,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            "Open logs",
+            "打开日志",
             CodeFooterViewAction::OpenLogs,
         )
     }
@@ -1195,7 +1195,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            "Restart server",
+            "重启服务器",
             CodeFooterViewAction::RestartServer,
         )
     }
@@ -1218,7 +1218,7 @@ impl CodeFooterView {
                     .with_uniform_padding(2.)
                     .finish()
             },
-            "Stop server",
+            "停止服务器",
             CodeFooterViewAction::StopServer,
         )
     }
@@ -1240,7 +1240,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            "Start server",
+            "启动服务器",
             CodeFooterViewAction::StartServer,
         )
     }
@@ -1262,7 +1262,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            "Remove server",
+            "删除服务器",
             CodeFooterViewAction::RemoveServer,
         )
     }
@@ -1286,9 +1286,9 @@ impl CodeFooterView {
                     .finish()
             },
             if is_plural {
-                "Restart all servers"
+                "重启所有服务器"
             } else {
-                "Restart server"
+                "重启服务器"
             },
             CodeFooterViewAction::RestartAllServers,
         )
@@ -1314,9 +1314,9 @@ impl CodeFooterView {
                     .finish()
             },
             if is_plural {
-                "Stop all servers"
+                "停止所有服务器"
             } else {
-                "Stop server"
+                "停止服务器"
             },
             CodeFooterViewAction::StopAllServers,
         )
@@ -1342,11 +1342,11 @@ impl CodeFooterView {
                     .finish()
             },
             if !is_plural {
-                "Start server"
+                "启动服务器"
             } else if has_running {
-                "Start all stopped servers"
+                "启动所有已停止的服务器"
             } else {
-                "Start all servers"
+                "启动所有服务器"
             },
             CodeFooterViewAction::StartAllServers,
         )
@@ -1369,7 +1369,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            "Manage servers",
+            "管理服务器",
             CodeFooterViewAction::ManageServers,
         )
     }

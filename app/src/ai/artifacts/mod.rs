@@ -177,7 +177,7 @@ impl From<api::message::artifact_event::FileArtifact> for Artifact {
                 .file_name()
                 .and_then(|file_name| file_name.to_str())
                 .filter(|file_name| !file_name.trim().is_empty())
-                .unwrap_or("File")
+                .unwrap_or("文件")
                 .to_string(),
             mime_type: file.mime_type,
             description: if file.description.is_empty() {
@@ -293,7 +293,7 @@ pub fn file_button_label(filename: &str, filepath: &str) -> String {
     {
         return filepath_basename.to_string();
     }
-    "File".to_string()
+    "文件".to_string()
 }
 
 pub fn open_screenshot_lightbox<V: warpui::View>(

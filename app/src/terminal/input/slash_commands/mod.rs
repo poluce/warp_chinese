@@ -491,7 +491,7 @@ impl Input {
                     .filter(|name| !name.is_empty())
                 else {
                     show_error_toast(
-                        "Please provide a tab name after /rename-tab".to_owned(),
+                        "请在 /rename-tab 后提供标签名称".to_owned(),
                         ctx,
                     );
                     return true;
@@ -563,7 +563,7 @@ impl Input {
             create_project if command.name == commands::CREATE_NEW_PROJECT.name => {
                 if argument.is_none_or(|args| args.is_empty()) {
                     show_error_toast(
-                        "Please describe the project you want to create after /create-new-project"
+                        "请在 /create-new-project 后描述你想要创建的项目"
                             .to_owned(),
                         ctx,
                     );
@@ -590,7 +590,7 @@ impl Input {
                             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                                 toast_stack.add_ephemeral_toast(
                                     DismissibleToast::error(
-                                        "The /open-file command is only available for local sessions"
+                                        "/open-file 命令仅适用于本地会话"
                                             .to_owned(),
                                     ),
                                     window_id,
@@ -625,7 +625,7 @@ impl Input {
                             }
                             Ok(_) => {
                                 show_error_toast(
-                                    "The /open-file command only works for files, not directories"
+                                    "/open-file 命令仅适用于文件，不支持目录"
                                         .to_owned(),
                                     ctx,
                                 );
@@ -651,7 +651,7 @@ impl Input {
                 #[cfg(not(feature = "local_fs"))]
                 {
                     show_error_toast(
-                        "The /open-file command is not supported in this build".to_owned(),
+                        "此版本不支持 /open-file 命令".to_owned(),
                         ctx,
                     );
                     return true;
@@ -663,7 +663,7 @@ impl Input {
                     .as_ref(ctx)
                     .active_conversation(self.terminal_view_id)
                 else {
-                    show_error_toast("No active conversation to export".to_owned(), ctx);
+                    show_error_toast("没有活动的对话可供导出".to_owned(), ctx);
                     return true;
                 };
 
@@ -677,7 +677,7 @@ impl Input {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = DismissibleToast::default(String::from(
-                        "Conversation exported to clipboard",
+                        "对话已导出到剪贴板",
                     ));
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
@@ -693,7 +693,7 @@ impl Input {
                 #[cfg(target_family = "wasm")]
                 {
                     show_error_toast(
-                        "Export conversation to file unsupported in web".to_owned(),
+                        "Web 版本不支持导出对话到文件".to_owned(),
                         ctx,
                     );
                     return true;
@@ -865,7 +865,7 @@ impl Input {
                     .shared_session_status()
                     .is_sharer_or_viewer()
                 {
-                    show_error_toast("Session is already being shared".to_owned(), ctx);
+                    show_error_toast("会话已在共享中".to_owned(), ctx);
                     return true;
                 }
                 ctx.emit(Event::StartRemoteControl);
@@ -877,7 +877,7 @@ impl Input {
                     .active_conversation(self.terminal_view_id);
                 if conversation.is_none() {
                     show_error_toast(
-                        "Cannot show conversation cost: no active conversation".to_owned(),
+                        "无法显示对话费用：没有活动的对话".to_owned(),
                         ctx,
                     );
                 } else if conversation.is_some_and(|c| c.is_empty()) {

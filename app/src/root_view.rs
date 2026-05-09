@@ -1071,7 +1071,7 @@ fn open_warp_drive_object(arg: &OpenWarpDriveObjectArgs, ctx: &mut AppContext) {
 
 fn display_object_missing_error_in_window(window_id: WindowId, ctx: &mut AppContext) {
     crate::workspace::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-        let toast = DismissibleToast::error(String::from("Resource not found or access denied"));
+        let toast = DismissibleToast::error(String::from("未找到资源或访问被拒绝"));
         toast_stack.add_ephemeral_toast(toast, window_id, ctx);
     });
 }
@@ -2204,7 +2204,7 @@ impl RootView {
                     let theme_name = appearance
                         .theme()
                         .name()
-                        .unwrap_or_else(|| "Dark".to_string());
+                        .unwrap_or_else(|| "深色".to_string());
                     let (use_vertical_tabs, intention) = match selected_settings {
                         SelectedSettings::AgentDrivenDevelopment {
                             ui_customization, ..
@@ -2339,7 +2339,7 @@ impl RootView {
                 let theme_name = appearance
                     .theme()
                     .name()
-                    .unwrap_or_else(|| "Dark".to_string());
+                    .unwrap_or_else(|| "深色".to_string());
                 // Match the theme slide's image: read the onboarding view's in-progress
                 // customization rather than the globally-applied TabSettings, which still
                 // holds the user's pre-onboarding (or default) value until the flow
@@ -2387,7 +2387,7 @@ impl RootView {
                 let theme_name = appearance
                     .theme()
                     .name()
-                    .unwrap_or_else(|| "Dark".to_string());
+                    .unwrap_or_else(|| "深色".to_string());
                 let use_vertical_tabs = *TabSettings::as_ref(ctx).use_vertical_tabs;
 
                 // Open the sign-in URL in the browser for existing users.

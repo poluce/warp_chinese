@@ -198,7 +198,7 @@ fn print_integration_card(integration: &SimpleIntegration) {
     {
         if !base_prompt.is_empty() {
             let base_prompt_row = crate::ai::agent_sdk::text_layout::render_labeled_wrapped_field(
-                "Base prompt",
+                "基础提示词",
                 base_prompt,
                 MAX_LINE_WIDTH,
             );

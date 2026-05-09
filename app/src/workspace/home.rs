@@ -8,15 +8,15 @@ use warpui::ViewContext;
 use super::view::Workspace;
 use crate::pane_group::{AnyPaneContent, FilePane};
 
-const WARP_HOME_TITLE: &str = "Welcome to Warp on Web";
+const WARP_HOME_TITLE: &str = "欢迎使用 Warp Web 版";
 const WARP_HOME_CONTENT: &str = r#"
-Welcome to Warp on Web - your browser-based home for Warp! 
-Use Warp on Web to:
-* Join Shared Sessions
-* Create, View, and Edit Warp Drive Objects
-* Manage your Warp Settings
+欢迎使用 Warp Web 版 — 您的浏览器版 Warp 大本营！
+使用 Warp Web 版可以：
+* 加入共享会话
+* 创建、查看和编辑 Warp Drive 对象
+* 管理您的 Warp 设置
 
-Warp on Web can also be used by your teammates and peers who don't have Warp downloaded yet to view your shared sessions, notebooks, and workflows."#;
+尚未下载 Warp 的团队成员和同事也可以使用 Warp Web 版查看您的共享会话、笔记本和工作流。"#;
 
 /// Create a static "home page" pane.
 pub fn create_home_pane(ctx: &mut ViewContext<Workspace>) -> Box<dyn AnyPaneContent> {

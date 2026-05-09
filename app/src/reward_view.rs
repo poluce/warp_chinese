@@ -18,23 +18,23 @@ const TADA_FONT_SIZE: f32 = 60.;
 const TADA_MARGIN_TOP: f32 = 0.;
 const TADA_MARGIN_BOTTOM: f32 = 50.;
 // Constants for the main title
-const TITLE: &str = "Congrats!";
+const TITLE: &str = "恭喜！";
 const TITLE_FONT_SIZE: f32 = 20.;
 const TITLE_MARGIN_BOTTOM: f32 = 25.;
 // Constants for the subtitle
 const SUBTITLE_SENT_REFERRAL: &str =
-    "You earned an exclusive Warp theme for referring someone to Warp.";
+    "你因推荐他人使用 Warp 而获得专属 Warp 主题。";
 const SUBTITLE_RECEIVED_REFERRAL: &str =
-    "You earned an exclusive Warp theme for being referred to Warp.";
+    "你因被推荐使用 Warp 而获得专属 Warp 主题。";
 const SUBTITLE_FONT_SIZE: f32 = 14.;
 const SUBTITLE_MARGIN_BOTTOM: f32 = 40.;
 // Constants for the button
-const BUTTON_CTA: &str = "Try it out!";
+const BUTTON_CTA: &str = "立即体验！";
 const BUTTON_FONT_SIZE: f32 = 14.;
 const BUTTON_HEIGHT: f32 = 45.;
 const BUTTON_WIDTH: f32 = 240.;
 const BUTTON_MARGIN_BOTTOM: f32 = 14.;
-const ACCESSIBILITY_HELP: &str = "Press enter to open the theme chooser or escape to dismiss.";
+const ACCESSIBILITY_HELP: &str = "按 Enter 打开主题选择器，或按 Esc 关闭。";
 
 pub fn init(app: &mut AppContext) {
     use warpui::keymap::macros::*;

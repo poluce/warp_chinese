@@ -80,7 +80,7 @@ impl std::fmt::Display for SettingsFileError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::FileParseFailed(_) => {
-                write!(f, "Couldn't parse due to invalid syntax")
+                write!(f, "无法解析，语法无效")
             }
             Self::InvalidSettings(keys) => match keys.as_slice() {
                 [key] => write!(f, "Invalid value for '{key}'"),
@@ -98,16 +98,16 @@ impl SettingsFileError {
     pub fn heading_and_description(&self) -> (String, String) {
         match self {
             Self::FileParseFailed(_) => (
-                "Your settings file contains an error.".to_owned(),
+                "设置文件包含错误。".to_owned(),
                 format!("{self}. Open the file to fix it."),
             ),
             Self::InvalidSettings(keys) => match keys.len() {
                 1 => (
-                    "Your settings file contains an error.".to_owned(),
+                    "设置文件包含错误。".to_owned(),
                     format!("{self}. The default value is being used."),
                 ),
                 _ => (
-                    "Your settings file contains errors.".to_owned(),
+                    "设置文件包含错误。".to_owned(),
                     format!("{self}. Default values are being used."),
                 ),
             },
@@ -220,9 +220,9 @@ pub enum CtrlTabBehavior {
 impl CtrlTabBehavior {
     pub fn as_dropdown_label(&self) -> &str {
         match self {
-            Self::ActivatePrevNextTab => "Activate previous/next tab",
-            Self::CycleMostRecentSession => "Cycle most recent session",
-            Self::CycleMostRecentTab => "Cycle most recent tab",
+            Self::ActivatePrevNextTab => "激活上一个/下一个标签页",
+            Self::CycleMostRecentSession => "切换最近的会话",
+            Self::CycleMostRecentTab => "切换最近的标签页",
         }
     }
 }
@@ -270,9 +270,9 @@ pub enum GlobalHotkeyMode {
 impl GlobalHotkeyMode {
     pub fn as_dropdown_label(&self) -> &str {
         match self {
-            Self::Disabled => "Disabled",
-            Self::QuakeMode => "Dedicated hotkey window",
-            Self::ActivationHotkey => "Show/hide all windows",
+            Self::Disabled => "已禁用",
+            Self::QuakeMode => "专用热键窗口",
+            Self::ActivationHotkey => "显示/隐藏所有窗口",
         }
     }
 }

@@ -451,7 +451,7 @@ pub(super) fn render(props: Props, app: &AppContext) -> Box<dyn Element> {
                                             // action so the user sees the error instead
                                             // of an empty box.
                                             let formatted_text = render_requested_action_body_text(
-                                                "Failed to read files".into(),
+                                                "读取文件失败".into(),
                                                 appearance.ui_font_family(),
                                                 app,
                                             );
@@ -2221,11 +2221,11 @@ fn render_suggest_new_conversation(
         };
         let (label, status_icon) = match result {
             SuggestNewConversationResult::Accepted { .. } => (
-                "New conversation started",
+                "新会话已开始",
                 inline_action_icons::green_check_icon(appearance).finish(),
             ),
             SuggestNewConversationResult::Rejected => (
-                "Continuing current conversation",
+                "继续当前会话",
                 warpui::elements::Icon::new(
                     Icon::FlipForward.into(),
                     internal_colors::neutral_6(theme),
@@ -2233,7 +2233,7 @@ fn render_suggest_new_conversation(
                 .finish(),
             ),
             SuggestNewConversationResult::Cancelled => (
-                "New conversation suggestion cancelled",
+                "新建会话建议已取消",
                 inline_action_icons::cancelled_icon(appearance).finish(),
             ),
         };
@@ -3809,16 +3809,16 @@ fn conversation_search_phase(task: &crate::ai::agent::task::Task) -> Conversatio
 
 fn format_conversation_search_phase(phase: &ConversationSearchPhase) -> String {
     match phase {
-        ConversationSearchPhase::ListingMessages => "Listing messages".to_string(),
+        ConversationSearchPhase::ListingMessages => "正在列出消息".to_string(),
         ConversationSearchPhase::Grepping { patterns } => {
             if patterns.is_empty() {
-                return "Grepping for patterns".to_string();
+                return "正在搜索模式".to_string();
             }
             let joined = truncate_from_end(&patterns.join(", "), 60);
             format!("Grepping for patterns: {joined}")
         }
         ConversationSearchPhase::ReadingMessages { count } => {
-            format!("Reading {count} messages")
+            format!("正在读取 {count} 条消息")
         }
     }
 }

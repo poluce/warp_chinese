@@ -774,9 +774,9 @@ fn render_hide_responses_button(
     .finish();
 
     let tooltip_text = if should_hide_responses {
-        "Show agent responses"
+        "显示智能体回复"
     } else {
-        "Hide agent responses"
+        "隐藏智能体回复"
     };
 
     render_warping_indicator_button(
@@ -838,7 +838,7 @@ fn render_stop_button(props: ButtonProps, appearance: &Appearance) -> Box<dyn El
         appearance,
         stop_icon,
         props.keystroke,
-        "Stop agent task".to_string(),
+        "停止智能体任务".to_string(),
         props.is_active,
         |ctx: &mut EventContext<'_>| {
             ctx.dispatch_typed_action(BlocklistAIStatusBarAction::Stop);
@@ -3122,7 +3122,7 @@ fn render_invalid_api_key_error(
             background: Some(internal_colors::fg_overlay_3(theme).into()),
             ..Default::default()
         })
-        .with_text_label("Edit API Keys".to_string())
+        .with_text_label("编辑 API 密钥".to_string())
         .with_cursor(Some(Cursor::PointingHand))
         .build()
         .on_click(move |ctx, _, _| {

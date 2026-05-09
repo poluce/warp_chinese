@@ -237,13 +237,13 @@ fn map_conversation_status(
                 Some(error) => classify_renderable_error(error),
                 None => (
                     AgentTaskState::Error,
-                    Some(TaskStatusUpdate::message("Agent encountered an error")),
+                    Some(TaskStatusUpdate::message("智能体遇到错误")),
                 ),
             }
         }
         ConversationStatus::Cancelled => (
             AgentTaskState::Cancelled,
-            Some(TaskStatusUpdate::message("Cancelled by user")),
+            Some(TaskStatusUpdate::message("用户已取消")),
         ),
         ConversationStatus::Blocked { blocked_action } => (
             AgentTaskState::Blocked,

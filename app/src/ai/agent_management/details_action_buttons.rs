@@ -115,7 +115,7 @@ impl ConversationActionButtonsRow {
         let open_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::LinkExternal,
-                "Open conversation",
+                "打开会话",
                 None,
                 AgentDetailsAction::Open,
             )
@@ -124,7 +124,7 @@ impl ConversationActionButtonsRow {
         let cancel_task_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::StopFilled,
-                "Cancel task",
+                "取消任务",
                 Some(AnsiColorIdentifier::Red),
                 AgentDetailsAction::CancelTask,
             )
@@ -133,7 +133,7 @@ impl ConversationActionButtonsRow {
         let fork_conversation_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::ArrowSplit,
-                "Fork conversation",
+                "分支会话",
                 None,
                 AgentDetailsAction::ForkConversation,
             )
@@ -142,7 +142,7 @@ impl ConversationActionButtonsRow {
         let view_details_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::Info,
-                "View details",
+                "查看详情",
                 None,
                 AgentDetailsAction::ViewDetails,
             )
@@ -151,7 +151,7 @@ impl ConversationActionButtonsRow {
         let copy_link_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::Link,
-                "Copy link to run",
+                "复制运行链接",
                 None,
                 AgentDetailsAction::CopyLink,
             )

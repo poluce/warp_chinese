@@ -544,7 +544,7 @@ impl ImportedCommentElementState {
                 ActionButton::new("", NakedTheme)
                     .with_icon(Icon::Github)
                     .with_size(ButtonSize::Small)
-                    .with_tooltip("Open in GitHub")
+                    .with_tooltip("在 GitHub 中打开")
                     .on_click({
                         let url = url.clone();
                         move |ctx| {
@@ -558,7 +558,7 @@ impl ImportedCommentElementState {
 
         let action_id_for_open_button = action_id.clone();
         let open_in_code_review_button = ctx.add_typed_action_view(move |_| {
-            ActionButton::new("Open in code review", SecondaryTheme)
+            ActionButton::new("在代码审查中打开", SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(move |ctx| {
                     ctx.dispatch_typed_action(AIBlockAction::OpenImportedCommentInCodeReview {
@@ -1113,7 +1113,7 @@ impl AIBlock {
         });
 
         let manage_rules_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Manage rules", NakedTheme)
+            ActionButton::new("管理规则", NakedTheme)
                 .on_click(|ctx| ctx.dispatch_typed_action(AIBlockAction::OpenAIFactCollection))
         });
 
@@ -1244,7 +1244,7 @@ impl AIBlock {
         });
 
         let review_changes_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Review changes", SecondaryTheme)
+            ActionButton::new("审查更改", SecondaryTheme)
                 .with_icon(Icon::Diff)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
@@ -1253,7 +1253,7 @@ impl AIBlock {
         });
 
         let open_all_comments_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Open all in code review", SecondaryTheme)
+            ActionButton::new("全部在代码审查中打开", SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(AIBlockAction::OpenAllImportedCommentsInCodeReview);
@@ -1261,7 +1261,7 @@ impl AIBlock {
         });
 
         let dismiss_suggestion_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Dismiss", SuggestionDismissButtonTheme)
+            ActionButton::new("关闭", SuggestionDismissButtonTheme)
                 .with_icon(Icon::X)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
@@ -1270,7 +1270,7 @@ impl AIBlock {
         });
 
         let disable_rule_suggestions_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Don't show again", SuggestionDismissButtonTheme)
+            ActionButton::new("不再显示", SuggestionDismissButtonTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(AIBlockAction::DisableRuleSuggestions);
@@ -1281,9 +1281,9 @@ impl AIBlock {
         let exchange_id = client_ids.client_exchange_id;
         let conversation_id = client_ids.conversation_id;
         let rewind_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Rewind", RewindButtonTheme)
+            ActionButton::new("回退", RewindButtonTheme)
                 .with_size(ButtonSize::XSmall)
-                .with_tooltip("Rewind to before this block")
+                .with_tooltip("回退到该块之前")
                 .on_click(move |ctx| {
                     ctx.dispatch_typed_action(TerminalAction::RewindAIConversation {
                         ai_block_view_id,
@@ -1960,9 +1960,9 @@ impl AIBlock {
                     action: AIAgentActionType::SuggestNewConversation { .. },
                     ..
                 } => {
-                    let start_new_conversation_button_text = "Start a new conversation".to_owned();
+                    let start_new_conversation_button_text = "开始新会话".to_owned();
                     let continue_current_conversation_button_text =
-                        "Continue current conversation".to_owned();
+                        "继续当前会话".to_owned();
 
                     let server_output_id = self.model.server_output_id(ctx);
                     let accept_action = AIBlockAction::StartNewConversationButtonClicked {
@@ -5868,7 +5868,7 @@ impl TypedActionView for AIBlock {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(String::from("Copied to clipboard")),
+                        DismissibleToast::success(String::from("已复制到剪贴板")),
                         window_id,
                         ctx,
                     );
@@ -6175,7 +6175,7 @@ impl TypedActionView for AIBlock {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast =
-                        DismissibleToast::default(String::from("Thank you for the feedback!"));
+                        DismissibleToast::default(String::from("感谢您的反馈！"));
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
 

@@ -49,17 +49,17 @@ use warpui::{
 use super::{is_edit_allowed, is_syncing, style, AIFact, CloudAIFact, CloudAIFactModel};
 use crate::ai::facts::AIMemory;
 
-pub const HEADER_TEXT: &str = "Rules";
-const DESCRIPTION_TEXT: &str = "Rules enhance the agent by providing structured guidelines that help maintain consistency, enforce best practices, and adapt to specific workflows, including codebases or broader tasks.";
+pub const HEADER_TEXT: &str = "规则";
+const DESCRIPTION_TEXT: &str = "规则通过提供结构化指南来增强智能体，帮助保持一致性、强制执行最佳实践，并适应特定工作流程，包括代码库或更广泛的任务。";
 
-const SEARCH_PLACEHOLDER_TEXT: &str = "Search rules";
-const ZERO_STATE_TEXT: &str = "Once you add a rule, it will be shown here.";
+const SEARCH_PLACEHOLDER_TEXT: &str = "搜索规则";
+const ZERO_STATE_TEXT: &str = "添加规则后，它将显示在此处。";
 const ZERO_STATE_TEXT_PROJECT: &str =
-    "Once you generate a WARP.md rules file for a project, it will appear here.";
+    "为项目生成 WARP.md 规则文件后，它将显示在此处。";
 
 const DISABLED_BANNER_TEXT: &str =
-    "Your rules are disabled and won't be used as context in sessions. You can ";
-const DISABLED_BANNER_LINK_TEXT: &str = "turn it back on";
+    "您的规则已禁用，不会在会话中用作上下文。您可以 ";
+const DISABLED_BANNER_LINK_TEXT: &str = "重新启用";
 const DISABLED_BANNER_TEXT_2: &str = " anytime.";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -260,13 +260,13 @@ impl RuleView {
         let search_bar = ctx.add_typed_action_view(|_| SearchBar::new(search_editor.clone()));
 
         let add_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Add", NakedTheme)
+            ActionButton::new("添加", NakedTheme)
                 .with_icon(Icon::Plus)
                 .on_click(|ctx| ctx.dispatch_typed_action(RuleViewAction::AddRule))
         });
 
         let initialize_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Initialize Project", NakedTheme)
+            ActionButton::new("初始化项目", NakedTheme)
                 .with_icon(Icon::Plus)
                 .on_click(|ctx| ctx.dispatch_typed_action(RuleViewAction::InitializeProject))
         });
@@ -465,7 +465,7 @@ impl RuleView {
 
     fn render_scope_tabs(&self, appearance: &Appearance) -> Box<dyn Element> {
         let global_tab = Container::new(self.render_scope_tab(
-            "Global",
+            "全局",
             RuleScope::Global,
             appearance,
             self.global_tab_mouse_state.clone(),
@@ -473,7 +473,7 @@ impl RuleView {
         .with_padding_right(4.)
         .finish();
         let project_tab = self.render_scope_tab(
-            "Project based",
+            "基于项目",
             RuleScope::ProjectBased,
             appearance,
             self.project_tab_mouse_state.clone(),
@@ -693,7 +693,7 @@ impl RuleView {
             appearance
                 .ui_builder()
                 .button(ButtonVariant::Outlined, project_row.mouse_state.clone())
-                .with_text_label("Open file".to_string())
+                .with_text_label("打开文件".to_string())
                 .build()
                 .on_click(move |ctx, _, _| {
                     ctx.dispatch_typed_action(RuleViewAction::OpenFile(file_path.clone()));
@@ -727,12 +727,12 @@ impl RuleView {
         let formatted_name = match name {
             Some(name) => {
                 if name.is_empty() {
-                    "Untitled".to_string()
+                    "无标题".to_string()
                 } else {
                     name
                 }
             }
-            None => "Untitled".to_string(),
+            None => "无标题".to_string(),
         };
         // Truncate content to 3 lines
         let formatted_content = if content.split("\n").count() > 3 {

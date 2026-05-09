@@ -218,7 +218,7 @@ fn render_linked_code_block_internal(
             let insert_button = render_button(
                 appearance,
                 Icon::AtSign,
-                "Add as Context",
+                "添加为上下文",
                 mouse_handles.insert_button,
                 insert_text,
                 on_insert,
@@ -237,7 +237,7 @@ fn render_linked_code_block_internal(
             let copy_button = render_button(
                 appearance,
                 Icon::Copy,
-                "Copy",
+                "复制",
                 mouse_handles.copy_button,
                 code_clone.clone(),
                 on_copy,
@@ -256,7 +256,7 @@ fn render_linked_code_block_internal(
             let open_button = render_button(
                 appearance,
                 Icon::LinkExternal,
-                "Open in Warp",
+                "在 Warp 中打开",
                 mouse_handles.open_button,
                 code_clone.clone(),
                 on_open,
@@ -325,7 +325,7 @@ fn render_plain_code_block_internal(
             let copy_button = render_button(
                 appearance,
                 Icon::Copy,
-                "Copy",
+                "复制",
                 mouse_handles.copy_button,
                 code_clone.clone(),
                 on_copy,
@@ -340,7 +340,7 @@ fn render_plain_code_block_internal(
             let insert_button = render_button(
                 appearance,
                 Icon::TerminalInput,
-                "Run in terminal",
+                "在终端中运行",
                 mouse_handles.insert_button,
                 code_clone.clone(),
                 on_execute,

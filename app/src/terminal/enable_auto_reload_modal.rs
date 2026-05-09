@@ -218,7 +218,7 @@ impl EnableAutoReloadModalBody {
                 " will automatically purchase your selected package when you run out. ",
             ),
             FormattedTextFragment::hyperlink(
-                "Learn more",
+                "了解更多",
                 "https://docs.warp.dev/support-and-community/plans-and-billing/add-on-credits#id-2.-enable-auto-reload",
             ),
         ];
@@ -270,7 +270,7 @@ impl EnableAutoReloadModalBody {
                 }),
                 ..Default::default()
             })
-            .with_text_label("Cancel".to_string())
+            .with_text_label("取消".to_string())
             .build()
             .on_click(|ctx, _, _| {
                 ctx.dispatch_typed_action(Action::Cancel);

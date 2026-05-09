@@ -127,14 +127,14 @@ use crate::view_components::ToastLink;
 #[cfg(not(target_family = "wasm"))]
 use crate::workspace::WorkspaceAction;
 
-const ENABLE_NLD_TOOLTIP: &str = "Enable terminal command autodetection";
-const DISABLE_NLD_TOOLTIP: &str = "Disable terminal command autodetection";
+const ENABLE_NLD_TOOLTIP: &str = "启用终端命令自动检测";
+const DISABLE_NLD_TOOLTIP: &str = "禁用终端命令自动检测";
 
-const FAST_FORWARD_ON_TOOLTIP: &str = "Turn off auto-approve all agent actions";
-const FAST_FORWARD_OFF_TOOLTIP: &str = "Auto-approve all agent actions for this task";
+const FAST_FORWARD_ON_TOOLTIP: &str = "关闭自动批准所有智能体操作";
+const FAST_FORWARD_OFF_TOOLTIP: &str = "自动批准此任务的所有智能体操作";
 
-const START_REMOTE_CONTROL_TOOLTIP: &str = "Start remote control";
-const START_REMOTE_CONTROL_LOGIN_REQUIRED_TOOLTIP: &str = "Log in to use /remote-control";
+const START_REMOTE_CONTROL_TOOLTIP: &str = "启动远程控制";
+const START_REMOTE_CONTROL_LOGIN_REQUIRED_TOOLTIP: &str = "登录以使用 /remote-control";
 
 const CLOUD_MODE_V2_FOOTER_GAP: f32 = 4.;
 
@@ -378,9 +378,9 @@ impl AgentInputFooter {
         // CLI agent-specific buttons (only rendered when a CLI agent session is active).
         let cli_button_size = ButtonSize::AgentInputButton;
         let file_explorer_button = ctx.add_typed_action_view(|ctx| {
-            ActionButton::new("File explorer", AgentInputButtonTheme)
+            ActionButton::new("文件资源管理器", AgentInputButtonTheme)
                 .with_icon(Icon::FileCopy)
-                .with_tooltip("Open file explorer")
+                .with_tooltip("打开文件资源管理器")
                 .with_size(cli_button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
                 .with_keybinding(
@@ -393,9 +393,9 @@ impl AgentInputFooter {
                 })
         });
         let rich_input_button = ctx.add_typed_action_view(|ctx| {
-            ActionButton::new("Rich Input", AgentInputButtonTheme)
+            ActionButton::new("富文本输入", AgentInputButtonTheme)
                 .with_icon(Icon::TextInput)
-                .with_tooltip("Open Rich Input")
+                .with_tooltip("打开富文本输入")
                 .with_size(cli_button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
                 .with_keybinding(
@@ -410,7 +410,7 @@ impl AgentInputFooter {
         let settings_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("", AgentInputButtonTheme)
                 .with_icon(Icon::Settings)
-                .with_tooltip("Open coding agent settings")
+                .with_tooltip("打开编码智能体设置")
                 .with_size(cli_button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
                 .on_click(|ctx| {
@@ -419,10 +419,10 @@ impl AgentInputFooter {
         });
 
         let install_plugin_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Enable notifications", InstallPluginButtonTheme)
+            ActionButton::new("启用通知", InstallPluginButtonTheme)
                 .with_icon(Icon::Download)
                 .with_tooltip(
-                    "Install the Warp plugin to enable rich agent notifications within Warp",
+                    "安装 Warp 插件以启用 Warp 内的丰富智能体通知",
                 )
                 .with_size(cli_button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
@@ -433,9 +433,9 @@ impl AgentInputFooter {
         });
 
         let plugin_instructions_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Notifications setup instructions", InstallPluginButtonTheme)
+            ActionButton::new("通知设置说明", InstallPluginButtonTheme)
                 .with_icon(Icon::Info)
-                .with_tooltip("View instructions to install the Warp plugin")
+                .with_tooltip("查看安装 Warp 插件的说明")
                 .with_size(cli_button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
                 .with_adjoined_side(AdjoinedSide::Right)
@@ -447,9 +447,9 @@ impl AgentInputFooter {
         });
 
         let update_plugin_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Update Warp plugin", InstallPluginButtonTheme)
+            ActionButton::new("更新 Warp 插件", InstallPluginButtonTheme)
                 .with_icon(Icon::Download)
-                .with_tooltip("A new version of the Warp plugin is available")
+                .with_tooltip("新版本的 Warp 插件可用")
                 .with_size(cli_button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
                 .with_adjoined_side(AdjoinedSide::Right)
@@ -459,9 +459,9 @@ impl AgentInputFooter {
         });
 
         let update_instructions_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Plugin update instructions", InstallPluginButtonTheme)
+            ActionButton::new("插件更新说明", InstallPluginButtonTheme)
                 .with_icon(Icon::Info)
-                .with_tooltip("View instructions to update the Warp plugin")
+                .with_tooltip("查看更新 Warp 插件的说明")
                 .with_size(cli_button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
                 .with_adjoined_side(AdjoinedSide::Right)
@@ -587,10 +587,10 @@ impl AgentInputFooter {
         });
 
         let stop_remote_control_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Stop sharing", RemoteControlButtonTheme)
+            ActionButton::new("停止共享", RemoteControlButtonTheme)
                 .with_icon(Icon::StopFilled)
                 .with_icon_ansi_color(AnsiColorIdentifier::Red)
-                .with_tooltip("Stop sharing")
+                .with_tooltip("停止共享")
                 .with_size(cli_button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
                 .on_click(|ctx| {
@@ -601,7 +601,7 @@ impl AgentInputFooter {
         let context_window_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("", AgentInputButtonTheme)
                 .with_icon(Icon::ConversationContext0)
-                .with_tooltip("Context window usage")
+                .with_tooltip("上下文窗口使用情况")
                 .with_size(button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
         });

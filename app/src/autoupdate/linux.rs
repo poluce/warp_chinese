@@ -210,10 +210,10 @@ mod package_manager {
                     ))],
                 }),
                 FormattedTextLine::Line(vec![
-                    FormattedTextFragment::plain_text("If you installed Warp using "),
+                    FormattedTextFragment::plain_text("如果您通过 "),
                     FormattedTextFragment::bold(package_manager_name),
                     FormattedTextFragment::plain_text(
-                        " or a compatible tool, the pre-filled command will update Warp for you.",
+                        " 或兼容工具安装了 Warp，预填的命令将为您更新 Warp。",
                     ),
                 ]),
             ];
@@ -221,7 +221,7 @@ mod package_manager {
             if self.package_manager.needs_repository_configuration() {
                 lines.push(FormattedTextLine::Line(vec![
                     FormattedTextFragment::plain_text(
-                        "\nThe command below includes a one-time configuration of the Warp package repository and PGP signing key.",
+                        "\n以下命令包含一次性的 Warp 软件包仓库和 PGP 签名密钥配置。",
                     ),
                 ]));
             }
@@ -232,21 +232,21 @@ mod package_manager {
             {
                 lines.push(FormattedTextLine::Line(vec![
                     FormattedTextFragment::plain_text(
-                        "\nThe ",
+                        "\n",
                     ),
                     FormattedTextFragment::inline_code("warp_handle_dist_upgrade"),
                     FormattedTextFragment::plain_text(
-                        " function ensures the Warp package repository is enabled, as we've detected you recently upgraded your distribution.",
+                        " 函数用于确保 Warp 软件包仓库已启用，因为我们检测到您最近升级了系统发行版。",
                     ),
                 ]));
             }
 
             lines.push(FormattedTextLine::Line(vec![
-                FormattedTextFragment::plain_text("\nReview the command below, then "),
-                FormattedTextFragment::bold("press enter"),
-                FormattedTextFragment::plain_text(" to install the update and re-launch Warp.  "),
+                FormattedTextFragment::plain_text("\n请查看以下命令，然后"),
+                FormattedTextFragment::bold("按 Enter 键"),
+                FormattedTextFragment::plain_text(" 以安装更新并重新启动 Warp。  "),
                 FormattedTextFragment::hyperlink(
-                    "Please report any issues",
+                    "请报告任何问题",
                     "https://github.com/warpdotdev/Warp/issues/new/choose",
                 ),
             ]));

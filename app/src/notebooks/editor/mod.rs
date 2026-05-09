@@ -136,13 +136,13 @@ impl BlockType {
 
     fn label(self) -> &'static str {
         match self {
-            BlockType::Text => "Text",
+            BlockType::Text => "文本",
             BlockType::Header(size) => size.label(),
-            BlockType::RunnableCommand => "Command",
-            BlockType::UnorderedList => "Bulleted list",
-            BlockType::OrderedList => "Numbered list",
-            BlockType::Code => "Code",
-            BlockType::TaskList => "To-do list",
+            BlockType::RunnableCommand => "命令",
+            BlockType::UnorderedList => "无序列表",
+            BlockType::OrderedList => "有序列表",
+            BlockType::Code => "代码",
+            BlockType::TaskList => "任务列表",
         }
     }
 }

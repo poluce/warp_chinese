@@ -645,7 +645,7 @@ impl InputSuggestions {
         ctx: &mut ViewContext<Self>,
     ) {
         ctx.emit_a11y_content(AccessibilityContent::new_without_help(
-            "Closed suggestions.",
+            "建议已关闭。",
             WarpA11yRole::UserAction,
         ));
         ctx.emit(Event::CloseSuggestion {
@@ -701,7 +701,7 @@ impl InputSuggestions {
                     Align::new(
                         Container::new(
                             Text::new_inline(
-                                String::from("No suggestions"),
+                                String::from("无建议"),
                                 appearance.monospace_font_family(),
                                 appearance.monospace_font_size(),
                             )
@@ -885,7 +885,7 @@ impl InputSuggestions {
 
                                             let tooltip_element = appearance
                                                 .ui_builder()
-                                                .tool_tip("Ignore this suggestion".to_string())
+                                                .tool_tip("忽略此建议".to_string())
                                                 .build()
                                                 .finish();
 
@@ -1085,10 +1085,9 @@ impl View for InputSuggestions {
 
     fn accessibility_contents(&self, _: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            "Command suggestions.",
+            "命令建议。",
             // TODO use bindings from user settings
-            "Navigate with tab and shift-tab, and confirm with enter. Execute selected command \
-                with command + enter. Esc leaves the suggestions menu.",
+            "使用 Tab 和 Shift+Tab 导航，按 Enter 确认。按 Command+Enter 执行所选命令。按 Esc 退出建议菜单。",
             WarpA11yRole::MenuRole,
         ))
     }

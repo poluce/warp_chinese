@@ -266,7 +266,7 @@ impl CodeReviewState {
                 .map(|repo_path| {
                     let display_name = self
                         .get_repo_display_name(repo_path)
-                        .unwrap_or_else(|| "Unknown".to_string());
+                        .unwrap_or_else(|| "未知".to_string());
                     DropdownItem::new(
                         display_name,
                         RightPanelAction::SelectRepo {
@@ -352,7 +352,7 @@ impl RightPanelView {
 
         app.register_editable_bindings([EditableBinding::new(
             "workspace:toggle_maximize_code_review_panel",
-            "Toggle Maximize Code Review Panel",
+            "切换最大化代码审查面板",
             RightPanelAction::ToggleMaximize,
         )
         .with_enabled(|| cfg!(feature = "local_fs"))
@@ -402,7 +402,7 @@ impl RightPanelView {
         let maximize_button = ctx.add_typed_action_view(|ctx| {
             let mut button = ActionButton::new("", PaneHeaderTheme)
                 .with_icon(Icon::Maximize)
-                .with_tooltip("Maximize")
+                .with_tooltip("最大化")
                 .with_tooltip_positioning_provider(Arc::new(MenuPositioning::BelowInputBox))
                 .on_click(|ctx| ctx.dispatch_typed_action(RightPanelAction::ToggleMaximize));
 
@@ -418,9 +418,9 @@ impl RightPanelView {
 
         #[cfg(feature = "local_fs")]
         let open_repository_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Open repository", NakedTheme)
+            ActionButton::new("打开仓库", NakedTheme)
                 .with_size(crate::view_components::action_button::ButtonSize::Small)
-                .with_tooltip("Navigate to a repo and initialize it for coding")
+                .with_tooltip("导航到仓库并初始化为编码环境")
                 .with_tooltip_alignment(TooltipAlignment::Center)
                 .on_click(|ctx| ctx.dispatch_typed_action(RightPanelAction::OpenRepository))
         });
@@ -712,12 +712,12 @@ impl RightPanelView {
 
         let tooltip = if let Some(keybinding) = tooltip_keybinding {
             ui_builder
-                .tool_tip_with_sublabel("Close panel".to_string(), keybinding)
+                .tool_tip_with_sublabel("关闭面板".to_string(), keybinding)
                 .build()
                 .finish()
         } else {
             ui_builder
-                .tool_tip("Close panel".to_string())
+                .tool_tip("关闭面板".to_string())
                 .build()
                 .finish()
         };
@@ -981,7 +981,7 @@ impl RightPanelView {
 
         let title = Shrinkable::new(
             1.0,
-            Text::new_inline("Code review".to_string(), appearance.ui_font_family(), 12.)
+            Text::new_inline("代码审查".to_string(), appearance.ui_font_family(), 12.)
                 .with_style(Properties::default().weight(Weight::Bold))
                 .with_color(sub_text_color.into())
                 .finish(),
@@ -1027,9 +1027,9 @@ impl RightPanelView {
 
     pub fn set_maximized(&mut self, is_maximized: bool, ctx: &mut ViewContext<Self>) {
         let (icon, tooltip) = if is_maximized {
-            (Icon::Minimize, "Minimize")
+            (Icon::Minimize, "最小化")
         } else {
-            (Icon::Maximize, "Maximize")
+            (Icon::Maximize, "最大化")
         };
 
         self.maximize_button.update(ctx, |button, ctx| {

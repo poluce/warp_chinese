@@ -263,7 +263,7 @@ impl ConversationUsageView {
             );
         }
 
-        labels.push(render_label_text("Context window used", appearance));
+        labels.push(render_label_text("已使用的上下文窗口", appearance));
         let context_usage_str =
             format!("{}%", (self.usage_info.context_window_usage * 100.).round());
         let context_window_element = Flex::row()

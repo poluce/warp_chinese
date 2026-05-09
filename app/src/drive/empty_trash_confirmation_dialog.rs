@@ -16,9 +16,9 @@ use crate::{
 
 const CANCEL_TEXT: &str = "Cancel";
 
-const EMPTY_TRASH_TITLE_TEXT: &str = "Are you sure you want to empty the trash?";
-const EMPTY_TRASH_BODY_TEXT: &str = "This action cannot be undone.";
-const EMPTY_TRASH_CONFIRM_TEXT: &str = "Yes, empty trash";
+const EMPTY_TRASH_TITLE_TEXT: &str = "确定要清空回收站吗？";
+const EMPTY_TRASH_BODY_TEXT: &str = "此操作无法撤销。";
+const EMPTY_TRASH_CONFIRM_TEXT: &str = "确认清空";
 
 // This follows our new design standard for confirmation dialogs (e.g. used in the session sharing dialog)
 // Design team has discouraged us from continuing to use CloudActionConfirmationDialog's current design

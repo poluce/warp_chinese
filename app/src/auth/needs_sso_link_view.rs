@@ -54,7 +54,7 @@ impl View for NeedsSsoLinkView {
                         ButtonVariant::Accent,
                         self.mouse_state_handles.link_sso_handle.clone(),
                     )
-                    .with_text_label("Link SSO".to_string())
+                    .with_text_label("关联单点登录".to_string())
                     .with_style(UiComponentStyles {
                         padding: Some(Coords {
                             top: 10.,
@@ -75,8 +75,8 @@ impl View for NeedsSsoLinkView {
         .finish();
 
         LoginErrorModal::new(app)
-            .with_header("Your organization has enabled SSO for your account")
-            .with_detail("Click the button below to link your Warp account to your SSO provider.")
+            .with_header("您的组织已为您的账户启用单点登录")
+            .with_detail("点击下方按钮将您的 Warp 账户关联到您的单点登录提供商。")
             .with_action(link_sso_button)
             .build()
             .finish()

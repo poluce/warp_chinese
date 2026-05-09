@@ -23,8 +23,8 @@ use settings::Setting as _;
 
 use super::toolbar_item::AgentToolbarItemKind;
 
-const AGENT_MODAL_TITLE: &str = "Edit agent toolbelt";
-const CLI_MODAL_TITLE: &str = "Edit CLI agent toolbelt";
+const AGENT_MODAL_TITLE: &str = "编辑智能体工具栏";
+const CLI_MODAL_TITLE: &str = "编辑 CLI 智能体工具栏";
 
 /// Controls which set of items and settings the editor modal operates on.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]

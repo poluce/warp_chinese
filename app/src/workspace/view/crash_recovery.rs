@@ -16,13 +16,12 @@ pub fn banner_metadata(ctx: &AppContext) -> Option<WorkspaceBannerFields> {
             banner_type: super::WorkspaceBanner::WaylandCrashRecovery,
             severity: super::BannerSeverity::Warning,
             heading: None,
-            description: "We detected a crash during application startup, and adjusted your \
-                settings to use Xwayland for windowing. This can result in blurry text if you \
-                are using fractional scaling."
+            description: "我们检测到应用程序启动时发生崩溃，并已调整设置使用 Xwayland \
+                进行窗口管理。如果您使用分数缩放，这可能导致文本模糊。"
                 .to_owned(),
             secondary_button: None,
             button: Some(super::WorkspaceBannerButtonDetails {
-                text: "Learn More".to_owned(),
+                text: "了解更多".to_owned(),
                 action: super::WorkspaceAction::DismissWaylandCrashRecoveryBannerAndOpenLink,
                 variant: super::BannerButtonVariant::Outlined,
                 icon: None,

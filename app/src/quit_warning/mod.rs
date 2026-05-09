@@ -293,10 +293,10 @@ impl<'a> UnsavedStateSummary<'a> {
         let mut info_text_lines = Vec::<String>::new();
 
         let scope_suffix = match self.scope {
-            QuitScope::Tabs(ref tabs) if tabs.len() == 1 => " in this tab.",
-            QuitScope::Window(_) => " in this window.",
-            QuitScope::Pane { .. } => " in this pane.",
-            QuitScope::App | QuitScope::Tabs(_) | QuitScope::EditorTab { .. } => ".",
+            QuitScope::Tabs(ref tabs) if tabs.len() == 1 => " 在此标签页中。",
+            QuitScope::Window(_) => " 在此窗口中。",
+            QuitScope::Pane { .. } => " 在此窗格中。",
+            QuitScope::App | QuitScope::Tabs(_) | QuitScope::EditorTab { .. } => "。",
         };
 
         if self.total_long_running_commands > 0 {
@@ -332,7 +332,7 @@ impl<'a> UnsavedStateSummary<'a> {
 
         if self.unsaved_code_changes {
             if let QuitScope::EditorTab { ref file_name, .. } = self.scope {
-                info_text_lines.push(format!("Do you want to save the changes you made to {}? Your changes will be discarded if you don't save them.", file_name.clone().unwrap_or("this file".to_string())));
+                info_text_lines.push(format!("Do you want to save the changes you made to {}? Your changes will be discarded if you don't save them.", file_name.clone().unwrap_or("此文件".to_string())));
             } else {
                 info_text_lines.push(format!("You have unsaved file changes{scope_suffix}"));
             }
@@ -400,25 +400,25 @@ impl<'a> QuitWarningDialog<'a> {
 
         if let Some(callback) = on_confirm {
             let confirm_title = match state.scope {
-                QuitScope::Window(_) | QuitScope::Tabs(_) | QuitScope::Pane { .. } => "Yes, close",
-                QuitScope::App => "Yes, quit",
+                QuitScope::Window(_) | QuitScope::Tabs(_) | QuitScope::Pane { .. } => "是，关闭",
+                QuitScope::App => "是，退出",
                 _ => "",
             };
             buttons.push(ModalButton::for_app(confirm_title.to_string(), callback));
         }
 
         if let Some(callback) = on_save_changes {
-            buttons.push(ModalButton::for_app("Save".to_string(), callback));
+            buttons.push(ModalButton::for_app("保存".to_string(), callback));
         }
 
         if let Some(callback) = on_discard_changes {
-            buttons.push(ModalButton::for_app("Don't Save".to_string(), callback));
+            buttons.push(ModalButton::for_app("不保存".to_string(), callback));
         }
 
         if let Some(callback) = on_show_processes {
             if state.total_long_running_commands > 0 {
                 buttons.push(ModalButton::for_app(
-                    "Show running processes".to_string(),
+                    "显示运行中的进程".to_string(),
                     move |app| {
                         callback(app);
                     },
@@ -427,16 +427,16 @@ impl<'a> QuitWarningDialog<'a> {
         }
 
         if let Some(callback) = on_cancel {
-            buttons.push(ModalButton::for_app("Cancel".to_string(), callback));
+            buttons.push(ModalButton::for_app("取消".to_string(), callback));
         }
 
         let title = match &state.scope {
-            QuitScope::Pane { .. } => "Close pane?",
-            QuitScope::Tabs(tabs) if tabs.len() == 1 => "Close tab?",
-            QuitScope::Tabs(_) => "Close tabs?",
-            QuitScope::Window(_) => "Close window?",
-            QuitScope::App => "Quit Warp?",
-            QuitScope::EditorTab { .. } => "Save changes?",
+            QuitScope::Pane { .. } => "关闭窗格？",
+            QuitScope::Tabs(tabs) if tabs.len() == 1 => "关闭标签页？",
+            QuitScope::Tabs(_) => "关闭标签页？",
+            QuitScope::Window(_) => "关闭窗口？",
+            QuitScope::App => "退出 Warp？",
+            QuitScope::EditorTab { .. } => "保存更改？",
         };
 
         AlertDialogWithCallbacks::for_app(

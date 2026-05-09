@@ -61,7 +61,7 @@ pub fn login(ctx: &mut AppContext) -> Result<()> {
                         AuthManagerEvent::AuthFailed(err) => {
                             format!("Authentication failed: {err:#}")
                         }
-                        _ => "Authentication failed".to_string(),
+                        _ => "身份验证失败".to_string(),
                     };
                     ctx.terminate_app(
                         TerminationMode::ForceTerminate,

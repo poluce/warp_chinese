@@ -3653,7 +3653,7 @@ impl TeamsWidget {
         let mut page = Flex::column();
 
         // Title, subtitle, and description
-        page.add_child(render_sub_header(appearance, "Teams".to_string(), None));
+        page.add_child(render_sub_header(appearance, "团队".to_string(), None));
         page.add_child(
             self.render_sub_header_with_subtext_color(appearance, "Create a team".to_string()),
         );

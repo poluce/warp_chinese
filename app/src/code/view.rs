@@ -92,7 +92,7 @@ const TAB_PADDING: f32 = 2.;
 
 // Keybinding constants - exported so AI document view can reuse
 pub const SAVE_FILE_BINDING_NAME: &str = "code_view:save";
-pub const SAVE_FILE_BINDING_DESCRIPTION: &str = "Save file";
+pub const SAVE_FILE_BINDING_DESCRIPTION: &str = "保存文件";
 
 pub fn init(app: &mut AppContext) {
     super::editor::view::init(app);
@@ -807,7 +807,7 @@ impl CodeView {
         let title = if let Some(file) = file {
             file.display().to_string()
         } else {
-            "Untitled".to_string()
+            "未命名".to_string()
         };
 
         self.pane_configuration.update(ctx, |pane_config, ctx| {
@@ -815,7 +815,7 @@ impl CodeView {
             if self.tab_group.len() > 1 {
                 secondary.push_str(&format!(" (+{})", self.tab_group.len() - 1));
             } else if is_new {
-                secondary.push_str(" (new)");
+                secondary.push_str(" (新建)");
             }
 
             pane_config.set_title(title, ctx);
@@ -1474,7 +1474,7 @@ impl CodeView {
             .path
             .as_ref()
             .and_then(|p| p.file_name().map(|f| f.to_string_lossy().to_string()))
-            .unwrap_or_else(|| "Untitled".to_string());
+            .unwrap_or_else(|| "未命名".to_string());
         let language_icon =
             icon_from_file_path(&file_name, appearance, ItemHighlightState::Default);
         row.add_child(
@@ -1849,7 +1849,7 @@ impl CodeView {
             .and_then(|tab| tab.path.as_ref())
             .and_then(|path| path.file_name())
             .map(|name| name.to_string_lossy().to_string())
-            .unwrap_or_else(|| "Untitled".to_string());
+            .unwrap_or_else(|| "未命名".to_string());
 
         let appearance = Appearance::as_ref(app);
         let is_pane_dragging = header_ctx.draggable_state.is_dragging();
@@ -1948,7 +1948,7 @@ impl CodeView {
         };
 
         let mut items = vec![
-            MenuItemFields::new_with_label("Close saved", &format!("{modifier_keys} U"))
+            MenuItemFields::new_with_label("关闭已保存", &format!("{modifier_keys} U"))
                 .with_on_select_action(CodeViewAction::CloseSaved)
                 .into_item(),
             MenuItemFields::toggle_pane_action(is_maximized)
@@ -1959,11 +1959,11 @@ impl CodeView {
         #[cfg(feature = "local_fs")]
         if let Some(path) = self.local_path(ctx) {
             let reveal_label = if cfg!(target_os = "macos") {
-                "Reveal in Finder"
+                "在 Finder 中显示"
             } else if cfg!(target_os = "windows") {
-                "Reveal in Explorer"
+                "在资源管理器中显示"
             } else {
-                "Reveal in file manager"
+                "在文件管理器中显示"
             };
             items.extend([
                 MenuItem::Separator,

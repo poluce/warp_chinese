@@ -343,8 +343,8 @@ pub struct UpdateEnvironmentForm {
 }
 
 const DESCRIPTION_MAX_CHARS: usize = 240;
-const REPOS_PLACEHOLDER_AUTHED: &str = "Enter repos (owner/repo format)";
-const REPOS_PLACEHOLDER_UNAUTHED: &str = "Paste repo URL(s)";
+const REPOS_PLACEHOLDER_AUTHED: &str = "输入仓库（owner/repo 格式）";
+const REPOS_PLACEHOLDER_UNAUTHED: &str = "粘贴仓库 URL";
 const FORM_FIELD_SPACING: f32 = 20.;
 const FORM_LABEL_SPACING: f32 = 6.;
 const FORM_INPUT_HEIGHT: f32 = 36.;
@@ -387,15 +387,15 @@ impl UpdateEnvironmentForm {
             form.update_editor_text_colors(ctx);
         });
         // Create editors
-        let name_editor = Self::create_single_line_editor("Environment name", ctx);
+        let name_editor = Self::create_single_line_editor("环境名称", ctx);
         let description_editor = Self::create_description_editor(ctx);
         let docker_image_editor =
-            Self::create_single_line_editor("e.g. python:3.11, node:20-alpine", ctx);
+            Self::create_single_line_editor("例如 python:3.11, node:20-alpine", ctx);
         let repos_input_editor = Self::create_single_line_editor(REPOS_PLACEHOLDER_AUTHED, ctx);
 
         let setup_commands_input = ctx.add_typed_action_view(|ctx| {
             let mut input = SubmittableTextInput::new(ctx);
-            input.set_placeholder_text("e.g. cd my-repo && pip install -r requirements.txt", ctx);
+            input.set_placeholder_text("例如 cd my-repo && pip install -r requirements.txt", ctx);
             // Keep this consistent with other form inputs (e.g. repos): caller controls spacing.
             input.set_outer_margins(0., 0., ctx);
             input
@@ -441,7 +441,7 @@ impl UpdateEnvironmentForm {
 
         // Create buttons
         let submit_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Create", PrimaryTheme)
+            ActionButton::new("创建", PrimaryTheme)
                 .with_icon(Icon::Check)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(UpdateEnvironmentFormAction::Submit);
@@ -449,7 +449,7 @@ impl UpdateEnvironmentForm {
         });
 
         let delete_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Delete environment", DangerSecondaryTheme)
+            ActionButton::new("删除环境", DangerSecondaryTheme)
                 .with_icon(Icon::Trash)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(UpdateEnvironmentFormAction::Delete);
@@ -800,7 +800,7 @@ impl UpdateEnvironmentForm {
                     .collect();
                 // Update button text for Edit mode
                 self.submit_button.update(ctx, |button, ctx| {
-                    button.set_label("Save", ctx);
+                    button.set_label("保存", ctx);
                 });
             }
         }

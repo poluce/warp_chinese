@@ -16,7 +16,7 @@ use ai::diff_validation::DiffDelta;
 
 // Keybinding constants - exported so AI document view can reuse
 pub const SAVE_FILE_BINDING_NAME: &str = "code_view:save";
-pub const SAVE_FILE_BINDING_DESCRIPTION: &str = "Save file";
+pub const SAVE_FILE_BINDING_DESCRIPTION: &str = "保存文件";
 
 #[cfg_attr(not(feature = "local_fs"), allow(dead_code))]
 pub fn is_supported_code_file(_path: impl AsRef<Path>) -> bool {

@@ -1444,7 +1444,7 @@ impl TypedActionView for CLISubagentView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(String::from("Copied to clipboard")),
+                        DismissibleToast::success(String::from("已复制到剪贴板")),
                         window_id,
                         ctx,
                     );
@@ -1831,7 +1831,7 @@ fn render_permissions_speedbump(
 
     let formatted_text = FormattedTextElement::new(
         FormattedText::new([FormattedTextLine::Line(vec![
-            FormattedTextFragment::hyperlink("Manage Agent permissions", "Settings > AI"),
+            FormattedTextFragment::hyperlink("管理智能体权限", "设置 > AI"),
         ])]),
         font_size,
         font_family,

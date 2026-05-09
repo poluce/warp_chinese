@@ -152,10 +152,10 @@ impl WorkflowViewType {
 
     fn as_str<'a>(&self, category_names: &'a [String]) -> &'a str {
         match self {
-            WorkflowViewType::All => "All",
-            WorkflowViewType::LocalPersonal => "My Workflows",
-            WorkflowViewType::Project => "Repository Workflows",
-            WorkflowViewType::Team => "Team Workflows",
+            WorkflowViewType::All => "全部",
+            WorkflowViewType::LocalPersonal => "我的工作流",
+            WorkflowViewType::Project => "仓库工作流",
+            WorkflowViewType::Team => "团队工作流",
             WorkflowViewType::Category { category_index, .. } => &category_names[*category_index],
         }
     }
@@ -168,10 +168,10 @@ impl WorkflowViewType {
                     self.as_str(category_names)
                 )
             }
-            WorkflowViewType::All => "Showing all workflows".into(),
-            WorkflowViewType::LocalPersonal => "Showing my workflows".into(),
-            WorkflowViewType::Project => "Showing project workflows".into(),
-            WorkflowViewType::Team => "Showing team workflows".into(),
+            WorkflowViewType::All => "显示所有工作流".into(),
+            WorkflowViewType::LocalPersonal => "显示我的工作流".into(),
+            WorkflowViewType::Project => "显示项目工作流".into(),
+            WorkflowViewType::Team => "显示团队工作流".into(),
         };
 
         AccessibilityContent::new_without_help(a11y_content, WarpA11yRole::UserAction)
@@ -755,16 +755,16 @@ impl CategoriesView {
 
     fn render_empty_list_placeholder(&self, appearance: &Appearance) -> Box<dyn Element> {
         let no_workflows_text =
-            CategoriesView::text_label("No matching workflows found.", appearance);
+            CategoriesView::text_label("未找到匹配的工作流。", appearance);
 
         let mut workflow_documentation_link_text =
-            Flex::row().with_child(CategoriesView::text_label("Try ", appearance));
+            Flex::row().with_child(CategoriesView::text_label("试试 ", appearance));
 
         workflow_documentation_link_text.add_child(
             appearance
                 .ui_builder()
                 .link(
-                    "creating your own workflow".into(),
+                    "创建自己的工作流".into(),
                     Some(
                         "https://docs.warp.dev/knowledge-and-collaboration/warp-drive/workflows"
                             .into(),
@@ -943,7 +943,7 @@ impl CategoriesView {
         let theme = appearance.theme();
         workflow_types_list.add_child(
             Container::new(Self::workflow_types_label(
-                "Categories",
+                "分类",
                 Some(theme.sub_text_color(theme.surface_2()).into_solid()),
                 appearance.ui_builder(),
             ))
@@ -1210,8 +1210,8 @@ impl View for CategoriesView {
 
     fn accessibility_contents(&self, _: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            "Workflows",
-            "Search or use arrow up and arrow down keys to navigate and find a workflow. Use enter to confirm the workflow and esc to quit.",
+            "工作流",
+            "搜索或使用上下箭头键导航并查找工作流。按Enter确认工作流，按ESC退出。",
             WarpA11yRole::MenuRole,
         ))
     }
@@ -1247,7 +1247,7 @@ impl View for CategoriesView {
 
 impl VoltronFeatureViewMeta for CategoriesView {
     fn editor_placeholder_text(&self) -> &'static str {
-        "Search workflows"
+        "搜索工作流"
     }
 
     fn custom_action() -> Option<CustomAction> {

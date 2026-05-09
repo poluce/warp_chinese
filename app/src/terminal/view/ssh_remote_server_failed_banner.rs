@@ -15,11 +15,10 @@ use warpui::{
 
 use crate::{terminal::model::session::SessionId, ui_components::icons::Icon, Appearance};
 
-const BANNER_TITLE: &str = "Couldn't connect to the Warp SSH extension";
+const BANNER_TITLE: &str = "无法连接到 Warp SSH 扩展";
 
 const BANNER_BODY: &str =
-    "While advanced features like file browsing and code review are currently \
-    disabled, the rest of your Warpified experience is fully available.";
+    "虽然文件浏览和代码审查等高级功能当前已禁用，但其余 Warp 化体验完全可用。";
 
 #[derive(Clone, Debug)]
 pub enum SshRemoteServerFailedBannerAction {

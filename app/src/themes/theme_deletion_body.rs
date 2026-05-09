@@ -26,9 +26,9 @@ const BUTTON_FONT_SIZE: f32 = 14.;
 const BUTTON_BORDER_RADIUS: f32 = 4.;
 const BORDER_WIDTH: f32 = 1.;
 
-const MODAL_SUBHEADER: &str = "This will permanently delete the theme.";
-const CANCEL_BUTTON_TEXT: &str = "Cancel";
-const DELETE_BUTTON_TEXT: &str = "Delete theme";
+const MODAL_SUBHEADER: &str = "这将永久删除此主题。";
+const CANCEL_BUTTON_TEXT: &str = "取消";
+const DELETE_BUTTON_TEXT: &str = "删除主题";
 
 #[derive(Default)]
 struct MouseStateHandles {
@@ -107,7 +107,7 @@ impl ThemeDeletionBody {
             }
         }
         if errored {
-            self.send_error_toast("Something went wrong", ctx);
+            self.send_error_toast("出现问题", ctx);
         }
     }
 

@@ -254,9 +254,9 @@ where
     .with_tooltip(move || {
         ui_builder
             .tool_tip(if is_sidebar_expanded {
-                "Hide file navigation".to_owned()
+                "隐藏文件导航".to_owned()
             } else {
-                "Show file navigation".to_owned()
+                "显示文件导航".to_owned()
             })
             .build()
             .finish()
@@ -314,7 +314,7 @@ const CODE_REVIEW_EDITOR_LINE_HEIGHT_RATIO: f32 = 1.4;
 /// Extra scroll buffer (in pixels) added when scrolling to a line that has a comment editor below it.
 const COMMENT_EDITOR_SCROLL_BUFFER: f32 = 200.0;
 
-pub const CODE_REVIEW_TOOLTIP_TEXT: &str = "View changes";
+pub const CODE_REVIEW_TOOLTIP_TEXT: &str = "查看变更";
 const REMOTE_TEXT: &str = "Diffs only work for local workspaces.";
 const DISABLED_TEXT: &str = "Diffs only work for git repositories.";
 const WSL_TEXT: &str = "Diffs don't currently work in WSL.";
@@ -1117,7 +1117,7 @@ impl CodeReviewView {
         let maximize_button = ctx.add_typed_action_view(move |_| {
             // Since the view isn't part of a pane group yet, default to not-maximized. The button will be updated
             //when focus state changes.
-            let (icon, tooltip_text) = (Icon::Maximize, "Maximize");
+            let (icon, tooltip_text) = (Icon::Maximize, "最大化");
 
             ActionButton::new("", NakedTheme)
                 .with_icon(icon)
@@ -1141,12 +1141,12 @@ impl CodeReviewView {
         let file_nav_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("", NakedTheme)
                 .with_icon(Icon::FileCopy)
-                .with_tooltip("Show file navigation")
+                .with_tooltip("显示文件导航")
                 .on_click(|ctx| ctx.dispatch_typed_action(CodeReviewAction::ToggleFileSidebar))
         });
 
         let git_primary_action_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Commit", SecondaryTheme)
+            ActionButton::new("提交", SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .with_icon(Icon::GitCommit)
                 .with_adjoined_side(AdjoinedSide::Right)
@@ -1187,7 +1187,7 @@ impl CodeReviewView {
 
         let undo_action_button = ctx.add_typed_action_view(move |ctx| {
             let keybinding = custom_tag_to_keystroke(CustomAction::Undo.into());
-            let mut action_button = ActionButton::new("Undo", NakedTheme)
+            let mut action_button = ActionButton::new("撤销", NakedTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(move |ctx| {
                     ctx.dispatch_typed_action(WorkspaceAction::UndoRevertInCodeReviewPane {
@@ -1204,12 +1204,12 @@ impl CodeReviewView {
         });
 
         let discard_confirm_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Discard changes", DangerPrimaryTheme)
+            ActionButton::new("丢弃变更", DangerPrimaryTheme)
                 .on_click(|ctx| ctx.dispatch_typed_action(CodeReviewAction::ConfirmDiscardFile))
         });
 
         let discard_cancel_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Cancel", NakedTheme).on_click(|ctx| {
+            ActionButton::new("取消", NakedTheme).on_click(|ctx| {
                 ctx.dispatch_typed_action(CodeReviewAction::CancelDiscardFile);
             })
         });
@@ -1277,9 +1277,9 @@ impl CodeReviewView {
         let header = CodeReviewHeader::new();
 
         let init_project_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Initialize codebase", NakedTheme)
+            ActionButton::new("初始化代码库", NakedTheme)
                 .with_size(ButtonSize::Small)
-                .with_tooltip("Enables codebase indexing and WARP.md")
+                .with_tooltip("启用代码库索引和 WARP.md")
                 .with_tooltip_alignment(TooltipAlignment::Center)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(CodeReviewAction::InitProjectForCurrentDirectory)
@@ -1288,9 +1288,9 @@ impl CodeReviewView {
 
         #[cfg(not(target_family = "wasm"))]
         let open_repository_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Open repository", NakedTheme)
+            ActionButton::new("打开仓库", NakedTheme)
                 .with_size(ButtonSize::Small)
-                .with_tooltip("Navigate to a repo and initialize it for coding")
+                .with_tooltip("导航到仓库并初始化为编码准备")
                 .with_tooltip_alignment(TooltipAlignment::Center)
                 .on_click(|ctx| ctx.dispatch_typed_action(CodeReviewAction::OpenRepository))
         });
@@ -1397,9 +1397,9 @@ impl CodeReviewView {
 
         let is_maximized = focus_handle.is_maximized(ctx);
         let (icon, tooltip) = if is_maximized {
-            (Icon::Minimize, "Restore")
+            (Icon::Minimize, "恢复")
         } else {
-            (Icon::Maximize, "Maximize")
+            (Icon::Maximize, "最大化")
         };
 
         self.maximize_button.update(ctx, |button, ctx| {
@@ -2553,7 +2553,7 @@ impl CodeReviewView {
         let discard_tooltip_text = if git_operation_blocked {
             get_discard_button_disabled_tooltip(git_operation_blocked)
         } else {
-            "Discard changes".to_string()
+            "丢弃变更".to_string()
         };
 
         let mut file_states = vec![];
@@ -2595,7 +2595,7 @@ impl CodeReviewView {
                 ActionButton::new("", NakedTheme)
                     .with_icon(Icon::LinkExternal)
                     .with_size(ButtonSize::InlineActionHeader)
-                    .with_tooltip("Open file")
+                    .with_tooltip("打开文件")
                     .on_click(move |ctx| {
                         ctx.dispatch_typed_action(CodeReviewAction::OpenInNewTab {
                             path: open_tab_path.clone(),
@@ -2632,7 +2632,7 @@ impl CodeReviewView {
                 ActionButton::new("", NakedTheme)
                     .with_icon(Icon::Paperclip)
                     .with_size(ButtonSize::InlineActionHeader)
-                    .with_tooltip("Add file diff as context")
+                    .with_tooltip("添加文件差异作为上下文")
                     .on_click(move |ctx| {
                         ctx.dispatch_typed_action(CodeReviewAction::AddDiffSetAsContext(
                             DiffSetScope::File(context_path.clone()),
@@ -2645,7 +2645,7 @@ impl CodeReviewView {
                 ActionButton::new("", NakedTheme)
                     .with_icon(Icon::Copy)
                     .with_size(ButtonSize::InlineActionHeader)
-                    .with_tooltip("Copy file path")
+                    .with_tooltip("复制文件路径")
                     .on_click(move |ctx| {
                         ctx.dispatch_typed_action(CodeReviewAction::CopyFilePath(copy_path.clone()))
                     })
@@ -6457,10 +6457,10 @@ impl CodeReviewView {
             PrimaryGitActionMode::Commit => {
                 let disabled = !self.has_uncommitted_changes(ctx);
                 self.git_primary_action_button.update(ctx, |button, ctx| {
-                    button.set_label("Commit", ctx);
+                    button.set_label("提交", ctx);
                     button.set_icon(Some(Icon::GitCommit), ctx);
                     button.set_disabled(disabled, ctx);
-                    button.set_tooltip(disabled.then_some("No changes to commit"), ctx);
+                    button.set_tooltip(disabled.then_some("没有可提交的变更"), ctx);
                     button.set_on_click(
                         |ctx| ctx.dispatch_typed_action(CodeReviewAction::OpenCommitDialog),
                         ctx,
@@ -6469,12 +6469,12 @@ impl CodeReviewView {
                 });
                 self.git_operations_chevron.update(ctx, |button, ctx| {
                     button.set_disabled(disabled, ctx);
-                    button.set_tooltip(disabled.then_some("No git actions available"), ctx);
+                    button.set_tooltip(disabled.then_some("没有可用的 Git 操作"), ctx);
                 });
             }
             PrimaryGitActionMode::Push => {
                 self.git_primary_action_button.update(ctx, |button, ctx| {
-                    button.set_label("Push", ctx);
+                    button.set_label("推送", ctx);
                     button.set_icon(Some(Icon::ArrowUp), ctx);
                     button.set_disabled(false, ctx);
                     button.clear_tooltip(ctx);
@@ -6490,7 +6490,7 @@ impl CodeReviewView {
             }
             PrimaryGitActionMode::CreatePr => {
                 self.git_primary_action_button.update(ctx, |button, ctx| {
-                    button.set_label("Create PR", ctx);
+                    button.set_label("创建 PR", ctx);
                     button.set_icon(Some(Icon::Github), ctx);
                     button.set_disabled(false, ctx);
                     button.clear_tooltip(ctx);
@@ -6514,7 +6514,7 @@ impl CodeReviewView {
                         button.set_icon(Some(Icon::Github), ctx);
                         button.set_disabled(is_pr_info_refreshing, ctx);
                         button.set_tooltip(
-                            is_pr_info_refreshing.then_some("Refreshing PR info"),
+                            is_pr_info_refreshing.then_some("正在刷新 PR 信息"),
                             ctx,
                         );
                         button.set_on_click(
@@ -6529,7 +6529,7 @@ impl CodeReviewView {
             }
             PrimaryGitActionMode::Publish => {
                 self.git_primary_action_button.update(ctx, |button, ctx| {
-                    button.set_label("Publish", ctx);
+                    button.set_label("发布", ctx);
                     button.set_icon(Some(Icon::UploadCloud), ctx);
                     button.set_disabled(false, ctx);
                     button.clear_tooltip(ctx);
@@ -6549,7 +6549,7 @@ impl CodeReviewView {
     /// only the disabled state flips across modes (enabled in Commit mode,
     /// disabled in Push mode where there's nothing to commit).
     fn commit_menu_item(disabled: bool) -> MenuItem<CodeReviewAction> {
-        MenuItemFields::new("Commit")
+        MenuItemFields::new("提交")
             .with_icon(Icon::GitCommit)
             .with_on_select_action(CodeReviewAction::OpenCommitDialog)
             .with_disabled(disabled)
@@ -6561,13 +6561,13 @@ impl CodeReviewView {
     /// sets the upstream).
     fn push_or_publish_menu_item(has_upstream: bool, disabled: bool) -> MenuItem<CodeReviewAction> {
         if has_upstream {
-            MenuItemFields::new("Push")
+            MenuItemFields::new("推送")
                 .with_icon(Icon::ArrowUp)
                 .with_on_select_action(CodeReviewAction::OpenPushDialog)
                 .with_disabled(disabled)
                 .into_item()
         } else {
-            MenuItemFields::new("Publish")
+            MenuItemFields::new("发布")
                 .with_icon(Icon::UploadCloud)
                 .with_on_select_action(CodeReviewAction::PublishBranch)
                 .with_disabled(disabled)
@@ -6592,7 +6592,7 @@ impl CodeReviewView {
             let is_on_main = diff_state.is_on_main_branch(app);
             let has_upstream = diff_state.upstream_ref(app).is_some();
             let upstream_differs_from_main = diff_state.upstream_differs_from_main(app);
-            MenuItemFields::new("Create PR")
+            MenuItemFields::new("创建 PR")
                 .with_icon(Icon::Github)
                 .with_on_select_action(CodeReviewAction::OpenCreatePrDialog)
                 .with_disabled(
@@ -6666,7 +6666,7 @@ impl CodeReviewView {
 
         if FeatureFlag::DiffSetAsContext.is_enabled() && has_changes {
             items.push(
-                MenuItemFields::new("Add diff set as context")
+                MenuItemFields::new("添加差异集作为上下文")
                     .with_icon(Icon::Paperclip)
                     .with_on_select_action(CodeReviewAction::AddDiffSetAsContext(DiffSetScope::All))
                     .into_item(),
@@ -6674,9 +6674,9 @@ impl CodeReviewView {
         }
 
         let (comment_label, comment_icon) = if self.get_existing_diffset_comment(ctx).is_some() {
-            ("Show saved comment", Icon::MessageText)
+            ("显示已保存的评论", Icon::MessageText)
         } else {
-            ("Add comment", Icon::MessagePlusSquare)
+            ("添加评论", Icon::MessagePlusSquare)
         };
 
         items.push(
@@ -6701,7 +6701,7 @@ impl CodeReviewView {
         let is_ai_enabled = AISettings::as_ref(ctx).is_any_ai_enabled(ctx);
         if is_ai_enabled && FeatureFlag::DiffSetAsContext.is_enabled() && has_changes {
             items.push(
-                MenuItemFields::new("Add diff set as context")
+                MenuItemFields::new("添加差异集作为上下文")
                     .with_icon(Icon::Paperclip)
                     .with_on_select_action(CodeReviewAction::AddDiffSetAsContext(DiffSetScope::All))
                     .into_item(),
@@ -6711,9 +6711,9 @@ impl CodeReviewView {
         if FeatureFlag::FileAndDiffSetComments.is_enabled() && has_changes {
             let (comment_label, comment_icon) = if self.get_existing_diffset_comment(ctx).is_some()
             {
-                ("Show saved comment", Icon::MessageText)
+                ("显示已保存的评论", Icon::MessageText)
             } else {
-                ("Add comment", Icon::MessagePlusSquare)
+                ("添加评论", Icon::MessagePlusSquare)
             };
 
             items.push(
@@ -6726,7 +6726,7 @@ impl CodeReviewView {
 
         if FeatureFlag::DiscardPerFileAndAllChanges.is_enabled() && has_changes {
             items.push(
-                MenuItemFields::new("Discard all")
+                MenuItemFields::new("全部丢弃")
                     .with_icon(Icon::ReverseLeft)
                     .with_on_select_action(CodeReviewAction::ShowDiscardConfirmDialog(None))
                     .into_item(),

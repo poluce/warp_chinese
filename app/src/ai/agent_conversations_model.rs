@@ -422,22 +422,22 @@ impl std::fmt::Display for AgentRunDisplayStatus {
         match self {
             AgentRunDisplayStatus::TaskQueued => write!(f, "Queued"),
             AgentRunDisplayStatus::TaskPending => write!(f, "Pending"),
-            AgentRunDisplayStatus::TaskClaimed => write!(f, "Claimed"),
+            AgentRunDisplayStatus::TaskClaimed => write!(f, "已认领"),
             AgentRunDisplayStatus::TaskInProgress
-            | AgentRunDisplayStatus::ConversationInProgress => write!(f, "In progress"),
+            | AgentRunDisplayStatus::ConversationInProgress => write!(f, "进行中"),
             AgentRunDisplayStatus::TaskSucceeded | AgentRunDisplayStatus::ConversationSucceeded => {
-                write!(f, "Done")
+                write!(f, "已完成")
             }
-            AgentRunDisplayStatus::TaskFailed => write!(f, "Failed"),
+            AgentRunDisplayStatus::TaskFailed => write!(f, "失败"),
             AgentRunDisplayStatus::TaskError | AgentRunDisplayStatus::ConversationError => {
-                write!(f, "Error")
+                write!(f, "错误")
             }
             AgentRunDisplayStatus::TaskBlocked { .. }
-            | AgentRunDisplayStatus::ConversationBlocked { .. } => write!(f, "Blocked"),
+            | AgentRunDisplayStatus::ConversationBlocked { .. } => write!(f, "已阻塞"),
             AgentRunDisplayStatus::TaskCancelled | AgentRunDisplayStatus::ConversationCancelled => {
-                write!(f, "Cancelled")
+                write!(f, "已取消")
             }
-            AgentRunDisplayStatus::TaskUnknown => write!(f, "Failed"),
+            AgentRunDisplayStatus::TaskUnknown => write!(f, "失败"),
         }
     }
 }

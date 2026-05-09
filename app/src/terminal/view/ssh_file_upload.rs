@@ -434,10 +434,10 @@ impl FileUpload {
         appearance: &Appearance,
     ) -> Box<dyn Element> {
         let view_session_text = if file.local_session_open {
-            String::from("Close")
+            String::from("关闭上传会话")
         } else {
-            String::from("View")
-        } + " upload session";
+            String::from("查看上传会话")
+        };
         let upload_id = file.upload_id;
         Container::new(
             appearance

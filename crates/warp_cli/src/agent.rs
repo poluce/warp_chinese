@@ -168,7 +168,7 @@ impl Harness {
             Self::OpenCode => "OpenCode",
             Self::Gemini => "Gemini CLI",
             Self::Codex => "Codex",
-            Self::Unknown => "Unknown",
+            Self::Unknown => "未知",
         }
     }
 

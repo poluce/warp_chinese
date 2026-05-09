@@ -63,7 +63,7 @@ use super::{
     zero_state::{CommandSearchZeroStateEvent, CommandSearchZeroStateView},
 };
 
-const DEFAULT_PLACEHOLDER_TEXT: &str = "Search your history, workflows, and more";
+const DEFAULT_PLACEHOLDER_TEXT: &str = "搜索历史、工作流等";
 const PANEL_POSITION_ID: &str = "CommandSearchViewPanel";
 const DETAILS_PANEL_MARGIN: f32 = 4.;
 const MIN_WIDTH_RATIO: f32 = 0.25;
@@ -516,13 +516,13 @@ impl CommandSearchView {
 
             let (a11y_content, a11y_help_content) = if was_immediately_executed {
                 (
-                    "Result executed".to_owned(),
-                    "Press Cmd-Up to navigate to the command's output.".to_owned(),
+                    "结果已执行".to_owned(),
+                    "按 Cmd-Up 导航到命令的输出。".to_owned(),
                 )
             } else {
                 (
-                    "Result accepted.".to_owned(),
-                    "You can edit the command here before pressing Enter to execute it.".to_owned(),
+                    "结果已接受。".to_owned(),
+                    "您可以在此处编辑命令，然后按 Enter 执行。".to_owned(),
                 )
             };
             ctx.emit_a11y_content(AccessibilityContent::new(
@@ -761,7 +761,7 @@ impl CommandSearchView {
                 // There are no results to display, so notify the user of that fact.
                 let text = appearance
                     .ui_builder()
-                    .span("No results found.")
+                    .span("未找到结果。")
                     .with_style(UiComponentStyles {
                         font_size: Some(appearance.monospace_font_size()),
                         font_family_id: Some(appearance.ui_font_family()),
@@ -1004,8 +1004,8 @@ impl View for CommandSearchView {
 
     fn accessibility_contents(&self, _ctx: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            "Command Search".to_owned(),
-            "Search your history, workflows, and more.  Use the Up and Down arrows to browse search results after typing.  Press Enter to accept a selected result, inserting it into the terminal input.  Press Escape to close.".to_owned(),
+            "命令搜索".to_owned(),
+            "搜索历史、工作流等。使用上下箭头浏览搜索结果。按 Enter 接受选中的结果，插入到终端输入中。按 Escape 关闭。".to_owned(),
             WarpA11yRole::MenuRole,
         ))
     }

@@ -72,9 +72,9 @@ impl CursorDisplayType {
 impl Display for CursorDisplayType {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         let value = match &self {
-            CursorDisplayType::Bar => "Bar",
-            CursorDisplayType::Block => "Block",
-            CursorDisplayType::Underline => "Underline",
+            CursorDisplayType::Bar => "竖线",
+            CursorDisplayType::Block => "方块",
+            CursorDisplayType::Underline => "下划线",
         };
         write!(f, "{value}")
     }
@@ -91,9 +91,9 @@ pub enum TabBehavior {
 impl TabBehavior {
     pub fn dropdown_item_label(&self) -> &'static str {
         match self {
-            TabBehavior::Completions => "Open completions menu",
-            TabBehavior::Autosuggestions => "Accept autosuggestion",
-            TabBehavior::UserDefined => "User defined",
+            TabBehavior::Completions => "打开补全菜单",
+            TabBehavior::Autosuggestions => "接受自动建议",
+            TabBehavior::UserDefined => "用户自定义",
         }
     }
 }
@@ -131,7 +131,7 @@ pub enum WarpPromptSeparator {
 impl WarpPromptSeparator {
     pub fn dropdown_item_label(&self) -> &'static str {
         match self {
-            Self::None => "None",
+            Self::None => "无",
             Self::PercentSign => "%",
             Self::DollarSign => "$",
             Self::ChevronSymbol => ">",

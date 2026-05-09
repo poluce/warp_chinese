@@ -329,7 +329,7 @@ fn delete_secret(ctx: &mut AppContext, args: DeleteSecretArgs) -> Result<()> {
                 };
 
                 if !should_delete {
-                    println!("Deletion cancelled");
+                    println!("删除已取消");
                     ctx
                         .terminate_app(TerminationMode::ForceTerminate, None);
                     return;

@@ -66,7 +66,7 @@ impl OnboardingPromptBlock {
         const LINE_ONE: &str = "Next, let’s set up your prompt. Warp has a custom prompt builder or you can select PS1 to honor your pre-existing prompt configuration.";
         const LINE_TWO: &str =
             "Warp works with many custom prompts like oh-my-zsh, Starship, Powerlevel10K. ";
-        const LINK_TEXT: &str = "Learn more";
+        const LINK_TEXT: &str = "了解更多";
         const LINK_DESTINATION: &str =
             "https://docs.warp.dev/terminal/appearance/prompt#custom-prompt-compatibility-table";
 
@@ -118,7 +118,7 @@ impl OnboardingPromptBlock {
                 font_size: Some(14.),
                 ..Default::default()
             })
-            .with_centered_text_label("Confirm".to_owned());
+            .with_centered_text_label("确认".to_owned());
         if self.selected_prompt.is_none() {
             confirm_button = confirm_button.disabled();
         }

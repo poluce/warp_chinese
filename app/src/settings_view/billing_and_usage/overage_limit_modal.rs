@@ -157,10 +157,10 @@ impl SpendingLimitModal {
     fn error_text(&self) -> Option<String> {
         match self.input_error_state {
             Some(SpendingLimitModalInputErrorState::InvalidNumberFormat) => {
-                Some("Please enter a valid currency amount".to_string())
+                Some("请输入有效的货币金额".to_string())
             }
             Some(SpendingLimitModalInputErrorState::NumberOutOfRange) => {
-                Some("Please enter a price between $0.01 and $10,000,000".to_string())
+                Some("请输入 $0.01 到 $10,000,000 之间的金额".to_string())
             }
             None => None,
         }
@@ -268,7 +268,7 @@ impl View for SpendingLimitModal {
                 ButtonVariant::Accent,
                 self.update_button_mouse_state.clone(),
             )
-            .with_text_label("Update".to_string())
+            .with_text_label("更新".to_string())
             .with_style(button_style);
 
         if self.input_error_state.is_some() {
@@ -283,7 +283,7 @@ impl View for SpendingLimitModal {
                         ButtonVariant::Secondary,
                         self.cancel_button_mouse_state.clone(),
                     )
-                    .with_text_label("Cancel".to_string())
+                    .with_text_label("取消".to_string())
                     .with_style(button_style)
                     .build()
                     .on_click(|ctx, _, _| {

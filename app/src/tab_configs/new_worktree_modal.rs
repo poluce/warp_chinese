@@ -76,7 +76,7 @@ const CLOSE_ICON_SIZE: f32 = 14.;
 const ERROR_FONT_SIZE: f32 = 12.;
 /// Error shown when the user-entered worktree branch name contains invalid characters.
 const INVALID_BRANCH_NAME_ERROR: &str =
-    "Name can only contain letters, numbers, hyphens, and underscores";
+    "名称只能包含字母、数字、连字符和下划线";
 
 /// Returns `true` if `name` is a valid worktree branch name.
 ///
@@ -332,7 +332,7 @@ impl View for NewWorktreeModal {
         // ── Header (custom — Modal wrapper has no title) ────────────────
         let header = {
             let title = Text::new_inline(
-                "New worktree".to_string(),
+                "新建工作树".to_string(),
                 appearance.ui_font_family(),
                 HEADER_TITLE_FONT_SIZE,
             )
@@ -414,12 +414,12 @@ impl View for NewWorktreeModal {
             .with_cross_axis_alignment(CrossAxisAlignment::Stretch);
 
         // Repo picker
-        body.add_child(Self::render_section_label("Select repository", appearance));
+        body.add_child(Self::render_section_label("选择仓库", appearance));
         body.add_child(ChildView::new(&self.repo_picker).finish());
 
         // Branch picker (with gap)
         body.add_child(
-            Container::new(Self::render_section_label("Select branch", appearance))
+            Container::new(Self::render_section_label("选择分支", appearance))
                 .with_margin_top(SECTION_GAP)
                 .finish(),
         );
@@ -471,7 +471,7 @@ impl View for NewWorktreeModal {
             .with_child(checkbox_element)
             .with_child(
                 Text::new_inline(
-                    "Autogenerate worktree branch name".to_string(),
+                    "自动生成工作树分支名称".to_string(),
                     appearance.ui_font_family(),
                     appearance.ui_font_size(),
                 )
@@ -490,7 +490,7 @@ impl View for NewWorktreeModal {
         if !self.autogenerate_branch_name {
             body.add_child(
                 Container::new(Self::render_section_label(
-                    "Worktree branch name",
+                    "工作树分支名称",
                     appearance,
                 ))
                 .with_margin_top(SECTION_GAP)
@@ -547,7 +547,7 @@ impl View for NewWorktreeModal {
         let cancel_button = appearance
             .ui_builder()
             .button(ButtonVariant::Text, self.cancel_button_mouse_state.clone())
-            .with_text_label("Cancel".to_string())
+            .with_text_label("取消".to_string())
             .with_style(text_button_base)
             .with_style(UiComponentStyles {
                 font_color: Some(main_text.into()),
@@ -569,7 +569,7 @@ impl View for NewWorktreeModal {
             let mut builder = appearance
                 .ui_builder()
                 .button(ButtonVariant::Text, self.open_button_mouse_state.clone())
-                .with_text_label("Open".to_string())
+                .with_text_label("打开".to_string())
                 .with_style(text_button_base)
                 .with_style(UiComponentStyles {
                     font_color: Some(font_color.into()),

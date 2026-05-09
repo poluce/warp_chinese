@@ -229,17 +229,17 @@ impl TableFormat for ScheduleInfo {
     fn header() -> Vec<Cell> {
         vec![
             Cell::new("ID"),
-            Cell::new("Name"),
-            Cell::new("Schedule"),
-            Cell::new("Paused"),
-            Cell::new("Last ran"),
-            Cell::new("Next run"),
-            Cell::new("Scope"),
+            Cell::new("名称"),
+            Cell::new("计划"),
+            Cell::new("已暂停"),
+            Cell::new("上次运行"),
+            Cell::new("下次运行"),
+            Cell::new("范围"),
         ]
     }
 
     fn row(&self) -> Vec<Cell> {
-        let paused_display = if self.paused { "Yes" } else { "No" };
+        let paused_display = if self.paused { "是" } else { "否" };
         vec![
             Cell::new(&self.id),
             Cell::new(&self.name),
@@ -253,7 +253,7 @@ impl TableFormat for ScheduleInfo {
 }
 
 fn print_schedule_info(info: &ScheduleInfo, output_format: OutputFormat) -> anyhow::Result<()> {
-    let paused_display = if info.paused { "Yes" } else { "No" };
+    let paused_display = if info.paused { "是" } else { "否" };
 
     match output_format {
         OutputFormat::Json => {
@@ -298,18 +298,18 @@ fn print_schedule_info(info: &ScheduleInfo, output_format: OutputFormat) -> anyh
             let mut table = output::standard_table();
             table.add_row(vec![Cell::new("Name"), Cell::new(&info.name)]);
             table.add_row(vec![
-                Cell::new("Cron schedule"),
+                Cell::new("Cron 计划"),
                 Cell::new(&info.cron_schedule),
             ]);
             table.add_row(vec![Cell::new("Paused"), Cell::new(paused_display)]);
 
             let last_ran = info.last_ran_display();
             let next_run = info.next_run_display();
-            table.add_row(vec![Cell::new("Last ran"), Cell::new(last_ran)]);
+            table.add_row(vec![Cell::new("上次运行"), Cell::new(last_ran)]);
             if let Some(error) = &info.last_spawn_error {
-                table.add_row(vec![Cell::new("Last error"), Cell::new(error)]);
+                table.add_row(vec![Cell::new("上次错误"), Cell::new(error)]);
             }
-            table.add_row(vec![Cell::new("Next run"), Cell::new(next_run)]);
+            table.add_row(vec![Cell::new("下次运行"), Cell::new(next_run)]);
 
             table.add_row(vec![Cell::new("Prompt"), Cell::new(&info.prompt)]);
 
@@ -320,7 +320,7 @@ fn print_schedule_info(info: &ScheduleInfo, output_format: OutputFormat) -> anyh
                 table.add_row(vec![Cell::new("Model ID"), Cell::new(model_id)]);
             }
             if let Some(agent_name) = &info.agent_config.name {
-                table.add_row(vec![Cell::new("Agent name"), Cell::new(agent_name)]);
+                table.add_row(vec![Cell::new("智能体名称"), Cell::new(agent_name)]);
             }
             if let Some(skill_spec) = &info.agent_config.skill_spec {
                 table.add_row(vec![Cell::new("Skill"), Cell::new(skill_spec)]);
@@ -350,7 +350,7 @@ fn pause(ctx: &mut AppContext, args: PauseScheduleArgs) -> anyhow::Result<()> {
             let pause_future = manager.pause_schedule(schedule_id, ctx);
             ctx.spawn(pause_future, |_manager, result, ctx| match result {
                 Ok(()) => {
-                    println!("Schedule paused");
+                    println!("计划已暂停");
                     ctx.terminate_app(TerminationMode::ForceTerminate, None);
                 }
                 Err(err) => {
@@ -378,7 +378,7 @@ fn unpause(ctx: &mut AppContext, args: UnpauseScheduleArgs) -> anyhow::Result<()
             let unpause_future = manager.unpause_schedule(schedule_id, ctx);
             ctx.spawn(unpause_future, |_manager, result, ctx| match result {
                 Ok(()) => {
-                    println!("Schedule unpaused");
+                    println!("计划已恢复");
                     ctx.terminate_app(TerminationMode::ForceTerminate, None);
                 }
                 Err(err) => {
@@ -518,7 +518,7 @@ fn update(ctx: &mut AppContext, args: UpdateScheduleArgs) -> anyhow::Result<()> 
             );
             ctx.spawn(update_future, |_manager, result, ctx| match result {
                 Ok(()) => {
-                    println!("Schedule updated");
+                    println!("计划已更新");
                     ctx.terminate_app(TerminationMode::ForceTerminate, None);
                 }
                 Err(err) => {
@@ -654,7 +654,7 @@ fn delete(ctx: &mut AppContext, args: DeleteScheduleArgs) -> anyhow::Result<()> 
             let delete_future = manager.delete_schedule(schedule_id, ctx);
             ctx.spawn(delete_future, |_manager, result, ctx| match result {
                 Ok(()) => {
-                    println!("Schedule deleted");
+                    println!("计划已删除");
                     ctx.terminate_app(TerminationMode::ForceTerminate, None);
                 }
                 Err(err) => {

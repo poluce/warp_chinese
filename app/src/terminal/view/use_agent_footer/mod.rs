@@ -1,4 +1,4 @@
-//! Footer bar for "Use agent" functionality during long-running commands.
+//! Footer bar for "使用代理" functionality during long-running commands.
 //!
 //! This module provides a footer that appears at the bottom of active long running blocks,
 //! offering users the option to bring in the agent. For CLI agent commands (e.g., Claude Code,
@@ -1058,7 +1058,7 @@ pub struct UseAgentToolbar {
     terminal_view_id: EntityId,
     terminal_model: Arc<FairMutex<TerminalModel>>,
 
-    // Standard "Use agent" UI
+    // Standard "使用代理" UI
     button: ViewHandle<ActionButton>,
     give_control_back_button: ViewHandle<ActionButton>,
     dismiss_button: ViewHandle<ActionButton>,
@@ -1089,13 +1089,13 @@ impl UseAgentToolbar {
 
         let button = ctx.add_typed_action_view(|ctx| {
             ActionButton::new(
-                "Use agent",
+                "使用代理",
                 AgentFooterButtonTheme::new(Some(terminal_model.clone())),
             )
             .with_icon(Icon::Oz)
             .with_keybinding(KeystrokeSource::Fixed(USE_AGENT_KEYSTROKE.clone()), ctx)
             .with_size(button_size)
-            .with_tooltip("Ask the Warp agent to assist")
+            .with_tooltip("请求 Warp 代理协助")
             .with_tooltip_alignment(TooltipAlignment::Left)
             .on_click(|ctx| {
                 ctx.dispatch_typed_action(TerminalAction::SetInputModeAgent);
@@ -1103,13 +1103,13 @@ impl UseAgentToolbar {
         });
         let give_control_back_button = ctx.add_typed_action_view(|ctx| {
             ActionButton::new(
-                "Give control back to agent",
+                "将控制权交还给代理",
                 AgentFooterButtonTheme::new(Some(terminal_model.clone())),
             )
             .with_icon(Icon::Oz)
             .with_keybinding(KeystrokeSource::Fixed(USE_AGENT_KEYSTROKE.clone()), ctx)
             .with_size(button_size)
-            .with_tooltip("Ask the Warp agent to resume")
+            .with_tooltip("请求 Warp 代理恢复")
             .with_tooltip_alignment(TooltipAlignment::Left)
             .on_click(|ctx| {
                 ctx.dispatch_typed_action(TerminalAction::SetInputModeAgent);
@@ -1117,7 +1117,7 @@ impl UseAgentToolbar {
         });
         let dismiss_button = ctx.add_typed_action_view(|_| {
             ActionButton::new(
-                "Dismiss",
+                "关闭",
                 AgentFooterButtonTheme::new(Some(terminal_model.clone())),
             )
             .on_click(|ctx| {
@@ -1127,7 +1127,7 @@ impl UseAgentToolbar {
         });
         let dont_show_again_button = ctx.add_typed_action_view(|_| {
             ActionButton::new(
-                "Don't show again",
+                "不再显示",
                 AgentFooterButtonTheme::new(Some(terminal_model.clone())),
             )
             .on_click(|ctx| {
@@ -1260,7 +1260,7 @@ impl UseAgentToolbar {
     }
 
     /// Sets the current warpification mode. When set, the footer shows the
-    /// warpify view instead of the CLI agent or regular "Use agent" views.
+    /// warpify view instead of the CLI agent or regular "使用代理" views.
     pub(in crate::terminal) fn set_warpify_mode(
         &mut self,
         mode: WarpificationMode,

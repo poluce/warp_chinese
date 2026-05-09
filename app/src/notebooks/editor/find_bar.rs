@@ -195,7 +195,7 @@ impl FindBar {
         if searcher.has_query() {
             let match_count = searcher.match_count();
             let text = if match_count == 0 {
-                "No matches".to_string()
+                "无匹配".to_string()
             } else {
                 let mut text = String::new();
                 match searcher.selected_match() {
@@ -543,21 +543,21 @@ impl TypedActionView for FindBar {
         let text = match action {
             FindBarAction::ToggleRegex => {
                 if self.searcher.as_ref(ctx).is_regex() {
-                    "Enable regex search"
+                    "启用正则搜索"
                 } else {
-                    "Disable regex search"
+                    "禁用正则搜索"
                 }
             }
             FindBarAction::ToggleCaseSensitive => {
                 if self.searcher.as_ref(ctx).is_case_sensitive() {
-                    "Enable case-sensitive search"
+                    "启用区分大小写搜索"
                 } else {
-                    "Disable case-sensitive search"
+                    "禁用区分大小写搜索"
                 }
             }
-            FindBarAction::FocusNextMatch => "Focus next match",
-            FindBarAction::FocusPreviousMatch => "Focus previous match",
-            FindBarAction::Close => "Close find bar",
+            FindBarAction::FocusNextMatch => "聚焦下一个匹配项",
+            FindBarAction::FocusPreviousMatch => "聚焦上一个匹配项",
+            FindBarAction::Close => "关闭查找栏",
         };
         Some(AccessibilityContent::new_without_help(
             text,

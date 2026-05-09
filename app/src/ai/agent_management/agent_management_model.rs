@@ -345,10 +345,10 @@ impl AgentNotificationsModel {
                 .and_then(|c| c.agent_name())
                 .map(|name| name.to_owned())
                 .or(latest_query)
-                .unwrap_or_else(|| "Child agent".to_owned());
+                .unwrap_or_else(|| "子智能体".to_owned());
             (child_open || parent_open, nav_terminal_view_id, child_name)
         } else {
-            let title = latest_query.unwrap_or_else(|| "Agent task".to_owned());
+            let title = latest_query.unwrap_or_else(|| "智能体任务".to_owned());
             (
                 active_views.is_conversation_open(conversation_id, ctx),
                 terminal_view_id,

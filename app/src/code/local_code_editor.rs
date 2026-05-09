@@ -1897,10 +1897,10 @@ impl LocalCodeEditorView {
     /// Creates menu items for the context menu
     fn context_menu_items(&self) -> Vec<MenuItem<LocalCodeEditorAction>> {
         vec![
-            MenuItemFields::new("Go to definition")
+            MenuItemFields::new("转到定义")
                 .with_on_select_action(LocalCodeEditorAction::GotoDefinition)
                 .into_item(),
-            MenuItemFields::new("Find references")
+            MenuItemFields::new("查找引用")
                 .with_on_select_action(LocalCodeEditorAction::FindReferences)
                 .into_item(),
         ]

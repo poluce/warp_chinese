@@ -221,11 +221,11 @@ impl Display for SuggestionTypeName {
             f,
             "{}",
             match self {
-                Self::Command => "Command",
-                Self::Subcommand => "Subcommand",
-                Self::Argument => "Argument",
-                Self::Option => "Option",
-                Self::Variable => "Variable",
+                Self::Command => "命令",
+                Self::Subcommand => "子命令",
+                Self::Argument => "参数",
+                Self::Option => "选项",
+                Self::Variable => "变量",
             },
         )
     }

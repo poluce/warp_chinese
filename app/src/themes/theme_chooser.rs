@@ -52,7 +52,7 @@ use crate::{
 use super::theme;
 
 // All units in px
-const THEME_CHOOSER_TITLE: &str = "Themes";
+const THEME_CHOOSER_TITLE: &str = "主题";
 const CLOSE_BUTTON_MARGIN_RIGHT: f32 = 6.;
 const TITLE_FONT_SIZE: f32 = 16.;
 const TITLE_MARGIN: f32 = 12.;
@@ -122,13 +122,13 @@ impl ThemeChooserMode {
         let hint_text = match self {
             ThemeChooserMode::SystemAgnostic => appearance
                 .ui_builder()
-                .paragraph("Change your current theme.".to_string()),
+                .paragraph("更改当前主题。".to_string()),
             ThemeChooserMode::SystemLight => appearance
                 .ui_builder()
-                .paragraph("Pick a theme for when your system is in light mode.".to_string()),
+                .paragraph("选择系统处于浅色模式时的主题。".to_string()),
             ThemeChooserMode::SystemDark => appearance
                 .ui_builder()
-                .paragraph("Pick a theme for when your system is in dark mode.".to_string()),
+                .paragraph("选择系统处于深色模式时的主题。".to_string()),
         };
         hint_text
             .build()
@@ -749,7 +749,7 @@ impl ThemeChooser {
                 .with_child(
                     appearance
                         .ui_builder()
-                        .span("No matching themes!".to_string())
+                        .span("未找到匹配的主题！".to_string())
                         .build()
                         .finish(),
                 )
@@ -846,8 +846,8 @@ impl View for ThemeChooser {
 
     fn accessibility_contents(&self, _: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-                "Theme chooser. Unfortunately, theme chooser window isn't compatible with screen readers yet.",
-                "Press escape to close.",
+                "主题选择器。遗憾的是，主题选择器窗口尚不支持屏幕阅读器。",
+                "按ESC键关闭。",
                 WarpA11yRole::WindowRole,
         ))
     }

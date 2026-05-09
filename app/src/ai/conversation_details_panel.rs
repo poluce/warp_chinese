@@ -561,7 +561,7 @@ pub fn init(app: &mut AppContext) {
     app.register_fixed_bindings([FixedBinding::custom(
         CustomAction::Copy,
         ConversationDetailsPanelAction::CopySelectedText,
-        "Copy",
+        "复制",
         id!(ConversationDetailsPanel::ui_name()) & !id!("IMEOpen"),
     )]);
 }
@@ -604,16 +604,16 @@ impl ConversationDetailsPanel {
 
         #[cfg(not(target_family = "wasm"))]
         let continue_locally_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Continue locally", PrimaryTheme)
-                .with_tooltip("Fork this conversation locally")
+            ActionButton::new("在本地继续", PrimaryTheme)
+                .with_tooltip("在本地创建此对话的分支")
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(ConversationDetailsPanelAction::ContinueLocally);
                 })
         });
         let open_in_oz_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("View in Oz", SecondaryTheme)
-                .with_tooltip("View this run in the Oz web app")
+            ActionButton::new("在 Oz 中查看", SecondaryTheme)
+                .with_tooltip("在 Oz Web 应用中查看此运行")
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(ConversationDetailsPanelAction::OpenInOz);
@@ -980,7 +980,7 @@ impl ConversationDetailsPanel {
         let ui_font_size = appearance.ui_font_size();
 
         let label_text = Text::new(
-            "Error".to_string(),
+            "错误".to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1230,7 +1230,7 @@ impl ConversationDetailsPanel {
         if trimmed.is_empty() {
             return None;
         }
-        Some(self.render_simple_field("Initial query", trimmed, appearance))
+        Some(self.render_simple_field("初始查询", trimmed, appearance))
     }
 
     fn render_artifacts_section(&self, appearance: &Appearance) -> Option<Box<dyn Element>> {
@@ -1345,7 +1345,7 @@ impl ConversationDetailsPanel {
 
         // Section header
         let header = Text::new(
-            "Environment details".to_string(),
+            "环境详情".to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1501,7 +1501,7 @@ impl ConversationDetailsPanel {
         let theme = appearance.theme();
 
         let label_text = Text::new(
-            "Credits used".to_string(),
+            "已使用的积分".to_string(),
             appearance.ui_font_family(),
             appearance.ui_font_size(),
         )
@@ -1516,9 +1516,9 @@ impl ConversationDetailsPanel {
         );
 
         let inference_row = self.render_cost_sub_row(
-            "Inference",
+            "推理",
             inference,
-            "Credits spent on AI model requests",
+            "AI 模型请求消耗的积分",
             self.mouse_states.inference_info_tooltip.clone(),
             appearance,
         );
@@ -1529,9 +1529,9 @@ impl ConversationDetailsPanel {
         );
 
         let compute_row = self.render_cost_sub_row(
-            "Compute",
+            "计算",
             compute,
-            "Credits spent on sandbox compute time",
+            "沙箱计算时间消耗的积分",
             self.mouse_states.compute_info_tooltip.clone(),
             appearance,
         );
@@ -1866,7 +1866,7 @@ impl View for ConversationDetailsPanel {
                 let formatted = format!("{credits:.1}");
                 content.add_child(
                     Container::new(self.render_simple_field(
-                        "Credits used",
+                        "已使用的积分",
                         &formatted,
                         appearance,
                     ))
@@ -1880,7 +1880,7 @@ impl View for ConversationDetailsPanel {
         if let Some(duration) = self.data.run_time {
             let formatted = human_readable_precise_duration(duration);
             content.add_child(
-                Container::new(self.render_simple_field("Run time", &formatted, appearance))
+                Container::new(self.render_simple_field("运行时间", &formatted, appearance))
                     .with_margin_bottom(FIELD_SPACING)
                     .finish(),
             );
@@ -1889,7 +1889,7 @@ impl View for ConversationDetailsPanel {
         if let Some(created_at) = self.data.created_at {
             let formatted = created_at.format("%I:%M %p on %-m/%-d/%Y").to_string();
             content.add_child(
-                Container::new(self.render_simple_field("Created on", &formatted, appearance))
+                Container::new(self.render_simple_field("创建于", &formatted, appearance))
                     .with_margin_bottom(FIELD_SPACING)
                     .finish(),
             );

@@ -93,7 +93,7 @@ impl View for CloseSessionConfirmationDialog {
         let dont_show_again_checkbox = appearance
             .ui_builder()
             .checkbox(self.dont_show_again_mouse_state.clone(), Some(14.))
-            .with_label(Span::new("Don't show again.", Default::default()))
+            .with_label(Span::new("不再显示", Default::default()))
             .check(self.dont_show_again)
             .build()
             .with_cursor(Cursor::PointingHand)
@@ -106,7 +106,7 @@ impl View for CloseSessionConfirmationDialog {
         let close_session_button = appearance
             .ui_builder()
             .button(ButtonVariant::Accent, self.confirm_mouse_state.clone())
-            .with_centered_text_label("Close session".into())
+            .with_centered_text_label("关闭会话".into())
             .with_style(button_style)
             .build()
             .with_cursor(Cursor::PointingHand)
@@ -120,7 +120,7 @@ impl View for CloseSessionConfirmationDialog {
         let cancel_button = appearance
             .ui_builder()
             .button(ButtonVariant::Basic, self.cancel_mouse_state.clone())
-            .with_centered_text_label("Cancel".into())
+            .with_centered_text_label("取消".into())
             .with_style(button_style)
             .build()
             .with_cursor(Cursor::PointingHand)
@@ -131,9 +131,9 @@ impl View for CloseSessionConfirmationDialog {
 
         let dialog = Container::new(
             Dialog::new(
-                "Close session?".into(),
+                "关闭会话？".into(),
                 Some(
-                    "You are about to close a session that is currently being shared. Closing it will end sharing for everyone."
+                    "您即将关闭当前正在共享的会话。关闭将结束所有人的共享。"
                         .into(),
                 ),
                 UiComponentStyles {

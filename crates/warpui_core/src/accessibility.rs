@@ -116,28 +116,28 @@ fn string_announcement(s: String) -> String {
 
     if c.is_ascii_punctuation() {
         return match c {
-            '.' => "period".to_string(),
-            '!' => "exclamation mark".to_string(),
-            '~' => "tilde".to_string(),
-            '`' => "accent".to_string(),
-            '^' => "caret".to_string(),
-            '(' => "left parenthesis".to_string(),
-            ')' => "right parenthesis".to_string(),
-            '-' => "hyphen".to_string(),
-            '_' => "underscore".to_string(),
-            '?' => "question mark".to_string(),
-            ':' => "colon".to_string(),
-            ';' => "semicolon".to_string(),
-            '"' => "double quotation mark".to_string(),
-            '\'' => "single quotation mark".to_string(),
-            '\\' => "backslash".to_string(),
-            '/' => "slash".to_string(),
-            ',' => "comma".to_string(),
-            '[' => "left bracket".to_string(),
-            ']' => "right bracket".to_string(),
-            '{' => "left brace".to_string(),
-            '}' => "right brace".to_string(),
-            '|' => "vertical line".to_string(),
+            '.' => "句号".to_string(),
+            '!' => "感叹号".to_string(),
+            '~' => "波浪号".to_string(),
+            '`' => "重音".to_string(),
+            '^' => "插入符".to_string(),
+            '(' => "左括号".to_string(),
+            ')' => "右括号".to_string(),
+            '-' => "连字符".to_string(),
+            '_' => "下划线".to_string(),
+            '?' => "问号".to_string(),
+            ':' => "冒号".to_string(),
+            ';' => "分号".to_string(),
+            '"' => "双引号".to_string(),
+            '\'' => "单引号".to_string(),
+            '\\' => "反斜线".to_string(),
+            '/' => "斜线".to_string(),
+            ',' => "逗号".to_string(),
+            '[' => "左方括号".to_string(),
+            ']' => "右方括号".to_string(),
+            '{' => "左花括号".to_string(),
+            '}' => "右花括号".to_string(),
+            '|' => "竖线".to_string(),
 
             // everything else seems to have proper interpretation in voiceover
             _ => s,
@@ -173,9 +173,9 @@ impl AccessibilityContent {
         // swapping certain whitespace characters with their "readings".
         let value = if value.chars().all(char::is_whitespace) {
             value
-                .replace(' ', " space ") // Note: order here is important, space should go first.
-                .replace('\t', " tab ")
-                .replace('\n', " newline ")
+                .replace(' ', " 空格 ") // Note: order here is important, space should go first.
+                .replace('\t', " 制表符 ")
+                .replace('\n', " 换行 ")
                 .trim()
                 .to_string()
         } else {
@@ -226,21 +226,21 @@ impl std::fmt::Display for WarpA11yRole {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         use WarpA11yRole::*;
         let word = match self {
-            ButtonRole => "Button",
-            CheckboxRole => "Checkbox",
-            HelpRole => "Help",
-            ImageRole => "Image",
-            LinkRole => "Link",
-            ListRole => "List",
-            MenuItemRole => "MenuItem",
-            MenuRole => "Menu",
-            PopoverRole => "Popover",
-            ScrollareaRole => "Scrollarea",
-            TextRole => "Text",
-            TextareaRole => "Textarea",
-            TextfieldRole => "Textfield",
-            WindowRole => "Window",
-            UserAction => "Action",
+            ButtonRole => "按钮",
+            CheckboxRole => "复选框",
+            HelpRole => "帮助",
+            ImageRole => "图片",
+            LinkRole => "链接",
+            ListRole => "列表",
+            MenuItemRole => "菜单项",
+            MenuRole => "菜单",
+            PopoverRole => "弹出框",
+            ScrollareaRole => "滚动区域",
+            TextRole => "文本",
+            TextareaRole => "文本区域",
+            TextfieldRole => "文本字段",
+            WindowRole => "窗口",
+            UserAction => "操作",
         };
         write!(f, "{word}")
     }

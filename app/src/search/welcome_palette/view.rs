@@ -285,7 +285,7 @@ impl WelcomePalette {
         });
 
         let placeholder_element = QueryResultRenderer::new(
-            MatchedBinding::placeholder("No results found".into()).into(),
+            MatchedBinding::placeholder("未找到结果".into()).into(),
             "welcome_palette:no_results".into(),
             |_, _, _| {},
             *styles::QUERY_RESULT_RENDERER_STYLES,
@@ -725,7 +725,7 @@ impl WelcomePalette {
                 TextAndIconAlignment::IconFirst,
                 match &self.terminal_session_keybinding {
                     Some(keystroke) => format!("Terminal session {keystroke}"),
-                    None => "Terminal session".to_string(),
+                    None => "终端会话".to_string(),
                 },
                 Icon::Terminal.to_warpui_icon(theme.foreground()),
                 MainAxisSize::Max,

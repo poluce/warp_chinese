@@ -345,7 +345,7 @@ impl View for AcceptAutosuggestionKeybinding {
             if !is_menu_open && state.is_hovered() {
                 let tool_tip = appearance
                     .ui_builder()
-                    .autosuggestion_tool_tip("Change keybinding".into())
+                    .autosuggestion_tool_tip("更改快捷键".into())
                     .build()
                     .finish();
                 stack.add_positioned_overlay_child(

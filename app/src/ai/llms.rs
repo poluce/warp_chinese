@@ -65,13 +65,13 @@ impl DisableReason {
     /// Returns a user-facing tooltip explaining why the model is disabled.
     pub fn tooltip_text(&self) -> &'static str {
         match self {
-            DisableReason::AdminDisabled => "This model has been disabled by your team admin.",
-            DisableReason::OutOfRequests => "Please upgrade your plan to make more requests.",
+            DisableReason::AdminDisabled => "此模型已被团队管理员禁用。",
+            DisableReason::OutOfRequests => "请升级套餐以继续使用。",
             DisableReason::ProviderOutage => {
-                "This model is temporarily unavailable due to a provider outage."
+                "此模型因提供商服务中断暂时不可用。"
             }
-            DisableReason::RequiresUpgrade => "Please upgrade your plan to access this model.",
-            DisableReason::Unavailable => "This model is unavailable.",
+            DisableReason::RequiresUpgrade => "请升级套餐以使用此模型。",
+            DisableReason::Unavailable => "此模型不可用。",
         }
     }
 

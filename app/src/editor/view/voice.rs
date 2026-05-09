@@ -532,9 +532,9 @@ impl EditorView {
 
         let modifier_key = AISettings::handle(app).as_ref(app).voice_input_toggle_key;
         let tooltip_text = if mic_access_denied {
-            "Voice transcription is disabled because Microphone access was not granted.".to_string()
+            "语音转录已禁用，因为麦克风访问未被授权。".to_string()
         } else if modifier_key == VoiceInputToggleKey::None {
-            "Voice transcription".to_string()
+            "语音转录".to_string()
         } else {
             format!(
                 "Voice transcription (hold `{}` key)",

@@ -417,7 +417,7 @@ impl PlanAndTodoListView {
             .render_chip_button(
                 content,
                 self.todo_button_mouse_state.clone(),
-                "View todo list".to_string(),
+                "查看待办清单".to_string(),
                 corner_radius,
                 appearance,
             )

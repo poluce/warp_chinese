@@ -127,10 +127,10 @@ const HEADER_MARGIN: f32 = 15.;
 const BANNER_VERTICAL_MARGIN: f32 = 10.;
 
 const CONFLICT_RESOLUTION_MESSAGE: &str =
-    "This notebook could not be saved because changes were made while you were editing. Please copy your work and refresh.";
-const REFRESH_BUTTON_TEXT: &str = "Refresh";
+    "此笔记本无法保存，因为编辑期间有其他更改。请复制您的工作并刷新。";
+const REFRESH_BUTTON_TEXT: &str = "刷新";
 
-const FEATURE_NOT_AVAILABLE_MESSAGE: &str = "This notebook could not be saved to the server because the feature is temporarily unavailable. The changes are saved locally. Please retry later.";
+const FEATURE_NOT_AVAILABLE_MESSAGE: &str = "此笔记本无法保存到服务器，因为该功能暂时不可用。更改已保存在本地。请稍后重试。";
 
 /// The frequency at which we check for modifications and save the notebook to the server. This
 /// lets us trade off how quickly edits appear on other clients with the load on the server for RTC
@@ -161,7 +161,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "notebookview:increase_font_size",
-            "Increase notebook font size",
+            "增大笔记本字体大小",
             NotebookAction::IncreaseFontSize,
         )
         .with_context_predicate(id!("NotebookView") & id!("NotMatchNotebookToMonospaceSize"))
@@ -169,7 +169,7 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding("cmdorctrl-="),
         EditableBinding::new(
             "notebookview:decrease_font_size",
-            "Decrease notebook font size",
+            "减小笔记本字体大小",
             NotebookAction::DecreaseFontSize,
         )
         .with_context_predicate(id!("NotebookView") & id!("NotMatchNotebookToMonospaceSize"))
@@ -177,7 +177,7 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding("cmdorctrl--"),
         EditableBinding::new(
             "notebookview:reset_font_size",
-            "Reset notebook font size",
+            "重置笔记本字体大小",
             NotebookAction::ResetFontSize,
         )
         .with_context_predicate(id!("NotebookView") & id!("NotMatchNotebookToMonospaceSize"))
@@ -185,7 +185,7 @@ pub fn init(app: &mut AppContext) {
         .with_custom_action(CustomAction::ResetFontSize),
         EditableBinding::new(
             "notebookview:focus_terminal_input",
-            "Focus Terminal Input from Notebook",
+            "聚焦终端输入",
             NotebookAction::FocusTerminalInput,
         )
         .with_context_predicate(id!("NotebookView"))
@@ -379,7 +379,7 @@ impl NotebookView {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("Untitled", ctx);
+            editor.set_placeholder_text("无标题", ctx);
             editor
         });
         ctx.subscribe_to_view(&title, |notebook, _, event, ctx| {
@@ -499,7 +499,7 @@ impl NotebookView {
     fn title_from_editor(title_editor: &ViewHandle<EditorView>, app: &AppContext) -> String {
         let mut title = title_editor.as_ref(app).buffer_text(app);
         if title.is_empty() {
-            title.push_str("Untitled");
+            title.push_str("无标题");
         }
         title
     }
@@ -823,7 +823,7 @@ impl NotebookView {
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
                         DismissibleToast::error(
-                            "This notebook cannot be saved because its content contains secrets"
+                            "此笔记本无法保存，因为内容包含机密信息"
                                 .to_string(),
                         ),
                         window_id,
@@ -1426,7 +1426,7 @@ impl NotebookView {
 
         if let Some(ai_document_id) = self.active_notebook_data.as_ref(ctx).ai_document_id(ctx) {
             menu_items.push(
-                MenuItemFields::new("Attach to active session")
+                MenuItemFields::new("附加到活动会话")
                     .with_on_select_action(NotebookAction::AttachPlanAsContext(ai_document_id))
                     .with_icon(icons::Icon::Paperclip)
                     .into_item(),
@@ -1436,7 +1436,7 @@ impl NotebookView {
         // Add "Copy Link" to menu
         if let Some(link) = self.notebook_link(ctx) {
             menu_items.push(
-                MenuItemFields::new("Copy link")
+                MenuItemFields::new("复制链接")
                     .with_on_select_action(NotebookAction::CopyLink(link))
                     .with_icon(icons::Icon::Link)
                     .into_item(),
@@ -1453,7 +1453,7 @@ impl NotebookView {
             if let Some(link) = self.notebook_link(ctx) {
                 if let Ok(url) = Url::parse(&link) {
                     menu_items.push(
-                        MenuItemFields::new("Open on Desktop")
+                        MenuItemFields::new("在桌面打开")
                             .with_on_select_action(NotebookAction::OpenLinkOnDesktop(url))
                             .with_icon(icons::Icon::Laptop)
                             .into_item(),
@@ -1465,7 +1465,7 @@ impl NotebookView {
         // Add "Duplicate" to menu
         if active_notebook_data.space(ctx) != Some(Space::Shared) {
             menu_items.push(
-                MenuItemFields::new("Duplicate")
+                MenuItemFields::new("复制副本")
                     .with_on_select_action(NotebookAction::Duplicate)
                     .with_icon(icons::Icon::Duplicate)
                     .into_item(),
@@ -1475,7 +1475,7 @@ impl NotebookView {
         #[cfg(feature = "local_fs")]
         {
             menu_items.push(
-                MenuItemFields::new("Export")
+                MenuItemFields::new("导出")
                     .with_on_select_action(NotebookAction::Export)
                     .with_icon(icons::Icon::Download)
                     .into_item(),
@@ -1487,7 +1487,7 @@ impl NotebookView {
             && (!FeatureFlag::SharedWithMe.is_enabled() || access_level.can_trash())
         {
             menu_items.push(
-                MenuItemFields::new("Trash")
+                MenuItemFields::new("移到回收站")
                     .with_on_select_action(NotebookAction::Trash)
                     .with_icon(icons::Icon::Trash)
                     .into_item(),
@@ -1751,7 +1751,7 @@ impl NotebookView {
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
                         DismissibleToast::error(
-                            "This notebook cannot be saved because its title contains secrets"
+                            "此笔记本无法保存，因为标题包含机密信息"
                                 .to_string(),
                         ),
                         window_id,
@@ -1933,9 +1933,9 @@ impl NotebookView {
         let mut stack = Stack::new();
 
         let text = if deleted {
-            "You no longer have access to this notebook"
+            "您不再有权访问此笔记本"
         } else {
-            "Notebook was moved to trash"
+            "笔记本已移至回收站"
         };
         stack.add_child(
             Align::new(
@@ -1992,11 +1992,11 @@ impl NotebookView {
                             )
                             .with_tooltip(move || {
                                 ui_builder
-                                    .tool_tip("Restore notebook from trash".to_string())
+                                    .tool_tip("从回收站恢复笔记本".to_string())
                                     .build()
                                     .finish()
                             })
-                            .with_text_label("Restore".to_string())
+                            .with_text_label("恢复".to_string())
                             .build()
                             .on_click(|ctx, _, _| {
                                 ctx.dispatch_typed_action(NotebookAction::Untrash)
@@ -2023,13 +2023,13 @@ impl NotebookView {
                                 .with_tooltip(move || {
                                     ui_builder
                                         .tool_tip(
-                                            "Copy notebook contents into your personal workspace"
+                                            "将笔记本内容复制到个人工作区"
                                                 .to_string(),
                                         )
                                         .build()
                                         .finish()
                                 })
-                                .with_text_label("Copy to Personal".to_string())
+                                .with_text_label("复制到个人".to_string())
                                 .build()
                                 .on_click(|ctx, _, _| {
                                     ctx.dispatch_typed_action(NotebookAction::CopyToPersonal)
@@ -2107,11 +2107,11 @@ impl NotebookView {
                         )
                         .with_tooltip(move || {
                             ui_builder
-                                .tool_tip("Copy notebook contents to your clipboard".to_string())
+                                .tool_tip("将笔记本内容复制到剪贴板".to_string())
                                 .build()
                                 .finish()
                         })
-                        .with_text_label("Copy All".to_string())
+                        .with_text_label("全部复制".to_string())
                         .build()
                         .on_click(|ctx, _, _| {
                             ctx.dispatch_typed_action(NotebookAction::CopyToClipboard)
@@ -2141,7 +2141,7 @@ impl NotebookView {
                             )
                             .with_tooltip(move || {
                                 ui_builder
-                                    .tool_tip("Refresh notebook".to_string())
+                                    .tool_tip("刷新笔记本".to_string())
                                     .build()
                                     .finish()
                             })
@@ -2333,7 +2333,7 @@ impl TypedActionView for NotebookView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success("Link copied to clipboard".to_string()),
+                        DismissibleToast::success("链接已复制到剪贴板".to_string()),
                         window_id,
                         ctx,
                     );

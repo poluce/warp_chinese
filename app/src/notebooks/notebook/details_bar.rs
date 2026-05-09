@@ -137,7 +137,7 @@ impl DetailsBar {
             let ui_builder = appearance.ui_builder().clone();
             edit_button = edit_button.with_tooltip(move || {
                 ui_builder
-                    .tool_tip("Sign in to edit".to_string())
+                    .tool_tip("登录以编辑".to_string())
                     .build()
                     .finish()
             });
@@ -174,13 +174,13 @@ impl DetailsBar {
         match editor.state {
             EditorState::None => appearance
                 .ui_builder()
-                .span("Viewing")
+                .span("查看中")
                 .with_style(base_text_styles)
                 .build()
                 .finish(),
             EditorState::CurrentUser => appearance
                 .ui_builder()
-                .span("Editing")
+                .span("编辑中")
                 .with_style(base_text_styles)
                 .build()
                 .finish(),
@@ -209,7 +209,7 @@ fn editor_display_name(email: Option<&str>, app: &AppContext) -> String {
         Some(email) => UserProfiles::as_ref(app)
             .displayable_identifier_for_email(email)
             .unwrap_or_else(|| email.to_string()),
-        None => "Other user".to_string(),
+        None => "其他用户".to_string(),
     }
 }
 

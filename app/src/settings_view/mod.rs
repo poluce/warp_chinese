@@ -230,20 +230,20 @@ use std::fmt::{self, Display};
 impl Display for SettingsSection {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            SettingsSection::BillingAndUsage => write!(f, "Billing and usage"),
-            SettingsSection::Keybindings => write!(f, "Keyboard shortcuts"),
-            SettingsSection::SharedBlocks => write!(f, "Shared blocks"),
-            SettingsSection::MCPServers => write!(f, "MCP Servers"),
+            SettingsSection::BillingAndUsage => write!(f, "账单和用量"),
+            SettingsSection::Keybindings => write!(f, "键盘快捷键"),
+            SettingsSection::SharedBlocks => write!(f, "共享 blocks"),
+            SettingsSection::MCPServers => write!(f, "MCP 服务器"),
             SettingsSection::WarpDrive => write!(f, "Warp Drive"),
             SettingsSection::WarpAgent => write!(f, "Warp Agent"),
-            SettingsSection::AgentProfiles => write!(f, "Profiles"),
-            SettingsSection::AgentMCPServers => write!(f, "MCP servers"),
-            SettingsSection::Knowledge => write!(f, "Knowledge"),
-            SettingsSection::ThirdPartyCLIAgents => write!(f, "Third party CLI agents"),
-            SettingsSection::CodeIndexing => write!(f, "Indexing and projects"),
-            SettingsSection::EditorAndCodeReview => write!(f, "Editor and Code Review"),
-            SettingsSection::CloudEnvironments => write!(f, "Environments"),
-            SettingsSection::OzCloudAPIKeys => write!(f, "Oz Cloud API Keys"),
+            SettingsSection::AgentProfiles => write!(f, "配置"),
+            SettingsSection::AgentMCPServers => write!(f, "MCP 服务器"),
+            SettingsSection::Knowledge => write!(f, "知识"),
+            SettingsSection::ThirdPartyCLIAgents => write!(f, "第三方 CLI 代理"),
+            SettingsSection::CodeIndexing => write!(f, "索引和项目"),
+            SettingsSection::EditorAndCodeReview => write!(f, "编辑器和代码审查"),
+            SettingsSection::CloudEnvironments => write!(f, "环境"),
+            SettingsSection::OzCloudAPIKeys => write!(f, "Oz Cloud API 密钥"),
             _ => write!(f, "{self:?}"),
         }
     }
@@ -1146,7 +1146,7 @@ impl SettingsView {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("Search", ctx);
+            editor.set_placeholder_text("搜索", ctx);
             editor
         });
 
@@ -1189,19 +1189,19 @@ impl SettingsView {
         let mut nav_items = vec![
             SettingsNavItem::Page(SettingsSection::Account),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                "Agents",
+                "代理",
                 SettingsSection::ai_subpages().to_vec(),
             )),
             SettingsNavItem::Page(SettingsSection::BillingAndUsage),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                "Code",
+                "代码",
                 vec![
                     SettingsSection::CodeIndexing,
                     SettingsSection::EditorAndCodeReview,
                 ],
             )),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                "Cloud platform",
+                "云平台",
                 vec![
                     SettingsSection::CloudEnvironments,
                     SettingsSection::OzCloudAPIKeys,
@@ -2658,7 +2658,7 @@ impl BackingView for SettingsView {
         _ctx: &view::HeaderRenderContext<'_>,
         _app: &AppContext,
     ) -> view::HeaderContent {
-        view::HeaderContent::simple("Settings")
+        view::HeaderContent::simple("设置")
     }
 
     fn set_focus_handle(&mut self, focus_handle: PaneFocusHandle, _ctx: &mut ViewContext<Self>) {

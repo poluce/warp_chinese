@@ -56,16 +56,16 @@ impl LinkTarget {
     pub fn secondary_action(&self) -> Option<SecondaryAction> {
         match self {
             LinkTarget::LocalDirectory { .. } => Some(SecondaryAction {
-                label: "New session".into(),
-                tooltip: Some("Open a new terminal session in this directory".into()),
-                accessibility_content: "Open in terminal session".into(),
+                label: "新建会话".into(),
+                tooltip: Some("在此目录中打开新的终端会话".into()),
+                accessibility_content: "在终端会话中打开".into(),
             }),
             LinkTarget::LocalFile {
                 is_markdown: true, ..
             } => Some(SecondaryAction {
-                label: "Open in editor".into(),
+                label: "在编辑器中打开".into(),
                 tooltip: None,
-                accessibility_content: "Edit Markdown file".into(),
+                accessibility_content: "编辑 Markdown 文件".into(),
             }),
             LinkTarget::Url(_) | LinkTarget::LocalFile { .. } => None,
         }
@@ -395,9 +395,9 @@ impl From<std::io::Error> for ResolveError {
 impl fmt::Display for ResolveError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            ResolveError::FileNotFound => f.write_str("File not found"),
-            ResolveError::MissingContext => f.write_str("No base directory"),
-            ResolveError::Unknown => f.write_str("Broken file link"),
+            ResolveError::FileNotFound => f.write_str("文件未找到"),
+            ResolveError::MissingContext => f.write_str("无基础目录"),
+            ResolveError::Unknown => f.write_str("文件链接损坏"),
         }
     }
 }

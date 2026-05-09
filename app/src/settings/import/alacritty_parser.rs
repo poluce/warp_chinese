@@ -297,7 +297,7 @@ impl AlacrittyTheme {
                 None,
                 terminal_colors,
                 None,
-                Some(String::from("Imported Alacritty Theme")),
+                Some(String::from("导入的 Alacritty 主题")),
             )))
         }
     }

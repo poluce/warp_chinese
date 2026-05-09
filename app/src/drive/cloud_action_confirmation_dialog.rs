@@ -25,14 +25,14 @@ const BORDER_WIDTH: f32 = 1.;
 const DIALOG_WIDTH: f32 = 450.;
 const CANCEL_TEXT: &str = "Cancel";
 
-const DELETE_TEAM_TITLE_TEXT: &str = "Are you sure you want to delete this team?";
-const LEAVE_TEAM_TITLE_TEXT: &str = "Are you sure you want to leave this team?";
+const DELETE_TEAM_TITLE_TEXT: &str = "确定要删除此团队吗？";
+const LEAVE_TEAM_TITLE_TEXT: &str = "确定要离开此团队吗？";
 
-const DELETE_TEAM_BODY_TEXT: &str = "Deleting this team will permanently delete it and all of its related content, including billing information or credits. You will not be able to restore them.";
-const LEAVE_TEAM_BODY_TEXT: &str = "You will need to be reinvited in order to rejoin.";
+const DELETE_TEAM_BODY_TEXT: &str = "删除此团队将永久删除它及其所有相关内容，包括账单信息或积分。您将无法恢复它们。";
+const LEAVE_TEAM_BODY_TEXT: &str = "您需要被重新邀请才能重新加入。";
 
-const DELETE_TEAM_CONFIRM_TEXT: &str = "Yes, delete";
-const LEAVE_TEAM_CONFIRM_TEXT: &str = "Yes, leave";
+const DELETE_TEAM_CONFIRM_TEXT: &str = "确认删除";
+const LEAVE_TEAM_CONFIRM_TEXT: &str = "确认离开";
 
 pub enum CloudActionConfirmationDialogEvent {
     Cancel,

@@ -218,8 +218,8 @@ impl ConversationEndedTombstoneView {
             .filter(|_| FeatureFlag::HandoffCloudCloud.is_enabled())
             .map(|task_id| {
                 ctx.add_typed_action_view(move |_| {
-                    ActionButton::new("Continue", PrimaryTheme)
-                        .with_tooltip("Continue this task in Cloud Mode")
+                    ActionButton::new("继续", PrimaryTheme)
+                        .with_tooltip("在云端模式下继续此任务")
                         .on_click(move |ctx| {
                             ctx.dispatch_typed_action(
                                 ConversationEndedTombstoneAction::ContinueInCloud { task_id },
@@ -231,8 +231,8 @@ impl ConversationEndedTombstoneView {
         #[cfg(not(target_family = "wasm"))]
         let continue_locally_button = conversation_id.map(|conv_id| {
             ctx.add_typed_action_view(move |_| {
-                ActionButton::new("Continue locally", PrimaryTheme)
-                    .with_tooltip("Fork this conversation locally")
+                ActionButton::new("在本地继续", PrimaryTheme)
+                    .with_tooltip("在本地复制此对话")
                     .on_click(move |ctx| {
                         ctx.dispatch_typed_action(
                             ConversationEndedTombstoneAction::ContinueLocally(conv_id),
@@ -246,8 +246,8 @@ impl ConversationEndedTombstoneView {
         #[cfg(target_family = "wasm")]
         let open_in_warp_button = conversation_id.map(|conv_id| {
             ctx.add_typed_action_view(move |_| {
-                ActionButton::new("Open in Warp", PrimaryTheme)
-                    .with_tooltip("Open this conversation in the Warp desktop app")
+                ActionButton::new("在 Warp 中打开", PrimaryTheme)
+                    .with_tooltip("在 Warp 桌面应用中打开此对话")
                     .on_click(move |ctx| {
                         ctx.dispatch_typed_action(ConversationEndedTombstoneAction::OpenInWarp(
                             conv_id,
@@ -355,7 +355,7 @@ impl ConversationEndedTombstoneView {
 
         if is_transcript {
             return Text::new(
-                "You're viewing a snapshot",
+                "您正在查看一个快照",
                 appearance.overline_font_family(),
                 appearance.monospace_font_size(),
             )
@@ -387,7 +387,7 @@ impl ConversationEndedTombstoneView {
             .display_data
             .title
             .clone()
-            .unwrap_or_else(|| "Agent task".to_string());
+            .unwrap_or_else(|| "代理任务".to_string());
         Flex::row()
             .with_main_axis_size(MainAxisSize::Min)
             .with_cross_axis_alignment(CrossAxisAlignment::Center)
@@ -414,8 +414,8 @@ impl ConversationEndedTombstoneView {
         let theme = appearance.theme();
         Container::new(
             Text::new(
-                "This shared conversation shows the state when you opened it. \
-                 If the agent is still running, refresh to see the latest progress.",
+                "此共享对话显示您打开时的状态。\
+                 如果代理仍在运行，请刷新以查看最新进度。",
                 appearance.overline_font_family(),
                 appearance.monospace_font_size(),
             )

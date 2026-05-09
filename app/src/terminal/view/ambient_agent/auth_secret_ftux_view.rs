@@ -80,7 +80,7 @@ impl AuthSecretFtuxView {
         ambient_agent_model: ModelHandle<AmbientAgentViewModel>,
         ctx: &mut ViewContext<Self>,
     ) -> Self {
-        let name_editor = make_single_line_editor(Some("NICKNAME"), false, ctx);
+        let name_editor = make_single_line_editor(Some("昵称"), false, ctx);
 
         ctx.subscribe_to_view(&name_editor, |me, _, event, ctx| {
             me.handle_form_editor_nav(0, event, ctx);
@@ -321,7 +321,7 @@ impl AuthSecretFtuxView {
         if trimmed_name.is_empty() {
             HarnessAvailabilityModel::handle(ctx).update(ctx, |_model, ctx| {
                 ctx.emit(HarnessAvailabilityEvent::AuthSecretCreationFailed {
-                    error: "Please enter a name for the secret.".to_string(),
+                    error: "请输入密钥名称。".to_string(),
                 });
             });
             return;
@@ -465,7 +465,7 @@ impl AuthSecretFtuxView {
             .with_main_axis_size(MainAxisSize::Min)
             .with_spacing(FORM_FIELD_SPACING);
 
-        column.add_child(self.render_field_label("NICKNAME", app));
+        column.add_child(self.render_field_label("昵称", app));
         column.add_child(self.render_editor_container(&self.name_editor, app));
 
         for (idx, field) in info.fields.iter().enumerate() {
@@ -526,7 +526,7 @@ impl AuthSecretFtuxView {
         row.add_child(Expanded::new(1., Empty::new().finish()).finish());
 
         row.add_child(self.render_button(
-            "Cancel",
+            "取消",
             self.cancel_mouse_state.clone(),
             None,
             AuthSecretFtuxAction::Cancel,
@@ -535,7 +535,7 @@ impl AuthSecretFtuxView {
 
         let accent_fill = Appearance::as_ref(app).theme().accent();
         row.add_child(self.render_button(
-            "Continue",
+            "继续",
             self.continue_mouse_state.clone(),
             Some(accent_fill),
             AuthSecretFtuxAction::Continue,

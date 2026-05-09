@@ -1519,7 +1519,7 @@ impl EditorElement {
                 .with_margin_right(self.view_snapshot.em_width)
                 .finish(),
                 Text::new(
-                    "Cycle suggestions",
+                    "切换建议",
                     self.view_snapshot.font_family,
                     font_size,
                 )

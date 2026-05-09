@@ -252,7 +252,7 @@ fn resolve_repo_qualified(
             return Err(ResolveSkillError::OrgMismatch {
                 repo: repo.to_string(),
                 expected: expected_org.clone(),
-                found: first_mismatch.unwrap_or_else(|| "unknown".to_string()),
+                found: first_mismatch.unwrap_or_else(|| "未知".to_string()),
             });
         }
 

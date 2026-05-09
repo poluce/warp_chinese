@@ -58,11 +58,11 @@ use warpui::{
 };
 
 /// Header text for the outdated section when there is exactly one outdated comment.
-const OUTDATED_SECTION_HEADER_SINGULAR: &str = "1 comment will be omitted because it is outdated.";
+const OUTDATED_SECTION_HEADER_SINGULAR: &str = "1 条评论将被省略，因为它已过时。";
 /// Header text format for the outdated section when there are multiple outdated comments.
 /// Use with `format!` to insert the count.
 const OUTDATED_SECTION_HEADER_PLURAL_FMT: &str =
-    " comments will be omitted because they are outdated.";
+    " 条评论将被省略，因为它们已过时。";
 
 /// Returns the header text for the outdated section based on the number of outdated comments.
 fn outdated_section_header_text(count: usize) -> Cow<'static, str> {
@@ -203,7 +203,7 @@ impl CommentListView {
         let menu = ctx.add_view(|_| Menu::new());
 
         let comments_button = ctx.add_view(|_| {
-            ActionButton::new("1 Comment", CustomSecondaryActionTheme)
+            ActionButton::new("1 条评论", CustomSecondaryActionTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(CommentListAction::ToggleCollapsed);
@@ -875,7 +875,7 @@ impl CommentListView {
                     ButtonVariant::Text,
                     self.view_state.cancel_button_mouse_state.clone(),
                 )
-                .with_text_label("Cancel".to_string())
+                .with_text_label("取消".to_string())
                 .build()
                 .finish(),
         )
@@ -902,22 +902,22 @@ impl CommentListView {
     ) -> Cow<'static, str> {
         if let ReviewDestination::Cli(agent) = destination {
             if !has_sendable_comments {
-                Cow::Borrowed("No non-outdated comments to send")
+                Cow::Borrowed("没有非过时评论可发送")
             } else {
                 let cmd = agent.command_prefix();
                 let label = if cmd.is_empty() { "CLI agent" } else { cmd };
-                Cow::Owned(format!("Send diff comments to {label}"))
+                Cow::Owned(format!("向 {label} 发送差异评论"))
             }
         } else if !ai_enabled {
-            Cow::Borrowed("AI must be enabled to send comments to Agent")
+            Cow::Borrowed("必须启用 AI 才能向 Agent 发送评论")
         } else if !ai_available {
-            Cow::Borrowed("Agent code review requires AI credits")
+            Cow::Borrowed("Agent 代码审查需要 AI 额度")
         } else if matches!(destination, ReviewDestination::None) {
-            Cow::Borrowed("All terminals are busy")
+            Cow::Borrowed("所有终端都忙")
         } else if !has_sendable_comments {
-            Cow::Borrowed("No non-outdated comments to send")
+            Cow::Borrowed("没有非过时评论可发送")
         } else {
-            Cow::Borrowed("Send diff comments to Agent")
+            Cow::Borrowed("向 Agent 发送差异评论")
         }
     }
 
@@ -952,7 +952,7 @@ impl CommentListView {
                 ButtonVariant::Accent,
                 self.view_state.submit_button_mouse_state.clone(),
             )
-            .with_text_label("Send to Agent".to_string())
+            .with_text_label("发送给 Agent".to_string())
             .with_tooltip(|| tooltip)
             .with_tooltip_position(ButtonTooltipPosition::AboveLeft);
 
@@ -1061,19 +1061,19 @@ impl CommentListView {
         html_url: Option<&str>,
         appearance: &Appearance,
     ) -> Vec<MenuItem<CommentListAction>> {
-        let mut items = vec![MenuItemFields::new("Copy text")
+        let mut items = vec![MenuItemFields::new("复制文本")
             .with_icon(Icon::Copy)
             .with_on_select_action(CommentListAction::CopyCommentText)
             .into_item()];
 
-        let mut edit_item = MenuItemFields::new("Edit")
+        let mut edit_item = MenuItemFields::new("编辑")
             .with_icon(Icon::Pencil)
             .with_on_select_action(CommentListAction::EditComment);
         if is_file_level || is_outdated {
             let tooltip_text = if is_file_level {
-                "File-level comments currently can't be edited."
+                "文件级评论当前无法编辑。"
             } else {
-                "Outdated comments can't be edited."
+                "过时评论无法编辑。"
             };
             edit_item = edit_item.with_disabled(true).with_tooltip(tooltip_text);
         }
@@ -1081,7 +1081,7 @@ impl CommentListView {
 
         if let Some(url) = html_url {
             items.push(
-                MenuItemFields::new("View in GitHub")
+                MenuItemFields::new("在 GitHub 中查看")
                     .with_icon(Icon::Github)
                     .with_on_select_action(CommentListAction::ViewInGitHub {
                         url: url.to_string(),
@@ -1091,7 +1091,7 @@ impl CommentListView {
         }
 
         items.push(
-            MenuItemFields::new("Remove")
+            MenuItemFields::new("移除")
                 .with_icon(Icon::Trash)
                 .with_override_text_color(Fill::Solid(appearance.theme().ansi_fg_red()))
                 .with_override_icon_color(Fill::Solid(appearance.theme().ansi_fg_red()))

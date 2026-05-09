@@ -50,7 +50,7 @@ pub struct PrState {
 }
 
 pub(super) fn confirm_label_for() -> &'static str {
-    "Create PR"
+    "创建 PR"
 }
 
 pub(super) fn confirm_icon_for() -> Icon {
@@ -58,7 +58,7 @@ pub(super) fn confirm_icon_for() -> Icon {
 }
 
 fn loading_label_for() -> &'static str {
-    "Creating\u{2026}"
+    "正在创建\u{2026}"
 }
 
 /// PR mode has no prerequisites beyond a branch with commits; confirm is
@@ -268,7 +268,7 @@ fn render_changes_section(state: &PrState, appearance: &Appearance) -> Box<dyn E
     let main_color = theme.main_text_color(theme.surface_1()).into_solid();
 
     let label = Text::new(
-        "Changes",
+        "变更",
         appearance.ui_font_family(),
         appearance.ui_font_size(),
     )

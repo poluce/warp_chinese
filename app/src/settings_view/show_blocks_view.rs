@@ -39,8 +39,8 @@ use warpui::{
 const SCROLLBAR_WIDTH: ScrollbarWidth = ScrollbarWidth::Auto;
 
 const UNSHARE_BLOCK_CONFIRMATION_DIALOG_TEXT: &str =
-    "Are you sure you want to unshare this block?\n\
-\nIt will no longer be accessible by link and will be permanently deleted from Warp servers.";
+    "确定要取消共享此 block 吗？\n\
+\n它将无法再通过链接访问，并将从 Warp 服务器永久删除。";
 
 #[derive(Clone, Debug)]
 struct UserOwnedBlock {
@@ -151,7 +151,7 @@ impl UserOwnedBlock {
                 ButtonVariant::Basic,
                 self.copy_button_mouse_state_handle.clone(),
             )
-            .with_text_label("Copy link".into());
+            .with_text_label("复制链接".into());
 
         let button = if self.unshare_request_status == UnshareBlockRequestState::InFlight {
             button.disabled().build()
@@ -168,7 +168,7 @@ impl UserOwnedBlock {
         if self.unshare_request_status == UnshareBlockRequestState::InFlight {
             appearance
                 .ui_builder()
-                .label("Deleting...")
+                .label("删除中…")
                 .with_style(
                     UiComponentStyles::default()
                         .set_font_family_id(appearance.monospace_font_family())
@@ -306,14 +306,14 @@ impl GetBlocksForUserRequestState {
         let ui_builder = appearance.ui_builder();
         match self {
             GetBlocksForUserRequestState::NotStarted => pad(ui_builder
-                .label("You don't have any shared blocks yet.")
+                .label("您还没有共享的 block。")
                 .build()
                 .finish()),
             GetBlocksForUserRequestState::InFlight => {
-                pad(ui_builder.label("Getting blocks...").build().finish())
+                pad(ui_builder.label("正在获取 blocks…").build().finish())
             }
             GetBlocksForUserRequestState::Failed => pad(ui_builder
-                .label("Failed to load blocks. Please try again.")
+                .label("加载 blocks 失败，请重试。")
                 .build()
                 .finish()),
             GetBlocksForUserRequestState::Done(user_blocks) => {
@@ -366,7 +366,7 @@ impl GetBlocksForUserRequestState {
                     .finish()
                 } else {
                     pad(ui_builder
-                        .label("You don't have any shared blocks yet.")
+                        .label("您还没有共享的 block。")
                         .build()
                         .finish())
                 }
@@ -427,7 +427,7 @@ impl ShowBlocksView {
 
             menu.set_items(
                 vec![MenuItem::Item(
-                    MenuItemFields::new("Unshare").with_on_select_action(ShowBlocksAction::Unshare),
+                    MenuItemFields::new("取消共享").with_on_select_action(ShowBlocksAction::Unshare),
                 )],
                 ctx,
             );
@@ -494,7 +494,7 @@ impl ShowBlocksView {
         ctx.clipboard()
             .write(ClipboardContent::plain_text(block_url.to_string()));
         ctx.emit(ShowBlocksEvent::ShowToast {
-            message: "Link copied.".to_string(),
+            message: "链接已复制。".to_string(),
             flavor: ToastFlavor::Default,
         })
     }
@@ -553,14 +553,14 @@ impl ShowBlocksView {
             match request_result {
                 Ok(_) => {
                     ctx.emit(ShowBlocksEvent::ShowToast {
-                        message: "Block was successfully unshared.".to_string(),
+                        message: "Block 已成功取消共享。".to_string(),
                         flavor: ToastFlavor::Success,
                     });
                     user_block.unshare_request_status = UnshareBlockRequestState::Done;
                 }
                 Err(_) => {
                     ctx.emit(ShowBlocksEvent::ShowToast {
-                        message: "Failed to unshare block. Please try again.".to_string(),
+                        message: "取消共享 block 失败，请重试。".to_string(),
                         flavor: ToastFlavor::Error,
                     });
                     user_block.unshare_request_status = UnshareBlockRequestState::Failed;
@@ -660,7 +660,7 @@ impl ShowBlocksWidget {
                     .with_child(
                         Align::new(
                             ui_builder
-                                .label("Unshare block")
+                                .label("取消共享 block")
                                 .with_style(UiComponentStyles {
                                     font_size: Some(appearance.header_font_size()),
                                     ..Default::default()
@@ -695,7 +695,7 @@ impl ShowBlocksWidget {
                                                 ButtonVariant::Basic,
                                                 view.state_handles.cancel_dialog_handle.clone(),
                                             )
-                                            .with_text_label("Cancel".into())
+                                            .with_text_label("取消".into())
                                             .build()
                                             .on_click(|ctx, _, _| {
                                                 ctx.dispatch_typed_action(
@@ -713,7 +713,7 @@ impl ShowBlocksWidget {
                                                         .confirm_dialog_handle
                                                         .clone(),
                                                 )
-                                                .with_text_label("Unshare".into())
+                                                .with_text_label("取消共享".into())
                                                 .build()
                                                 .on_click(|ctx, _, _| {
                                                     ctx.dispatch_typed_action(
@@ -802,7 +802,7 @@ impl SettingsWidget for ShowBlocksWidget {
             );
         }
 
-        let header = render_page_title("Shared blocks", HEADER_FONT_SIZE, appearance);
+        let header = render_page_title("共享 blocks", HEADER_FONT_SIZE, appearance);
         let col = Flex::column()
             .with_child(Container::new(header).with_margin_bottom(24.).finish())
             .with_child(Expanded::new(1., stack.finish()).finish());

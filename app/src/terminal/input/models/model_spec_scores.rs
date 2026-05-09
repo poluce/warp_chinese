@@ -15,11 +15,11 @@ use crate::terminal::input::inline_menu::styles as inline_styles;
 const CORNER_RADIUS: f32 = 4.0;
 const ROW_SPACING: f32 = 12.0;
 
-pub const MODEL_SPECS_TITLE: &str = "Model Specs";
-pub const MODEL_SPECS_DESCRIPTION: &str = "Warp's benchmarks for how well a model performs in our harness, the rate at which it consumes credits, and task speed.";
+pub const MODEL_SPECS_TITLE: &str = "模型规格";
+pub const MODEL_SPECS_DESCRIPTION: &str = "Warp 对模型在我们的测试环境中表现、消耗积分速率和任务速度的基准测试。";
 
-pub const REASONING_LEVEL_TITLE: &str = "Reasoning level";
-pub const REASONING_LEVEL_DESCRIPTION: &str = "Increased reasoning levels consume more credits and have higher latency, but higher performance for complicated tasks.";
+pub const REASONING_LEVEL_TITLE: &str = "推理级别";
+pub const REASONING_LEVEL_DESCRIPTION: &str = "提高推理级别会消耗更多积分并增加延迟，但对于复杂任务性能更高。";
 
 pub enum CostRow {
     Bar { value: Option<f32> },
@@ -37,7 +37,7 @@ pub fn render_model_spec_scores(
     app: &AppContext,
 ) -> Box<dyn Element> {
     let mut rows = vec![render_score_row(
-        "Intelligence",
+        "智能",
         ScoreRowKind::Bar {
             value: spec.as_ref().map(|spec| spec.quality),
         },
@@ -46,7 +46,7 @@ pub fn render_model_spec_scores(
     )];
 
     rows.push(render_score_row(
-        "Speed",
+        "速度",
         ScoreRowKind::Bar {
             value: spec.as_ref().map(|spec| spec.speed),
         },
@@ -57,7 +57,7 @@ pub fn render_model_spec_scores(
     match cost_row {
         CostRow::Bar { value } => {
             rows.push(render_score_row(
-                "Cost",
+                "成本",
                 ScoreRowKind::Bar { value },
                 layout.bg_bar_color,
                 app,
@@ -65,7 +65,7 @@ pub fn render_model_spec_scores(
         }
         CostRow::BilledToApi { manage_button } => {
             rows.push(render_score_row(
-                "Cost",
+                "成本",
                 ScoreRowKind::BilledToApi { manage_button },
                 layout.bg_bar_color,
                 app,
@@ -193,7 +193,7 @@ fn render_score_row(
                 .with_child(
                     Container::new(
                         Text::new(
-                            "Billed to API".to_string(),
+                            "按 API 计费".to_string(),
                             appearance.ui_font_family(),
                             14.,
                         )

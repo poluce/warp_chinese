@@ -62,13 +62,13 @@ impl TeamDeleteDisabledReason {
     pub fn user_facing_message(&self) -> &str {
         match self {
             TeamDeleteDisabledReason::ActivePaidSubscription => {
-                "Your team cannot be deleted with an active subscription."
+                "您的团队在有有效订阅时无法删除。"
             }
             TeamDeleteDisabledReason::RemainingBonusCredits => {
-                "Your team cannot be deleted with unused add-on credits."
+                "您的团队在有未使用的附加积分时无法删除。"
             }
             TeamDeleteDisabledReason::OtherMembers => {
-                "Your team cannot be deleted with other team members."
+                "您的团队在有其他团队成员时无法删除。"
             }
         }
     }

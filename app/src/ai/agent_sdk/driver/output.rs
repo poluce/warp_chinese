@@ -449,7 +449,7 @@ pub mod text {
                 AIAgentOutputMessageType::WebSearch(status) => match status {
                     WebSearchStatus::Searching { query } => match query {
                         Some(q) => writeln!(w, "Searching web for: {q}")?,
-                        None => writeln!(w, "Searching web")?,
+                        None => writeln!(w, "正在搜索网络")?,
                     },
                     WebSearchStatus::Success { query, pages } => {
                         writeln!(w, "Searched web for: {query} ({} results)", pages.len())?;

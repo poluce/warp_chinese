@@ -258,7 +258,7 @@ impl AgentTypeSelector {
 
             if is_suggested {
                 let suggested_text =
-                    Text::new("Suggested".to_string(), font_family, OPTION_DESC_FONT_SIZE)
+                    Text::new("建议".to_string(), font_family, OPTION_DESC_FONT_SIZE)
                         .with_style(Properties::default().weight(Weight::Medium))
                         .with_color(badge_text_color)
                         .finish();
@@ -333,8 +333,8 @@ impl AgentTypeSelector {
         let cloud_agent_option = self.render_option(
             0,
             Icon::OzCloud,
-            "Cloud agent",
-            "Runs autonomously in a cloud environment you choose. Best for parallel or long-running work.",
+            "云端智能体",
+            "在您选择的云环境中自主运行。适合并行或长时间运行的工作。",
             true,
             self.cloud_agent_mouse_state.clone(),
             AgentTypeSelectorAction::SelectCloudAgent,
@@ -344,8 +344,8 @@ impl AgentTypeSelector {
         let local_agent_option = self.render_option(
             1,
             Icon::Oz,
-            "Local agent",
-            "Runs on your machine and requires supervision. Best for quick, interactive tasks.",
+            "本地智能体",
+            "在您的机器上运行并需要监督。适合快速、交互式任务。",
             false,
             self.local_agent_mouse_state.clone(),
             AgentTypeSelectorAction::SelectLocalAgent,

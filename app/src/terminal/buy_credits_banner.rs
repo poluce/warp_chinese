@@ -208,7 +208,7 @@ impl BuyCreditsBanner {
                 if self.banner_auto_reload_update_in_flight {
                     self.banner_auto_reload_update_in_flight = false;
                     ctx.emit(BuyCreditsBannerEvent::ShowAutoReloadError {
-                        error_message: "Failed to enable auto-reload for your team. Please try again in Settings > Billing and Usage.",
+                        error_message: "为您的团队启用自动充值失败。请在设置 > 账单和使用中重试。",
                     });
                     ctx.notify();
                 }
@@ -241,7 +241,7 @@ impl BuyCreditsBanner {
 
         let sub_text_color = theme.sub_text_color(theme.surface_1());
 
-        let label = Text::new_inline("Auto reload", appearance.ui_font_family(), 12.)
+        let label = Text::new_inline("自动充值", appearance.ui_font_family(), 12.)
             .with_color(sub_text_color.into())
             .finish();
 
@@ -404,16 +404,16 @@ impl BuyCreditsBanner {
 
         // Banner text with title and description based on admin status
         let banner_description = if has_admin_permissions {
-            "Your monthly spend limit has been reached. Increase it to continue."
+            "已达到月度消费限额。请增加限额以继续。"
         } else {
-            "Contact a team admin to increase monthly limit."
+            "请联系团队管理员增加月度限额。"
         };
 
         let banner_text = Flex::column()
             .with_children([
                 appearance
                     .ui_builder()
-                    .paragraph("Monthly limit reached")
+                    .paragraph("已达到月度限额")
                     .with_style(UiComponentStyles {
                         font_size: Some(14.),
                         ..Default::default()
@@ -464,7 +464,7 @@ impl BuyCreditsBanner {
                     }),
                     ..Default::default()
                 })
-                .with_text_label("Manage billing".to_string())
+                .with_text_label("管理账单".to_string())
                 .build()
                 .on_click(|ctx, _, _| {
                     ctx.dispatch_typed_action(Action::ManageBilling);
@@ -549,7 +549,7 @@ impl BuyCreditsBanner {
         let make_banner_text = || {
             let mut banner_text_children = vec![appearance
                 .ui_builder()
-                .paragraph("Out of credits")
+                .paragraph("信用额度不足")
                 .with_style(UiComponentStyles {
                     font_size: Some(14.),
                     ..Default::default()
@@ -562,10 +562,10 @@ impl BuyCreditsBanner {
                 // Create formatted text with clickable hyperlink
                 let warning_text_fragments = vec![
                     FormattedTextFragment::plain_text(
-                        "Purchasing these credits would take you over your monthly spend limit. ",
+                        "购买这些信用额度将超出您的月度消费限额。",
                     ),
-                    FormattedTextFragment::hyperlink_action("Increase it", Action::ManageBilling),
-                    FormattedTextFragment::plain_text(" to continue."),
+                    FormattedTextFragment::hyperlink_action("增加限额", Action::ManageBilling),
+                    FormattedTextFragment::plain_text("以继续。"),
                 ];
 
                 let formatted_warning = FormattedTextElement::new(
@@ -593,9 +593,9 @@ impl BuyCreditsBanner {
             } else {
                 // Default message when not at limit
                 let banner_description = if has_admin_permissions {
-                    "Add more credits to your account to continue using Oz agents."
+                    "向您的账户添加更多信用额度以继续使用 Oz 代理。"
                 } else {
-                    "Contact a team admin to purchase more credits to continue."
+                    "请联系团队管理员购买更多信用额度以继续。"
                 };
 
                 banner_text_children.push(
@@ -634,9 +634,9 @@ impl BuyCreditsBanner {
                 || would_purchase_exceed_limit;
 
             let button_text = if self.purchase_addon_credits_loading {
-                "Buying…".to_string()
+                "购买中……".to_string()
             } else {
-                "Buy".to_string()
+                "购买".to_string()
             };
 
             let button_font_color = buy_button_disabled.then_some(

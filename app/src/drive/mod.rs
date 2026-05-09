@@ -350,11 +350,11 @@ impl DriveSortOrder {
     /// Returns the text that is used to display the sorting option in the KnowledgeIndex's sorting menu
     pub fn menu_text(&self, index_variant: DriveIndexVariant) -> &str {
         match (self, index_variant) {
-            (DriveSortOrder::ByTimestamp, DriveIndexVariant::MainIndex) => "Last updated",
-            (DriveSortOrder::ByTimestamp, DriveIndexVariant::Trash) => "Last trashed",
-            (DriveSortOrder::AlphabeticalDescending, _) => "A to Z",
-            (DriveSortOrder::AlphabeticalAscending, _) => "Z to A",
-            (DriveSortOrder::ByObjectType, _) => "Type",
+            (DriveSortOrder::ByTimestamp, DriveIndexVariant::MainIndex) => "最近更新",
+            (DriveSortOrder::ByTimestamp, DriveIndexVariant::Trash) => "最近删除",
+            (DriveSortOrder::AlphabeticalDescending, _) => "A 到 Z",
+            (DriveSortOrder::AlphabeticalAscending, _) => "Z 到 A",
+            (DriveSortOrder::ByObjectType, _) => "类型",
         }
     }
 }

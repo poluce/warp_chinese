@@ -176,7 +176,7 @@ impl AgentSource {
             AgentSource::AgentWebhook => "API",
             AgentSource::Slack => "Slack",
             AgentSource::Cli => "CLI",
-            AgentSource::ScheduledAgent => "Scheduled",
+            AgentSource::ScheduledAgent => "定时任务",
             AgentSource::Interactive | AgentSource::CloudMode => "Warp App",
             AgentSource::WebApp => "Oz Web",
             AgentSource::GitHubAction => "GitHub Action",
@@ -483,16 +483,16 @@ impl AmbientAgentTaskState {
 impl std::fmt::Display for AmbientAgentTaskState {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            AmbientAgentTaskState::Queued => write!(f, "Queued"),
-            AmbientAgentTaskState::Pending => write!(f, "Pending"),
-            AmbientAgentTaskState::Claimed => write!(f, "Claimed"),
-            AmbientAgentTaskState::InProgress => write!(f, "In progress"),
-            AmbientAgentTaskState::Succeeded => write!(f, "Done"),
-            AmbientAgentTaskState::Failed => write!(f, "Failed"),
-            AmbientAgentTaskState::Error => write!(f, "Error"),
-            AmbientAgentTaskState::Blocked => write!(f, "Blocked"),
-            AmbientAgentTaskState::Cancelled => write!(f, "Cancelled"),
-            AmbientAgentTaskState::Unknown => write!(f, "Failed"),
+            AmbientAgentTaskState::Queued => write!(f, "已排队"),
+            AmbientAgentTaskState::Pending => write!(f, "待处理"),
+            AmbientAgentTaskState::Claimed => write!(f, "已认领"),
+            AmbientAgentTaskState::InProgress => write!(f, "进行中"),
+            AmbientAgentTaskState::Succeeded => write!(f, "已完成"),
+            AmbientAgentTaskState::Failed => write!(f, "失败"),
+            AmbientAgentTaskState::Error => write!(f, "错误"),
+            AmbientAgentTaskState::Blocked => write!(f, "已阻塞"),
+            AmbientAgentTaskState::Cancelled => write!(f, "已取消"),
+            AmbientAgentTaskState::Unknown => write!(f, "失败"),
         }
     }
 }
@@ -524,7 +524,7 @@ pub fn cancel_task_with_toast<V: View>(task_id: AmbientAgentTaskId, ctx: &mut Vi
         async move { ai_client.cancel_ambient_agent_task(&task_id).await },
         move |_view, result, ctx| {
             let message = match result {
-                Ok(()) => "Task cancelled".to_string(),
+                Ok(()) => "任务已取消".to_string(),
                 Err(e) => {
                     log::error!("Failed to cancel task: {e}");
                     format!("Failed to cancel task: {e}")

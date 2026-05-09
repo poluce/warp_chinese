@@ -678,7 +678,7 @@ impl View for RunAgentsCardView {
         // because restored blocks have no pending action status.
         if self.block_model.is_restored() {
             return render_status_only_card(
-                "Spawn agents cancelled".to_string(),
+                "衍生智能体已取消".to_string(),
                 appearance,
                 StatusKind::Cancelled,
                 app,
@@ -690,7 +690,7 @@ impl View for RunAgentsCardView {
         // and the action is queued for user confirmation).
         if !matches!(status, Some(AIActionStatus::Blocked)) {
             return render_status_only_card(
-                "Configuring agents\u{2026}".to_string(),
+                "正在配置智能体\u{2026}".to_string(),
                 appearance,
                 StatusKind::Spawning,
                 app,
@@ -957,13 +957,13 @@ pub(crate) fn format_terminal_state(result: &RunAgentsResult) -> (String, Status
         }
         RunAgentsResult::Failure { error } => {
             let label = if error.is_empty() {
-                "Failed to start orchestration".to_string()
+                "启动编排失败".to_string()
             } else {
                 format!("Failed to start orchestration: {error}")
             };
             (label, StatusKind::Failure)
         }
-        RunAgentsResult::Cancelled => ("Spawn agents cancelled".to_string(), StatusKind::Cancelled),
+        RunAgentsResult::Cancelled => ("衍生智能体已取消".to_string(), StatusKind::Cancelled),
     }
 }
 

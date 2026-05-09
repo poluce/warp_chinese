@@ -42,15 +42,15 @@ const SIDECAR_HORIZONTAL_GAP: f32 = 4.;
 
 const MENU_MAX_HEIGHT: f32 = 280.;
 
-const BUTTON_TOOLTIP: &str = "API key";
+const BUTTON_TOOLTIP: &str = "API 密钥";
 
-const MENU_HEADER_LABEL: &str = "API key";
+const MENU_HEADER_LABEL: &str = "API 密钥";
 
-const SIDECAR_HEADER_LABEL: &str = "Choose a type";
+const SIDECAR_HEADER_LABEL: &str = "选择类型";
 
-const NO_SECRET_LABEL: &str = "No API key";
+const NO_SECRET_LABEL: &str = "无 API 密钥";
 
-const NEW_ITEM_LABEL: &str = "New";
+const NEW_ITEM_LABEL: &str = "新建";
 
 const MAIN_MENU_SAVE_POSITION_ID: &str = "auth_secret_selector_main_menu";
 
@@ -375,7 +375,7 @@ fn build_main_menu_items(
     let mut items = vec![header];
 
     items.push(MenuItem::Item(
-        MenuItemFields::new("No secret")
+        MenuItemFields::new("无密钥")
             .with_font_size_override(ITEM_FONT_SIZE)
             .with_padding_override(ITEM_VERTICAL_PADDING, MENU_HORIZONTAL_PADDING)
             .with_override_hover_background_color(hover_background)
@@ -397,7 +397,7 @@ fn build_main_menu_items(
         }
         AuthSecretFetchState::NotFetched | AuthSecretFetchState::Loading => {
             items.push(MenuItem::Item(
-                MenuItemFields::new("Loading…")
+                MenuItemFields::new("加载中…")
                     .with_font_size_override(ITEM_FONT_SIZE)
                     .with_padding_override(ITEM_VERTICAL_PADDING, MENU_HORIZONTAL_PADDING)
                     .with_disabled(true)
@@ -406,7 +406,7 @@ fn build_main_menu_items(
         }
         AuthSecretFetchState::Failed(_) => {
             items.push(MenuItem::Item(
-                MenuItemFields::new("Unable to load secrets")
+                MenuItemFields::new("无法加载密钥")
                     .with_font_size_override(ITEM_FONT_SIZE)
                     .with_padding_override(ITEM_VERTICAL_PADDING, MENU_HORIZONTAL_PADDING)
                     .with_disabled(true)

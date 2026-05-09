@@ -237,7 +237,7 @@ impl AmbientAgentRunner {
     }
     fn run_agent(&self, args: RunCloudArgs, ctx: &mut ModelContext<Self>) -> anyhow::Result<()> {
         if !FeatureFlag::AmbientAgentsCommandLine.is_enabled() {
-            return Err(anyhow::anyhow!("Unsupported feature"));
+            return Err(anyhow::anyhow!("不支持的功能"));
         }
         let skill_enabled = FeatureFlag::OzPlatformSkills.is_enabled();
         if args.skill.is_some() && !skill_enabled {
@@ -925,7 +925,7 @@ impl AmbientAgentRunner {
                     description,
                     ..
                 } => {
-                    let desc = description.as_deref().unwrap_or("No description");
+                    let desc = description.as_deref().unwrap_or("无描述");
                     lines.push(format!("  Screenshot: {} ({})", artifact_uid, desc));
                 }
                 Artifact::File {
