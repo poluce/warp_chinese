@@ -28,13 +28,13 @@ pub use callout::{OnboardingCalloutView, OnboardingKeybindings};
 /// Shared by the intention slide's agent card checklist and the login slide's
 /// skip-login confirmation dialog so the two always stay in sync.
 pub const AI_FEATURES: &[&str] = &[
-    "Warp agents",
-    "Oz cloud agents platform",
-    "Next command predictions",
-    "Prompt suggestions",
-    "Codebase context",
-    "Remote control with Claude Code, Codex, and other agents",
-    "Agents over SSH",
+    "Warp Agent",
+    "Oz 云端 Agent 平台",
+    "下一条命令预测",
+    "提示词建议",
+    "代码库上下文",
+    "通过 Claude Code、Codex 等 Agent 远程控制",
+    "通过 SSH 使用 Agent",
 ];
 
 /// User-facing names of the Warp Drive features enabled when the terminal

@@ -230,9 +230,19 @@ use std::fmt::{self, Display};
 impl Display for SettingsSection {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
+            SettingsSection::About => write!(f, "关于"),
+            SettingsSection::Account => write!(f, "账号"),
+            SettingsSection::AI => write!(f, "AI"),
+            SettingsSection::Appearance => write!(f, "外观"),
             SettingsSection::BillingAndUsage => write!(f, "账单和用量"),
+            SettingsSection::Code => write!(f, "代码"),
+            SettingsSection::Features => write!(f, "功能"),
             SettingsSection::Keybindings => write!(f, "键盘快捷键"),
-            SettingsSection::SharedBlocks => write!(f, "共享 blocks"),
+            SettingsSection::Privacy => write!(f, "隐私"),
+            SettingsSection::Referrals => write!(f, "推荐"),
+            SettingsSection::SharedBlocks => write!(f, "共享 Blocks"),
+            SettingsSection::Teams => write!(f, "团队"),
+            SettingsSection::Warpify => write!(f, "Warpify"),
             SettingsSection::MCPServers => write!(f, "MCP 服务器"),
             SettingsSection::WarpDrive => write!(f, "Warp Drive"),
             SettingsSection::WarpAgent => write!(f, "Warp Agent"),
@@ -244,7 +254,6 @@ impl Display for SettingsSection {
             SettingsSection::EditorAndCodeReview => write!(f, "编辑器和代码审查"),
             SettingsSection::CloudEnvironments => write!(f, "环境"),
             SettingsSection::OzCloudAPIKeys => write!(f, "Oz Cloud API 密钥"),
-            _ => write!(f, "{self:?}"),
         }
     }
 }

@@ -2764,7 +2764,7 @@ impl TeamsWidget {
 
         // 1) "Restrict by domain" header
         section.add_child(
-            Container::new(self.render_sub_header("Restrict by domain".to_owned(), appearance))
+            Container::new(self.render_sub_header("按域名限制".to_owned(), appearance))
                 .with_padding_top(16.)
                 .finish(),
         );
@@ -2943,7 +2943,7 @@ impl TeamsWidget {
             .with_main_axis_size(MainAxisSize::Max)
             .with_main_axis_alignment(MainAxisAlignment::SpaceBetween);
         discoverable_header_row.add_child(
-            Container::new(self.render_sub_header("Make team discoverable".to_owned(), appearance))
+            Container::new(self.render_sub_header("使团队可被发现".to_owned(), appearance))
                 .with_padding_top(CONTENT_SEPARATION_PADDING)
                 .finish(),
         );

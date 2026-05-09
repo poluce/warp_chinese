@@ -1143,7 +1143,7 @@ impl MCPServersListPageView {
         > = std::sync::LazyLock::new(|| {
             vec![
                 FormattedTextFragment::plain_text(
-                    "自动从全局范围的第三方 AI 代理配置文件（例如主目录中的文件）检测并生成 MCP 服务器。在仓库内检测到的服务器永远不会自动生成，必须在下方的"检测来源"部分中单独启用。",
+                    "自动从全局范围的第三方 AI 代理配置文件（例如主目录中的文件）检测并生成 MCP 服务器。在仓库内检测到的服务器永远不会自动生成，必须在下方的「检测来源」部分中单独启用。",
                 ),
                 FormattedTextFragment::hyperlink(
                     "查看支持的提供商。",

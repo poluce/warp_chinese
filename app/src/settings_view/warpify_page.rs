@@ -533,7 +533,7 @@ impl TitleWidget {
     fn render_top_of_page(&self, appearance: &Appearance, _app: &AppContext) -> Box<dyn Element> {
         let warpify_description = vec![
             FormattedTextFragment::plain_text(
-                “配置 Warp 是否尝试对某些 shell 进行 “Warpify”（添加对 block、输入模式等的支持）。 “,
+                "配置 Warp 是否尝试对某些 shell 进行「Warpify」（添加对 block、输入模式等的支持）。",
             ),
             FormattedTextFragment::hyperlink(
                 "了解更多",

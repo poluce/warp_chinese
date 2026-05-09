@@ -56,6 +56,9 @@ app/src/persistence/schema.rs.orig
 pr_cleanup.md
 desired_behavior.md
 
+# Don't include the portable build output directory
+/portable_warp
+
 # Don't include the python cache for bundled skills.
 __pycache__/
 
