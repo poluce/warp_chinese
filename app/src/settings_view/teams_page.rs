@@ -85,18 +85,18 @@ use warpui::{
 
 const TEAM_MEMBERS_HEADER_POSITION_ID: &str = "team_settings:team_members_header";
 // Styling for team create page
-const TEAM_NAME_EDITOR_PLACEHOLDER_TEXT: &str = "Team name";
+const TEAM_NAME_EDITOR_PLACEHOLDER_TEXT: &str = "团队名称";
 const CREATE_TEAM_BUTTON_LEFT_PADDING: f32 = 10.;
-const CREATE_TEAM_DESCRIPTION: &str = "When you create a team, you can collaborate on agent-driven development by sharing cloud agent runs, environments, automations, and artifacts. You can also create a shared knowledge store for teammates and agents alike.";
+const CREATE_TEAM_DESCRIPTION: &str = "创建团队后，您可以通过共享云端 Agent 运行、环境、自动化和工件来协作进行 Agent 驱动开发。您还可以为团队成员和 Agent 创建共享知识库。";
 
 // Styling for team management page
-const LEAVE_TEAM_BUTTON_LABEL: &str = "Leave team";
-const DELETE_TEAM_BUTTON_LABEL: &str = "Delete team";
-const CREATE_TEAM_BUTTON_LABEL: &str = "Create";
-const APPROVE_DOMAINS_PLACEHOLDER: &str = "Domains, comma separated";
-const EMAILS_PLACEHOLDER: &str = "Emails, comma separated";
-const APPROVE_DOMAINS_BUTTON_LABEL: &str = "Set";
-const SEND_EMAIL_INVITES_BUTTON_LABEL: &str = "Invite";
+const LEAVE_TEAM_BUTTON_LABEL: &str = "退出团队";
+const DELETE_TEAM_BUTTON_LABEL: &str = "删除团队";
+const CREATE_TEAM_BUTTON_LABEL: &str = "创建";
+const APPROVE_DOMAINS_PLACEHOLDER: &str = "域名，逗号分隔";
+const EMAILS_PLACEHOLDER: &str = "邮箱，逗号分隔";
+const APPROVE_DOMAINS_BUTTON_LABEL: &str = "设置";
+const SEND_EMAIL_INVITES_BUTTON_LABEL: &str = "邀请";
 const BUTTON_WIDTH: f32 = 82.;
 const BUTTON_HEIGHT: f32 = 40.;
 const COPY_LINK_LEFT_PADDING: f32 = 7.;
@@ -111,37 +111,37 @@ const SUBSECTION_HEADER_FONT_SIZE: f32 = 18.;
 
 const INVITE_LINK_PREFIX: &str = "/team/";
 const INVALID_DOMAINS_INSTRUCTIONS: &str =
-    "Some of the provided domains are invalid, or have already been added.";
+    "部分提供的域名无效，或已被添加。";
 
-const INVITE_LINK_TOGGLE_INSTRUCTIONS: &str = "As an admin, you can choose whether to enable or disable the ability for team members to invite others by invitation link.";
+const INVITE_LINK_TOGGLE_INSTRUCTIONS: &str = "作为管理员，您可以选择启用或禁用团队成员通过邀请链接邀请他人的功能。";
 const INVITE_LINK_DOMAIN_RESTRICTIONS_INSTRUCTIONS: &str =
-    "Only allow users with emails at specific domains to join your team through the invite link.";
+    "仅允许具有特定域名邮箱的用户通过邀请链接加入您的团队。";
 
-const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = "Email invitations are valid for 7 days.";
+const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = "邮件邀请有效期为 7 天。";
 const INVALID_EMAILS_INSTRUCTIONS: &str =
-    "Some of the provided email addresses are invalid, already invited, or members of the team.";
+    "部分提供的邮箱地址无效、已被邀请或已是团队成员。";
 
-const OFFLINE_TEXT: &str = "You are offline.";
+const OFFLINE_TEXT: &str = "您已离线。";
 
 const LIMIT_HIT_ADMIN_TEXT: &str =
-    "You've reached the team member limit for your plan. Upgrade to add more teammates.";
-const LIMIT_HIT_ADMIN_NOT_AUTO_UPGRADEABLE_TEXT: &str = "You've reached the team member limit for your plan. Contact support@warp.dev to add more teammates.";
+    "您已达到当前计划的团队成员数量上限。升级以添加更多成员。";
+const LIMIT_HIT_ADMIN_NOT_AUTO_UPGRADEABLE_TEXT: &str = "您已达到当前计划的团队成员数量上限。请联系 support@warp.dev 添加更多成员。";
 const LIMIT_HIT_NON_ADMIN_TEXT: &str =
-    "You've reached the team member limit for your plan. Contact a team admin to add more teammates.";
+    "您已达到当前计划的团队成员数量上限。请联系团队管理员添加更多成员。";
 
-const DELINQUENT_ADMIN_NON_SELF_SERVE_TEXT: &str = "Team invites have been restricted due to a payment issue. Please contact support@warp.dev to restore access.";
-const DELINQUENT_NON_ADMIN_TEXT: &str = "Team invites have been restricted due to a payment issue. Please contact a team admin to restore access.";
+const DELINQUENT_ADMIN_NON_SELF_SERVE_TEXT: &str = "团队邀请因付款问题已被限制。请联系 support@warp.dev 恢复访问。";
+const DELINQUENT_NON_ADMIN_TEXT: &str = "团队邀请因付款问题已被限制。请联系团队管理员恢复访问。";
 const DELINQUENT_ADMIN_SELF_SERVE_LINE_1_TEXT: &str =
-    "Team invites have been restricted due to a subscription payment issue.";
-const DELINQUENT_ADMIN_SELF_SERVE_LINE_2_PREFIX_TEXT: &str = "Please ";
-const DELINQUENT_ADMIN_SELF_SERVE_LINE_2_LINK_TEXT: &str = "update your payment information";
-const DELINQUENT_ADMIN_SELF_SERVE_LINE_2_SUFFIX_TEXT: &str = " to restore access.";
+    "团队邀请因订阅付款问题已被限制。";
+const DELINQUENT_ADMIN_SELF_SERVE_LINE_2_PREFIX_TEXT: &str = "请";
+const DELINQUENT_ADMIN_SELF_SERVE_LINE_2_LINK_TEXT: &str = "更新您的付款信息";
+const DELINQUENT_ADMIN_SELF_SERVE_LINE_2_SUFFIX_TEXT: &str = "以恢复访问。";
 
-const TEAM_LIMIT_EXCEEDED_ADMIN_NOT_AUTO_UPGRADEABLE_TEXT: &str = "You've exceeded the team member limit for your plan. Please contact support@warp.dev to upgrade your team.";
+const TEAM_LIMIT_EXCEEDED_ADMIN_NOT_AUTO_UPGRADEABLE_TEXT: &str = "您已超出当前计划的团队成员数量上限。请联系 support@warp.dev 升级您的团队。";
 const TEAM_LIMIT_EXCEEDED_NON_ADMIN_TEXT: &str =
-    "You've exceeded the team member limit for your plan. Contact a team admin to upgrade your team.";
+    "您已超出当前计划的团队成员数量上限。请联系团队管理员升级您的团队。";
 const TEAM_LIMIT_EXCEEDED_ADMIN_UPGRADEABLE: &str =
-    "You've exceeded the team member limit for your plan. Upgrade to add more teammates.";
+    "您已超出当前计划的团队成员数量上限。升级以添加更多成员。";
 
 const MAX_CHIP_WIDTH: f32 = 280.;
 
@@ -3655,7 +3655,7 @@ impl TeamsWidget {
         // Title, subtitle, and description
         page.add_child(render_sub_header(appearance, "团队".to_string(), None));
         page.add_child(
-            self.render_sub_header_with_subtext_color(appearance, "Create a team".to_string()),
+            self.render_sub_header_with_subtext_color(appearance, "创建团队".to_string()),
         );
         page.add_child(
             Container::new(

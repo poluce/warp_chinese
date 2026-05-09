@@ -81,43 +81,43 @@ use super::{
 };
 
 const HEADER_FONT_SIZE: f32 = 16.;
-const OVERAGE_USAGE_LINK_TEXT: &str = "View details on overage usage";
-const OVERAGE_TOGGLE_ADMIN_HEADER: &str = "Enable premium model usage overages";
-const OVERAGE_TOGGLE_USER_HEADER_ENABLED: &str = "Premium model usage overages are enabled";
-const OVERAGE_TOGGLE_USER_HEADER_DISABLED: &str = "Premium model usage overages are not enabled";
-const OVERAGE_TOGGLE_DESCRIPTION: &str = "Continue using premium models beyond your plan's limits. Usage is charged in $20 increments up to your spending limit, with any remaining balance charged on your scheduled billing date.";
+const OVERAGE_USAGE_LINK_TEXT: &str = "查看超额用量详情";
+const OVERAGE_TOGGLE_ADMIN_HEADER: &str = "启用高级模型用量超额";
+const OVERAGE_TOGGLE_USER_HEADER_ENABLED: &str = "高级模型用量超额已启用";
+const OVERAGE_TOGGLE_USER_HEADER_DISABLED: &str = "高级模型用量超额未启用";
+const OVERAGE_TOGGLE_DESCRIPTION: &str = "在计划限制之外继续使用高级模型。用量以 $20 为增量计费，直至达到您的消费上限，剩余余额将在您的账单结算日收取。";
 const OVERAGE_TOGGLE_USER_DESCRIPTION: &str =
-    "Ask a team admin to enable overages for more AI usage.";
+    "请团队管理员启用超额以获取更多 AI 用量。";
 
 const SORT_MENU_ITEM_DISPLAY_NAME_A_Z_LABEL: &str = "A to Z";
 const SORT_MENU_ITEM_DISPLAY_NAME_Z_A_LABEL: &str = "Z to A";
-const SORT_MENU_ITEM_REQUEST_USAGE_ASCENDING_LABEL: &str = "Usage ascending";
-const SORT_MENU_ITEM_REQUEST_USAGE_DESCENDING_LABEL: &str = "Usage descending";
+const SORT_MENU_ITEM_REQUEST_USAGE_ASCENDING_LABEL: &str = "用量升序";
+const SORT_MENU_ITEM_REQUEST_USAGE_DESCENDING_LABEL: &str = "用量降序";
 
 const AUTO_RELOAD_EXCEED_LIMIT_WARNING_STRING: &str =
-    "Auto reload is disabled, as the next reload would exceed your monthly spend limit. Increase your limit to use auto reload.";
+    "自动充值已禁用，因为下次充值将超出您的月度消费上限。请提高限额以使用自动充值。";
 const AUTO_RELOAD_DELINQUENT_WARNING_STRING: &str =
-    "Restricted due to billing issue. Update your payment method to purchase add-on credits.";
+    "由于账单问题受限。请更新您的支付方式以购买附加积分。";
 const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str =
-    "Auto reload is disabled due to recent failed reload. Please update your payment method and try again.";
+    "由于近期自动充值失败，自动充值已禁用。请更新您的支付方式后重试。";
 
-const OVERVIEW_TAB_TEXT: &str = "Overview";
-const USAGE_HISTORY_TAB_TEXT: &str = "Usage History";
+const OVERVIEW_TAB_TEXT: &str = "概览";
+const USAGE_HISTORY_TAB_TEXT: &str = "使用历史";
 
-const ENTERPRISE_USAGE_CALLOUT_HEADER: &str = "Usage reporting is currently limited";
+const ENTERPRISE_USAGE_CALLOUT_HEADER: &str = "用量报告功能目前受限";
 const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_PREFIX: &str =
-    "Enterprise credit usage isn't fully available in this view yet. For the most accurate spend tracking, ";
-const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_LINK: &str = "visit the admin panel";
-const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_SUFFIX: &str = ".";
+    "企业积分用量在此视图中尚不完全可用。如需最准确的消费跟踪，请";
+const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_LINK: &str = "访问管理面板";
+const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_SUFFIX: &str = "。";
 const ENTERPRISE_USAGE_CALLOUT_BODY_NON_ADMIN: &str =
-    "Enterprise credit usage isn't fully available in this view yet. Contact a team admin for detailed usage reporting.";
+    "企业积分用量在此视图中尚不完全可用。请联系团队管理员以获取详细用量报告。";
 
-const ADDON_CREDITS_DESCRIPTION: &str = "Add-on credits are purchased in prepaid packages that roll over each billing cycle and expire after one year. The more you purchase, the better the per-credit rate. Once your base plan credits are used, add-on credits will be consumed.";
+const ADDON_CREDITS_DESCRIPTION: &str = "附加积分以预付费套餐形式购买，每个账单周期滚动结转，一年后过期。购买越多，单积分价格越优惠。基础计划积用完后，将消耗附加积分。";
 const ADDITIONAL_ADDON_CREDITS_DESCRIPTION_FOR_TEAM: &str =
-    "Purchased add-on credits are shared across your team.";
+    "购买的附加积分在团队内共享。";
 
 // Cloud agent trial widget constants.
-const AMBIENT_AGENT_TRIAL_TITLE: &str = "Cloud agent trial";
+const AMBIENT_AGENT_TRIAL_TITLE: &str = "云端 Agent 试用";
 /// The threshold below which we only show the "Buy more" button (not "New agent").
 use crate::ai::request_usage_model::AMBIENT_AGENT_TRIAL_CREDIT_THRESHOLD;
 
@@ -366,7 +366,7 @@ impl BillingAndUsagePageView {
 
     fn build_page() -> PageType<Self> {
         let categories = vec![Category::new(
-            "Billing and usage",
+            "账单和用量",
             vec![
                 Box::new(PlanWidget::default()),
                 Box::new(UsageWidget::default()),
@@ -740,7 +740,7 @@ impl Entity for BillingAndUsagePageView {
 
 impl View for BillingAndUsagePageView {
     fn ui_name() -> &'static str {
-        "Billing and usage"
+        "账单和用量"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -2227,7 +2227,7 @@ impl UsageWidget {
         if let Some(period_end) = total_overages_period_end {
             let local_period_end = period_end.with_timezone(&Local);
             let formatted_date = local_period_end.format("%b %d at %-I:%M %p").to_string();
-            let billing_date_text = format!("Usage resets on {formatted_date}");
+            let billing_date_text = format!("用量重置于 {formatted_date}");
             left_side_component.add_child(
                 Container::new(
                     Text::new_inline(billing_date_text, appearance.ui_font_family(), 12.)
@@ -2818,7 +2818,7 @@ impl UsageWidget {
             .with_child(
                 appearance
                     .ui_builder()
-                    .paragraph(format!("Resets {formatted_next_refresh_time}"))
+                    .paragraph(format!("重置于 {formatted_next_refresh_time}"))
                     .with_style(UiComponentStyles {
                         font_color: Some(blended_colors::text_sub(
                             appearance.theme(),
@@ -2932,7 +2932,7 @@ impl UsageWidget {
                 .with_child(
                     build_sub_header(
                         appearance,
-                        "Usage",
+                        "用量",
                         Some(
                             appearance
                                 .theme()
@@ -3406,7 +3406,7 @@ impl PlanWidget {
             .with_cross_axis_alignment(CrossAxisAlignment::End);
         let current_user_id = auth_state.user_id().unwrap_or_default();
 
-        plan_info.add_child(render_customer_type_badge(appearance, "Free".into()));
+        plan_info.add_child(render_customer_type_badge(appearance, "免费".into()));
         plan_info.add_child(
             Container::new(
                 appearance
@@ -3418,7 +3418,7 @@ impl PlanWidget {
                     .with_text_and_icon_label(
                         TextAndIcon::new(
                             TextAndIconAlignment::IconFirst,
-                            "Compare plans",
+                            "比较计划",
                             Icon::CoinsStacked.to_warpui_icon(appearance.theme().accent()),
                             MainAxisSize::Min,
                             MainAxisAlignment::Center,
@@ -3457,7 +3457,7 @@ impl PlanWidget {
     }
 
     fn render_plan_header_text(&self, appearance: &Appearance) -> Box<dyn Element> {
-        Text::new_inline("Plan", appearance.ui_font_family(), HEADER_FONT_SIZE)
+        Text::new_inline("计划", appearance.ui_font_family(), HEADER_FONT_SIZE)
             .with_style(Properties::default().weight(Weight::Bold))
             .with_color(appearance.theme().active_ui_text_color().into())
             .finish()
@@ -3574,7 +3574,7 @@ impl PlanWidget {
     ) -> (Box<dyn Element>, Box<dyn Element>) {
         let current_user_id = auth_state.user_id().unwrap_or_default();
 
-        let plan_badge = render_customer_type_badge(appearance, "Free".into());
+        let plan_badge = render_customer_type_badge(appearance, "免费".into());
 
         let badge_element = Container::new(plan_badge).with_margin_right(16.).finish();
 
@@ -3588,24 +3588,7 @@ impl PlanWidget {
                 .with_text_and_icon_label(
                     TextAndIcon::new(
                         TextAndIconAlignment::IconFirst,
-                        "Compare plans",
-                        Icon::CoinsStacked.to_warpui_icon(appearance.theme().accent()),
-                        MainAxisSize::Min,
-                        MainAxisAlignment::Center,
-                        vec2f(14., 14.),
-                    )
-                    .with_inner_padding(4.),
-                )
-                .build()
-                .on_click(move |ctx, _, _| {
-                    ctx.dispatch_typed_action(BillingAndUsagePageAction::Upgrade {
-                        team_uid: None,
-                        user_id: current_user_id,
-                    });
-                })
-                .finish(),
-        )
-        .with_margin_left(12.)
+                        "比较计划",
         .finish();
 
         (badge_element, compare_plans_button)
