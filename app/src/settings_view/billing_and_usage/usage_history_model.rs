@@ -50,7 +50,7 @@ impl UsageHistoryModel {
     /// If some usage has already been loaded, this fetches the same number of entries.
     /// If no usage has been loaded, this fetches PAGE_SIZE entries.
     pub fn refresh_usage_history_async(&mut self, ctx: &mut ModelContext<Self>) {
-        if self.is_loading || !AuthStateProvider::as_ref(ctx).get().is_logged_in() {
+        if self.is_loading {
             return;
         }
 

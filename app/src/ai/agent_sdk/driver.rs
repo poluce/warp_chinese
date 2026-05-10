@@ -528,11 +528,7 @@ impl AgentDriver {
             )
         );
 
-        // If we're not logged in, the root view will go to an auth screen, and all subsequent steps will fail.
-        // This should be impossible, since we enforce login before reaching this point.
-        if !AuthStateProvider::as_ref(ctx).get().is_logged_in() {
-            return Err(AgentDriverError::NotLoggedIn);
-        }
+        // 允许未登录用户使用 Agent Driver
 
         // Extract the conversation ID if we're restoring a conversation.
         // This will be used when submitting the initial query to continue the conversation.

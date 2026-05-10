@@ -426,7 +426,7 @@ impl BillingAndUsagePageView {
             }
             UserWorkspacesEvent::UpdateWorkspaceSettingsRejected(_err) => {
                 self.show_toast(
-                    "Failed to update workspace settings",
+                    "更新工作区设置失败",
                     ToastFlavor::Error,
                     ctx,
                 );
@@ -439,7 +439,7 @@ impl BillingAndUsagePageView {
             UserWorkspacesEvent::PurchaseAddonCreditsSuccess => {
                 self.purchase_addon_credits_loading = false;
                 self.show_toast(
-                    "Successfully purchased add-on credits",
+                    "成功购买附加积分",
                     ToastFlavor::Success,
                     ctx,
                 );
@@ -752,20 +752,7 @@ impl TypedActionView for BillingAndUsagePageView {
     type Action = BillingAndUsagePageAction;
 
     fn handle_action(&mut self, action: &Self::Action, ctx: &mut ViewContext<Self>) {
-        if AuthStateProvider::as_ref(ctx)
-            .get()
-            .is_anonymous_or_logged_out()
-            && action.blocked_for_anonymous_user()
-        {
-            AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
-                auth_manager.attempt_login_gated_feature(
-                    action.into(),
-                    AuthViewVariant::RequireLoginCloseable,
-                    ctx,
-                )
-            });
-            return;
-        }
+        // 允许未登录用户执行所有操作
 
         match action {
             BillingAndUsagePageAction::Upgrade { team_uid, user_id } => match team_uid {

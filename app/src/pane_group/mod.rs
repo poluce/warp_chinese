@@ -2514,19 +2514,6 @@ impl PaneGroup {
             return;
         };
 
-        if AuthStateProvider::as_ref(ctx)
-            .get()
-            .is_anonymous_or_logged_out()
-        {
-            AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
-                auth_manager.attempt_login_gated_feature(
-                    "Share Session",
-                    AuthViewVariant::ShareRequirementCloseable,
-                    ctx,
-                )
-            });
-            return;
-        }
 
         self.share_session_modal.update(ctx, |modal, ctx| {
             modal.open(

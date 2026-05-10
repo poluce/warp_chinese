@@ -122,11 +122,9 @@ impl SettingsWidget for WarpDriveHeaderWidget {
         "warp drive sign up"
     }
 
-    fn should_render(&self, app: &AppContext) -> bool {
-        FeatureFlag::SkipFirebaseAnonymousUser.is_enabled()
-            && AuthStateProvider::as_ref(app)
-                .get()
-                .is_anonymous_or_logged_out()
+    fn should_render(&self, _app: &AppContext) -> bool {
+        // 允许未登录用户使用 Warp Drive，不再显示"创建账户"提示
+        false
     }
 
     fn render(
@@ -212,10 +210,6 @@ impl SettingsWidget for WarpDriveToggleWidget {
         app: &AppContext,
     ) -> Box<dyn Element> {
         let settings = WarpDriveSettings::as_ref(app);
-        let is_anonymous_or_logged_out = FeatureFlag::SkipFirebaseAnonymousUser.is_enabled()
-            && AuthStateProvider::as_ref(app)
-                .get()
-                .is_anonymous_or_logged_out();
 
         render_body_item::<WarpDriveSettingsPageAction>(
             "Warp Drive".into(),
@@ -228,24 +222,17 @@ impl SettingsWidget for WarpDriveToggleWidget {
                 tooltip_override_text: None,
             }),
             LocalOnlyIconState::Hidden,
-            if is_anonymous_or_logged_out {
-                ToggleState::Disabled
-            } else {
-                ToggleState::Enabled
-            },
+            ToggleState::Enabled,
             appearance,
             appearance
                 .ui_builder()
                 .switch(self.switch_state.clone())
-                .check(*settings.enable_warp_drive && !is_anonymous_or_logged_out)
-                .with_disabled(is_anonymous_or_logged_out)
+                .check(*settings.enable_warp_drive)
                 .build()
                 .on_click(move |ctx, _, _| {
-                    if !is_anonymous_or_logged_out {
-                        ctx.dispatch_typed_action(
-                            WarpDriveSettingsPageAction::ToggleShowWarpDrive,
-                        );
-                    }
+                    ctx.dispatch_typed_action(
+                        WarpDriveSettingsPageAction::ToggleShowWarpDrive,
+                    );
                 })
                 .finish(),
             Some("Warp Drive 是终端中的一个工作区，您可以在此保存工作流、笔记本、提示和环境变量，供个人使用或与团队共享。".into()),

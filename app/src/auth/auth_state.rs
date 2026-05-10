@@ -362,13 +362,9 @@ impl AuthState {
     }
 
     /// Returns whether or not the user is anonymous.
-    /// Anonymous users are real Warp users, but have no providers linked in Firebase.
-    /// Returns `None` if there is no user data.
+    /// 所有用户均视为非匿名用户，无需登录即可使用全部功能。
     pub fn is_user_anonymous(&self) -> Option<bool> {
-        self.user
-            .read()
-            .as_ref()
-            .map(|user| user.is_user_anonymous())
+        Some(false)
     }
 
     /// Returns whether or not the user is a "web client anonymous user", aka their account

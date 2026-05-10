@@ -64,8 +64,9 @@ pub fn apply_free_tier_default_model_override(
 
 pub fn current_onboarding_auth_state(ctx: &AppContext) -> OnboardingAuthState {
     let auth_state = AuthStateProvider::as_ref(ctx).get();
+    // 允许未登录用户使用 AI，按免费用户处理
     if auth_state.is_anonymous_or_logged_out() {
-        return OnboardingAuthState::LoggedOut;
+        return OnboardingAuthState::FreeUser;
     }
     let is_on_paid_plan = UserWorkspaces::as_ref(ctx)
         .current_workspace()

@@ -163,10 +163,6 @@ impl HarnessAvailabilityModel {
             return;
         };
 
-        if !AuthStateProvider::as_ref(ctx).get().is_logged_in() {
-            return;
-        }
-
         self.auth_secrets
             .insert(harness, AuthSecretFetchState::Loading);
 
@@ -239,11 +235,6 @@ impl HarnessAvailabilityModel {
     }
 
     pub fn refresh(&self, ctx: &mut ModelContext<Self>) {
-        // The endpoint queries `user`, which requires auth.
-        if !AuthStateProvider::as_ref(ctx).get().is_logged_in() {
-            return;
-        }
-
         let ai_client = ServerApiProvider::as_ref(ctx).get_ai_client();
         ctx.spawn(
             async move { ai_client.get_available_harnesses().await },

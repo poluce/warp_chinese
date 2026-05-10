@@ -6739,10 +6739,6 @@ impl Workspace {
         object_id: CloudObjectTypeAndId,
         ctx: &mut ViewContext<Self>,
     ) {
-        if self.auth_state.is_anonymous_or_logged_out() {
-            return;
-        }
-
         if *WarpDriveSettings::as_ref(ctx)
             .sharing_onboarding_block_shown
             .value()
@@ -6799,10 +6795,6 @@ impl Workspace {
             return false;
         }
 
-        if self.auth_state.is_anonymous_or_logged_out() {
-            return false;
-        }
-
         // If AgentOnboarding is enabled and the user is NOT in the control group for the
         // AgentOnboarding experiment, don't show Get Started onboarding.
         if self.should_show_agent_onboarding(ctx) {
@@ -6831,11 +6823,6 @@ impl Workspace {
 
         if !self.auth_state.is_onboarded().unwrap_or_default() {
             if self.should_show_agent_onboarding(ctx) {
-                // If the user is anonymous, we shouldn't trigger agent onboarding.
-                // It will not display anyway, and we don't want to mark the user as onboarded.
-                if self.auth_state.is_anonymous_or_logged_out() {
-                    return false;
-                }
                 self.trigger_agent_onboarding(ctx);
             } else {
                 self.trigger_legacy_onboarding(ctx);
@@ -15235,18 +15222,7 @@ impl Workspace {
         if self.is_readonly_shared_session_active(ctx) {
             return;
         }
-        if self.auth_state.is_anonymous_or_logged_out()
-            && workflow.as_workflow().is_agent_mode_workflow()
-        {
-            AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
-                auth_manager.attempt_login_gated_feature(
-                    "Run Agent Mode Workflow",
-                    AuthViewVariant::RequireLoginCloseable,
-                    ctx,
-                )
-            });
-            return;
-        }
+        // 允许未登录用户运行 Agent Mode Workflow
         if let Some(terminal_view_handle) =
             self.focus_terminal_input(workflow.object_id(), fallback_behavior, ctx)
         {
@@ -20357,16 +20333,7 @@ impl TypedActionView for Workspace {
         use WorkspaceAction::*;
         let window_id = ctx.window_id();
 
-        if self.auth_state.is_anonymous_or_logged_out() && action.blocked_for_anonymous_user() {
-            AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
-                auth_manager.attempt_login_gated_feature(
-                    action.into(),
-                    AuthViewVariant::RequireLoginCloseable,
-                    ctx,
-                )
-            });
-            return;
-        }
+        // 允许未登录用户执行所有操作
 
         match action {
             ActivateTab(index) => self.activate_tab(*index, ctx),
